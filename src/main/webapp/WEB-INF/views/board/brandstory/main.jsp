@@ -28,7 +28,7 @@
 			<main id="fullpage">
 				<section class="section">
 					<div class="section1">
-						<img src="/images/brandstory1.jpg" class="img-fluid img-fullpage" />
+						<img src="/images/brandstory1.jpg" class="img-fluid img-fullpage-brand" />
 						<div class="text-fullpage">
 							<h4>바쁘게 돌아가는 쳇바퀴 같은 하루의 끝에서</h4>
 							<h2>
@@ -39,7 +39,7 @@
 				</section>
 				<section class="section">
 					<div class="section2">
-						<img src="/images/brandstory2.jpg" class="img-fluid img-fullpage" />
+						<img src="/images/brandstory2.jpg" class="img-fluid img-fullpage-brand" />
 						<div class="text-fullpage">
 							<h2>
 								당신은 어디에서 가장 <span>'편안한가'</span>요?
@@ -50,7 +50,7 @@
 				</section>
 				<section class="section">
 					<div class="section3">
-						<img src="/images/brandstory3.jpg" class="img-fluid img-fullpage" />
+						<img src="/images/brandstory3.jpg" class="img-fluid img-fullpage-brand" />
 						<div class="text-fullpage">
 							<h4>여러분이 일상을 보내고있는 그 공간에</h4>
 							<h2>

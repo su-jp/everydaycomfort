@@ -27,35 +27,25 @@
 		<div class="container">
 			<main id="fullpage">
 				<section class="section">
-					<div class="section1">
-						<img src="/images/brandstory1.jpg" class="img-fluid img-fullpage" />
+					<div class="section3">
+						<img src="/images/interior1.jpg" class="img-fluid img-fullpage" />
 						<div class="text-fullpage">
-							<h4>바쁘게 돌아가는 쳇바퀴 같은 하루의 끝에서</h4>
-							<h2>
-								<span>'편안한가'</span>는 여러분의 일상에 질문을 던집니다.
-							</h2>
+							<h2>편안한가에서 인증받은 리모델링 업체와 <span>무료</span>로 상담해보세요.</h2>
+							<h5>
+							가능지역 : 서울/경기/인천/대구/충청/대전<br/>
+							광주/전라/울산/부산/창원
+							</h5>
 						</div>
 					</div>
 				</section>
 				<section class="section">
 					<div class="section2">
-						<img src="/images/brandstory2.jpg" class="img-fluid img-fullpage" />
+						<img src="/images/interior2.jpg" class="img-fluid img-fullpage" />
 						<div class="text-fullpage">
 							<h2>
-								당신은 어디에서 가장 <span>'편안한가'</span>요?
+								<br/><br/><br/>2,000개 이상의 리뷰가 증명합니다.<br/><br/>
 							</h2>
-							<h4>학교? 회사? 집?</h4>
-						</div>
-					</div>
-				</section>
-				<section class="section">
-					<div class="section3">
-						<img src="/images/brandstory3.jpg" class="img-fluid img-fullpage" />
-						<div class="text-fullpage">
-							<h4>여러분이 일상을 보내고있는 그 공간에</h4>
-							<h2>
-								원스톱 인테리어 플랫폼 <span>'편안한가'</span>에서 <br />편안함을 더해보세요.
-							</h2>
+							<a href="#">바로 상담 신청하기</a>
 						</div>
 					</div>
 				</section>
