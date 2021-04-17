@@ -29,14 +29,3 @@
 			<a href="#">회원가입</a>
 		</div>
 	</div>
-	<nav class="nav-bar">
-		<div>
-			<a href="#home"><span>홈</span></a> 
-			<a href="#category"><span>카테고리</span></a> 
-			<a href="#interior"><span>인테리어</span></a> 
-			<a href="#promotion"><span>기획전</span></a> 
-			<a href="#qna"><span>질문과답변</span></a> 
-			<span></span>
-		</div>
-	</nav>
-	<br />
