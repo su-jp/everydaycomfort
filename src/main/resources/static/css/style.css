@@ -1,0 +1,190 @@
+:root {
+    --background-color: #fcfffa;
+    --accent-color: #cee0dc;
+    --light-beige: #eeeae2;
+    --light-gray: #f4f4f4;
+    --light-green: #dce9d9;
+    --light-brown: #b98b7b;
+    --deep-beige: #ecdfc4;
+    --deep-green: #507472;
+    --deep-gray: #A4A19E;
+}
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+@font-face {
+    font-family: 'Jal_Onuel';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Jal_Onuel.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'S-CoreDream-3Light';
+    text-decoration: none;
+    list-style: none;
+}
+html {
+    scroll-behavior: smooth;
+}
+.main-div {
+	background-color: var(--background-color);
+    padding-top: 120px;
+}
+.header-div {
+    position: fixed;
+    left: 0;
+    top: 0px;
+    width: 100%;
+    z-index: 100;
+    background-color: var(--background-color);
+}
+.header-div div {
+    display: flex;
+    position: relative;
+    width: 850px;
+    margin: 0 auto;
+    height: 80px;
+    line-height: 80px;
+}
+.header-div div a{
+	margin-left: 20px;
+    text-align: center;
+    color: black;
+}
+.form-control {
+	margin: 0 20px;
+	min-width: 500px;
+}
+.logo {
+   	width: 80px;
+}
+.nav-bar {
+    position: fixed;
+    left: 0;
+    top: 80px;
+    width: 100%;z-index: 100;
+    background-color: var(--background-color);
+    background: var(--background-color);
+}
+.nav-bar div {
+    display: flex;
+    position: relative;
+    width: 500px;
+    margin: 0 auto;
+}
+.nav-bar div a {
+    flex: 1;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: black;
+}
+.nav-bar div a:hover {
+    color: var(--light-brown);
+    text-decoration: none;
+}
+.nav-bar div > span {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    height: 3px;
+    background-color: var(--deep-green);
+    opacity: 0;
+    transition: all .5s;
+}
+.nav-bar div a:nth-child(1).on ~ span {
+    left: 0;
+    opacity: 1;
+}
+.nav-bar div a:nth-child(2).on ~ span {
+    left: 100px;
+    opacity: 1;
+}
+.nav-bar div a:nth-child(3).on ~ span {
+    left: 200px;
+    opacity: 1;
+}
+.nav-bar div a:nth-child(4).on ~ span {
+    left: 300px;
+    opacity: 1;
+}
+.nav-bar div a:nth-child(5).on ~ span {
+    left: 400px;
+    opacity: 1;
+}
+.footer-link li {
+    padding: 15px 5px 10px 0;
+    float: left;
+}
+.footer-link li a {
+    font-size: 12px;
+    color: black;
+    text-decoration: none;
+}
+.footer-link li a:hover {
+    text-decoration: none;
+}
+.footer-content li {
+    height: 15px;
+    font-size: 11px;
+}
+.footer-content li a {
+    font-size: 11px;
+    text-decoration: none;
+}
+.footer-content li a:hover {
+    text-decoration: none;
+}
+.container .interior {
+	padding-top: 50px;
+}
+.container .interior a {
+	font-family: 'Jal_Onuel';
+	font-size: 50px;
+    color: var(--deep-gray);
+    text-decoration: none;
+}
+.container .interior a:hover {
+    color: var(--light-brown);
+    text-decoration: none;
+}
+.container .category-shortcut {
+	
+}
+.container .popup {
+	position: absolute;
+	left: 1300px;
+	top: 100px;
+	visibility: visible;
+	z-index: 1000;
+}
+.container .popup table {
+	width: 350px;
+	height: 250px;
+	background: var(--light-green);
+	color: var(--light-brown);
+	font-size: 12px;
+}
+.container .popup input {
+	color: var(--light-brown);
+	background: transparent;
+	border: none;
+	font-size: 12px;
+	outline: none;
+	cursor: pointer;
+	vertical-align: middle;
+}
+.category-shortcut img {
+	width: 100px;
+}
+.category-shortcut .shortcut-list-item {
+	margin: 20px 30px;
+	text-align: center;
+}
