@@ -19,8 +19,10 @@
 						<td style="border: none; margin-bottom: auto;">
 						<img src="/images/popup.jpg" style="width: 350px"></td>
 					</tr>
+					<tr style="float: left;">
+						<td><input type="button" value="24시간동안 보지 않기" onclick="closePop24h();"></td>
+					</tr>
 					<tr style="float: right;">
-						<td>24시간동안 보지 않기 <input type="checkbox" id="popupCheckbox"></td>
 						<td><input type="button" value="닫기" onclick="closePop();"></td>
 					</tr>
 				</tbody>
