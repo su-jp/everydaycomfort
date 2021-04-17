@@ -1,8 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div id="qna">
-	<div>
-		<h3>질문과 답변</h3>
-		<h4>편안한가의 인테리어 전문가에게 조언을 받아보세요.</h4>
+<div id="qna" class="qna">
+	<h3>질문과 답변</h3>
+	<a href="#" class="small-link">>> 게시판 바로가기</a>
+	<div class="">
+		<h1>게시판 리스트</h1>
+		<h1>게시판 리스트</h1>
+		<h1>게시판 리스트</h1>
+		<h1>게시판 리스트</h1>
+		<h1>게시판 리스트</h1>
+		<h1>게시판 리스트</h1>
+		<h1>게시판 리스트</h1>
+		<h1>게시판 리스트</h1>
+		<h1>게시판 리스트</h1>
+		<h1>게시판 리스트</h1>
+		<h1>게시판 리스트</h1>
 	</div>
 </div>
 </html>

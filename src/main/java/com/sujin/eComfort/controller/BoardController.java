@@ -8,11 +8,16 @@ public class BoardController {
 	
 	@GetMapping("/board/brandstory")
 	public String openBrandstory() {
-		return "board/brandstory/main";
+		return "board/brandstory/brandFullPage";
 	}
 	
 	@GetMapping("/board/interior")
 	public String openInterior() {
-		return "board/interior/main";
+		return "board/interior/interiorFullPage";
+	}
+
+	@GetMapping("/board/promotion")
+	public String openPromotion() {
+		return "board/promotion/promoPage";
 	}
 }

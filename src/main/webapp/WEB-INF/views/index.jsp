@@ -16,7 +16,7 @@
 			<table>
 				<tbody>
 					<tr>
-						<td style="border: none; margin-bottom: auto;">
+						<td class="td-popup">
 						<img src="/images/popup.jpg" style="width: 350px"></td>
 					</tr>
 					<tr style="float: left;">
