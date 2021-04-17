@@ -22,7 +22,7 @@
 		<div>
 			<a href="/"><img class="logo" alt="logo" src="/images/logo.png"></a>
 			<form class="form-inline" action="/">
-				<input class="form-control" type="text" placeholder="편안한가 통합검색">
+				<input class="form-control" type="text" placeholder="편안한가 쇼핑 검색">
 				<button class="btn btn-outline-light text-dark" type="submit">검색</button>
 			</form>
 			<a href="#">로그인</a>
@@ -31,11 +31,11 @@
 	</div>
 	<nav class="nav-bar">
 		<div>
-			<a href="#interior"><span>인테리어</span></a> 
+			<a href="#home"><span>홈</span></a> 
 			<a href="#category"><span>카테고리</span></a> 
+			<a href="#interior"><span>인테리어</span></a> 
 			<a href="#promotion"><span>기획전</span></a> 
 			<a href="#qna"><span>질문과답변</span></a> 
-			<a href="#event"><span>이벤트</span></a> 
 			<span></span>
 		</div>
 	</nav>

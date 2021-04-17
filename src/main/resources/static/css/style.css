@@ -21,6 +21,12 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'twayair';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayair.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 * {
     padding: 0;
     margin: 0;
@@ -61,7 +67,8 @@ html {
 	min-width: 500px;
 }
 .logo {
-   	width: 80px;
+   	width: 60px;
+   	margin: 0 10px;
 }
 .nav-bar {
     position: fixed;
@@ -142,22 +149,6 @@ html {
 .footer-content li a:hover {
     text-decoration: none;
 }
-.container .interior {
-	padding-top: 50px;
-}
-.container .interior a {
-	font-family: 'Jal_Onuel';
-	font-size: 50px;
-    color: var(--deep-gray);
-    text-decoration: none;
-}
-.container .interior a:hover {
-    color: var(--light-brown);
-    text-decoration: none;
-}
-.container .category-shortcut {
-	
-}
 .container .popup {
 	position: absolute;
 	left: 1300px;
@@ -181,10 +172,62 @@ html {
 	cursor: pointer;
 	vertical-align: middle;
 }
+.brand-ad img:hover {
+	opacity: 0.9;
+}
+.brand-ad img {
+	padding-top: 50px;
+	width: 1100px;
+}
+.interior-ad {
+	padding-top: 50px;
+}
+.category h3 {
+	padding-top: 160px;
+	text-align: center;
+	font-family: 'twayair';
+}
+.category .small-link {
+	margin-left: 20px;
+	font-size: 15px;
+	color: black;
+}
+.category .small-link:hover {
+	text-decoration: none;
+	font-weight: bold;
+}
 .category-shortcut img {
 	width: 100px;
+	padding-bottom: 10px;
 }
 .category-shortcut .shortcut-list-item {
-	margin: 20px 30px;
+	margin: 50px 30px 0 30px;
 	text-align: center;
+	cursor: pointer;
+}
+.category-shortcut .shortcut-list-item a {
+	font-size: 18px;
+	color: black;
+}
+.category-shortcut .shortcut-list-item a:hover {
+	text-decoration: none;
+	font-weight: bold;
+}
+.interior {
+	padding-top: 50px;
+}
+.interior h3 {
+	padding: 130px 0 80px 0;
+	text-align: center;
+	font-family: 'twayair';
+}
+.interior a {
+	font-family: 'Jal_Onuel';
+	font-size: 50px;
+    color: var(--deep-gray);
+    text-decoration: none;
+}
+.interior a:hover {
+    color: var(--light-brown);
+    text-decoration: none;
 }
