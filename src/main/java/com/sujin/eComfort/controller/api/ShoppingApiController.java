@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -21,9 +20,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +32,7 @@ import com.sujin.eComfort.model.Product;
 @Controller
 public class ShoppingApiController {
 	@GetMapping("/shop/{category}")
-	public String callback(@PathVariable String category, Model model, @PageableDefault(size = 5) Pageable pageable) {
+	public String callback(@PathVariable String category, Model model, @PageableDefault(size = 9) Pageable pageable) {
 		String keyword = null;
 		if (category.equals("furniture")) {
 			keyword = "가구";
@@ -54,7 +51,6 @@ public class ShoppingApiController {
 		}
 		List<Product> requestList = callList(keyword);
 		Page<Product> pagedList = conversion(requestList, pageable);
-		System.out.println("pagedList : "+pagedList);
 		model.addAttribute("list", pagedList);
 		return "shopping/list";
 	}
@@ -81,7 +77,7 @@ public class ShoppingApiController {
 			throw new RuntimeException("검색어 인코딩 실패", e);
 		}
 
-		String apiURL = "https://openapi.naver.com/v1/search/shop.json?query=" + text + "&display=15&start=1&sort=sim";
+		String apiURL = "https://openapi.naver.com/v1/search/shop.json?query=" + text + "&display=40&start=1&sort=sim";
 
 		Map<String, String> requestHeaders = new HashMap<>();
 		requestHeaders.put("X-Naver-Client-Id", clientId);

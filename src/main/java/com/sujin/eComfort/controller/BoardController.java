@@ -21,7 +21,7 @@ public class BoardController {
 		return "pages/promoPage";
 	}
 	
-	@GetMapping("/shopping")
+	@GetMapping("/shop")
 	public String openCategories() {
 		return "pages/categoryPage";
 	}

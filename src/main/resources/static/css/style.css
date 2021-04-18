@@ -348,3 +348,46 @@ html {
 .div-promo .card-title {
 	font-family: 'twayair';
 }
+.div-category {
+	padding: 20px 0;
+}
+.div-category h3 {
+	text-align: center;
+	padding-bottom: 40px;
+	font-family: 'twayair';
+	font-size: 48px;
+}
+.div-category h4 {
+	text-align: center;
+	font-size: 28px;
+}
+.div-category .carousel {
+	margin: 100px 0 60px 0;
+}
+.div-category .carousel-inner > .item > img {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: auto;
+}
+.div-category .carousel-item {
+  	text-align: center;
+}
+.div-shop .card {
+	margin: 20px;
+	width: 330px;
+	height: 520px;
+}
+.img-product {
+	height: 330px;
+}
+.div-shop .card:hover {
+	opacity: 0.8;
+}
+.div-shop a {
+	color: black;
+}
+.div-shop a:hover {
+	text-decoration: none;
+	color: black;
+}

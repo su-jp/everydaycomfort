@@ -3,7 +3,7 @@
 <div class="main-div">
 	<div class="container div-category">
 		<h3>쇼핑</h3>
-		<h4>카테고리</h4>
+		<h4>전체 카테고리</h4>
 		<div class="inner-div">
 			<nav class="category-shortcut">
 				<ul class="row shortcut-list">
@@ -51,6 +51,31 @@
 					</a></li>
 				</ul>
 			</nav>
+		</div>
+		<div id="demo" class="carousel slide" data-ride="carousel" data-interval="2500">
+			<ul class="carousel-indicators">
+				<li data-target="#demo" data-slide-to="0" class="active"></li>
+				<li data-target="#demo" data-slide-to="1"></li>
+				<li data-target="#demo" data-slide-to="2"></li>
+				<li data-target="#demo" data-slide-to="3"></li>
+			</ul>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="/images/promotion1.jpg" alt="promo">
+				</div>
+				<div class="carousel-item">
+					<img src="/images/promotion2.jpg" alt="promo">
+				</div>
+				<div class="carousel-item">
+					<img src="/images/promotion3.jpg" alt="promo">
+				</div>
+				<div class="carousel-item">
+					<img src="/images/promotion4.jpg" alt="promo">
+				</div>
+			</div>
+			<a class="carousel-control-prev" href="#demo" data-slide="prev"> <span class="carousel-control-prev-icon"></span>
+			</a> <a class="carousel-control-next" href="#demo" data-slide="next"> <span class="carousel-control-next-icon"></span>
+			</a>
 		</div>
 	</div>
 </div>
