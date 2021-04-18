@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sujin.eComfort.controller.api.ShoppingApiController;
 import com.sujin.eComfort.model.Product;
@@ -38,7 +39,7 @@ public class BoardController {
 		return "pages/categoryPage";
 	}
 	
-	@GetMapping("/shop/detail/{productTitle}")
+	@RequestMapping("/shop/detail/{productTitle}")
 	public String openDetail(@PathVariable(name = "productTitle") Optional<String> title, Model model) {
 		Product product = shoppingApiController.callItemDetail(title+"");
 		model.addAttribute("product", product);

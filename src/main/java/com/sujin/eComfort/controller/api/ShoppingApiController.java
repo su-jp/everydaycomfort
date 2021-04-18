@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -26,7 +28,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sujin.eComfort.model.Product;
 
@@ -56,7 +59,14 @@ public class ShoppingApiController {
 		return "shopping/list";
 	}
 	
-	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String search(HttpServletRequest request, Model model, @PageableDefault(size = 40) Pageable pageable) {
+		String keyword = request.getParameter("keyword");
+		List<Product> requestList = callList(keyword);
+		Page<Product> pagedList = conversion(requestList, pageable);
+		model.addAttribute("list", pagedList);
+		return "shopping/search";
+	}
 	
 	private String removeTag(String originalString) {
         String cleanString = originalString.replace("<b>", "").replace("</b>", "");
