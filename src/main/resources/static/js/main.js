@@ -8,11 +8,11 @@ $(function() {
 		var idx = $(this).index();
 		var section = $contents.eq(idx);
 		var sectionDistance = section.offset().top;
-		$('html,body').stop().animate({scrollTop:sectionDistance});
+		$('html,body').stop().animate({ scrollTop: sectionDistance });
 	});
 	$(window).scroll(function() {
 		$contents.each(function() {
-			if(($(this).offset().top - 100) <= $(window).scrollTop()) {
+			if (($(this).offset().top - 100) <= $(window).scrollTop()) {
 				var idx = $(this).index();
 				$menu.removeClass('on');
 				$menu.eq(idx).addClass('on');
@@ -27,6 +27,7 @@ $(function() {
 		navigationPosition: 'right'
 	});
 });
+
 
 //쿠키확인
 var popcookie = getCookie('ecomfortpop');
@@ -53,7 +54,7 @@ function getCookie(name) {
 
 function closePop() {
 	popup = document.getElementById("pop");
-	popup.style.visibility='hidden';
+	popup.style.visibility = 'hidden';
 }
 
 function closePop24h() {
@@ -69,6 +70,5 @@ function setCookie(cname, value, expire) {
 
 function callList(request) {
 	category = document.getElementById(request.getAttribute('id')).getAttribute('id');
-	console.log(category);
 	location.href = '/shop/' + category;
 }

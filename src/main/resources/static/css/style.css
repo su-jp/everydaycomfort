@@ -418,9 +418,9 @@
     margin: 0 0 0 55px;
     border-color: transparent;
     background-color: var(--light-beige);
-    
 }
 .div-shop .dropdown-menu a:hover {
     background-color: var(--light-beige);
 	font-weight: bold;
+	cursor: pointer;
 }

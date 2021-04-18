@@ -21,8 +21,8 @@
 	<div class="header-div">
 		<div>
 			<a href="/"><img class="logo" alt="logo" src="/images/logo.png"></a>
-			<form class="form-inline" action="/">
-				<input class="form-control" type="text" placeholder="편안한가 쇼핑 검색">
+			<form class="form-inline" action="/search">
+				<input id="keyword" class="form-control" type="text" placeholder="편안한가 쇼핑 검색">
 				<button class="btn btn-outline-light text-dark" type="submit">검색</button>
 			</form>
 			<a href="#">로그인</a>

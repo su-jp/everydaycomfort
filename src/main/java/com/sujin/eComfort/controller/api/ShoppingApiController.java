@@ -26,6 +26,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sujin.eComfort.model.Product;
 
@@ -54,6 +55,13 @@ public class ShoppingApiController {
 		model.addAttribute("list", pagedList);
 		return "shopping/list";
 	}
+	
+	
+	
+	private String removeTag(String originalString) {
+        String cleanString = originalString.replace("<b>", "").replace("</b>", "");
+		return cleanString;
+	}
 
 	private Page<Product> conversion(List<Product> list, Pageable pageable) {
 		if (pageable.getOffset() >= list.size()) {
@@ -65,7 +73,7 @@ public class ShoppingApiController {
 		return new PageImpl<Product>(list.subList(startIndex, endIndex), pageable, list.size());
 	}
 
-	private List<Product> callList(String keyword) {
+	public Product callItemDetail(String keyword) {
 		ApiKey apiKey = new ApiKey();
 		String clientId = apiKey.getNaverClientKey();
 		String clientSecret = apiKey.getNaverClientSecret();
@@ -77,7 +85,7 @@ public class ShoppingApiController {
 			throw new RuntimeException("검색어 인코딩 실패", e);
 		}
 
-		String apiURL = "https://openapi.naver.com/v1/search/shop.json?query=" + text + "&display=40&start=1&sort=sim";
+		String apiURL = "https://openapi.naver.com/v1/search/shop.json?query=" + text + "&display=1&start=1&sort=sim";
 
 		Map<String, String> requestHeaders = new HashMap<>();
 		requestHeaders.put("X-Naver-Client-Id", clientId);
@@ -95,11 +103,57 @@ public class ShoppingApiController {
 		}
 		JSONArray item = (JSONArray) obj.get("items");
 
+		JSONObject tmp = (JSONObject) item.get(0);
+		String title = removeTag((String) tmp.get("title"));
+		Product p = Product.builder()
+				.productId((String) tmp.get("productId"))
+				.title(title)
+				.image((String) tmp.get("image"))
+				.lprice(Integer.parseInt((String) tmp.get("lprice")))
+				.build();
+		return p;
+	}
+	
+	private List<Product> callList(String keyword) {
+		ApiKey apiKey = new ApiKey();
+		String clientId = apiKey.getNaverClientKey();
+		String clientSecret = apiKey.getNaverClientSecret();
+		
+		String text = null;
+		try {
+			text = URLEncoder.encode(keyword, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException("검색어 인코딩 실패", e);
+		}
+		
+		String apiURL = "https://openapi.naver.com/v1/search/shop.json?query=" + text + "&display=40&start=1&sort=sim";
+		
+		Map<String, String> requestHeaders = new HashMap<>();
+		requestHeaders.put("X-Naver-Client-Id", clientId);
+		requestHeaders.put("X-Naver-Client-Secret", clientSecret);
+		String responseBody = get(apiURL, requestHeaders);
+		
+		String json = responseBody;
+		
+		JSONParser parser = new JSONParser();
+		JSONObject obj = null;
+		try {
+			obj = (JSONObject) parser.parse(json);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		JSONArray item = (JSONArray) obj.get("items");
+		
 		List<Product> list = new ArrayList<Product>();
 		for (int i = 0; i < item.size(); i++) {
 			JSONObject tmp = (JSONObject) item.get(i);
-			Product p = Product.builder().productId((String) tmp.get("productId")).title((String) tmp.get("title"))
-					.image((String) tmp.get("image")).lprice(Integer.parseInt((String) tmp.get("lprice"))).build();
+			String title = removeTag((String) tmp.get("title"));
+			Product p = Product.builder()
+					.productId((String) tmp.get("productId"))
+					.title(title)
+					.image((String) tmp.get("image"))
+					.lprice(Integer.parseInt((String) tmp.get("lprice")))
+					.build();
 			if (p != null) {
 				list.add(p);
 			}
