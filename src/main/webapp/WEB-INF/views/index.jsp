@@ -17,7 +17,7 @@
 				<table>
 					<tbody>
 						<tr>
-							<td class="td-popup"><img src="/images/popup.jpg" style="width: 350px"></td>
+							<td class="td-popup"><img src="/images/popup.png"></td>
 						</tr>
 						<tr style="float: left;">
 							<td><input type="button" value="24시간동안 보지 않기" onclick="closePop24h();"></td>

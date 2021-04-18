@@ -1,8 +1,6 @@
 package com.sujin.eComfort.controller;
 
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,7 +38,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/shop/detail/{productTitle}")
-	public String openDetail(@PathVariable(name = "productTitle") Optional<String> title, Model model) {
+	public String openDetail(@PathVariable(name = "productTitle") String title, Model model) {
 		Product product = shoppingApiController.callItemDetail(title+"");
 		model.addAttribute("product", product);
 		return "shopping/detail";

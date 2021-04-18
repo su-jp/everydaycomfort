@@ -35,6 +35,8 @@
     list-style: none;
 }
 .pane {
+	padding: 0;
+	margin: 0;
 	background-color: var(--background-color);
 }
 .main-div {
@@ -126,6 +128,7 @@
     left: 400px;
     opacity: 1;
 }
+
 .footer-link li {
     padding: 15px 5px 10px 0;
     float: left;
@@ -175,6 +178,9 @@
 	cursor: pointer;
 	vertical-align: middle;
 	margin: 0 10px;
+}
+.popup td img {
+	width: 350px;
 }
 .brand-ad img:hover {
 	opacity: 0.9;
@@ -423,4 +429,54 @@
     background-color: var(--light-beige);
 	font-weight: bold;
 	cursor: pointer;
+}
+.div-detail {
+	padding-top: 50px;
+}
+.div-itemdetail img {
+	width: 500px;
+	padding-bottom: 100px;
+}
+.div-itemdetail {
+	padding-top: 50px;
+}
+.div-itemdetail h3 {
+	font-family: 'twayair';
+	font-size: 28px;
+}
+.div-itemdetail h2 {
+	padding: 5px 0 0 10px;
+	font-family: 'twayair';
+	font-size: 40px;
+	font-weight: bold;
+}
+.div-itemdetail h2 span {
+	font-family: 'S-CoreDream-3Light';
+	font-size: 12px;
+	font-weight: normal;
+}
+.div-itemdetail h5 {
+	padding: 5px 0 0 10px;
+	font-family: 'twayair';
+	font-size: 40px;
+	font-weight: bold;
+	color: var(--light-brown);
+}
+.div-itemdetail h5 span {
+	font-family: 'S-CoreDream-3Light';
+	font-size: 16px;
+}
+.div-itemdetail h6 {
+	padding-left: 10px;
+	font-size: 12px;
+}
+.div-itemdetail h6 span {
+	font-weight: bold;
+	color: var(--light-brown);
+}
+.div-itemdetail .div-detail p {
+	margin-bottom: 0;
+}
+.div-itemdetail .div-padding {
+	padding-left: 10px;
 }

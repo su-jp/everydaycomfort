@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<br />
 <div class="jumbotron jumbotron-fluid" style="padding: 20px; margin-bottom: 0px;">
 	<div class="container" align="left">
 		<small>고객센터 ></small> <br />

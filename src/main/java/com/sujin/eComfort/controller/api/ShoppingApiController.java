@@ -69,7 +69,8 @@ public class ShoppingApiController {
 	}
 	
 	private String removeTag(String originalString) {
-        String cleanString = originalString.replace("<b>", "").replace("</b>", "");
+        String cleanString = originalString.replace("<b>", "").replace("</b>", "")
+        		.replace("/", "").replace("[", "").replace("]", "");
 		return cleanString;
 	}
 
