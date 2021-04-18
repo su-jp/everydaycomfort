@@ -29,7 +29,7 @@
 			</table>
 		</div>
 		<div class="brand-ad">
-			<a href="/board/brandstory">
+			<a href="/brandstory">
 				<img src="/images/banner.jpg" class="rounded mx-auto d-block" alt="banner">
 			</a>
 		</div>

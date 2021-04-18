@@ -6,18 +6,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class BoardController {
 	
-	@GetMapping("/board/brandstory")
+	@GetMapping("/brandstory")
 	public String openBrandstory() {
-		return "board/brandstory/brandFullPage";
+		return "pages/brandFullPage";
 	}
 	
-	@GetMapping("/board/interior")
+	@GetMapping("/interior")
 	public String openInterior() {
-		return "board/interior/interiorFullPage";
+		return "pages/interiorFullPage";
 	}
 
-	@GetMapping("/board/promotion")
+	@GetMapping("/promotion")
 	public String openPromotion() {
-		return "board/promotion/promoPage";
+		return "pages/promoPage";
+	}
+	
+	@GetMapping("/shopping")
+	public String openCategories() {
+		return "pages/categoryPage";
 	}
 }

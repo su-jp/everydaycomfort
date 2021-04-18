@@ -38,6 +38,6 @@
 	</div>
 	<div class="counsel-ad">
 		<h5>인테리어가 마음에 든다면,</h5>
-		<a href="/board/interior">인테리어 시공 상담 알아보기</a>
+		<a href="/interior">인테리어 시공 상담 알아보기</a>
 	</div>
 </div>

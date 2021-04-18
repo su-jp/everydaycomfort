@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="category" class="category">
 	<h3>쇼핑 카테고리</h3>
-	<a href="#" class="small-link">>> 전체 카테고리 보러가기</a>
+	<a href="/shopping" class="small-link">>> 전체 카테고리 보러가기</a>
 	<nav class="category-shortcut">
 		<ul class="row shortcut-list">
 			<li class="shortcut-list-item"><a class="shortcut-list-item-link">

@@ -37,8 +37,8 @@ function getCookie(name) {
 }
 
 function closePop() {
-	popup = document.getElementById("pop")
-	popup.style.visibility = "hidden"
+	popup = document.getElementById("pop");
+	popup.style.visibility='hidden';
 }
 
 function closePop24h() {
@@ -50,4 +50,10 @@ function setCookie(cname, value, expire) {
 	var todayValue = new Date();
 	todayValue.setDate(todayValue.getDate() + expire);
 	document.cookie = cname + "=" + encodeURI(value) + "; expires=" + todayValue.toGMTString() + "; path=/;";
+}
+
+function callList(request) {
+	category = document.getElementById(request.getAttribute('id')).getAttribute('id');
+	console.log(category);
+	location.href = '/shop/' + category;
 }
