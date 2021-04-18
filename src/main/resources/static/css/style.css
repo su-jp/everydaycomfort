@@ -34,8 +34,8 @@
     text-decoration: none;
     list-style: none;
 }
-html {
-    scroll-behavior: smooth;
+.pane {
+	background-color: var(--background-color);
 }
 .main-div {
 	background-color: var(--background-color);
@@ -282,7 +282,7 @@ html {
 	padding-top: 50px;
 }
 .interior h3 {
-	padding: 130px 0 10px 0;
+	padding: 110px 0 10px 0;
 	text-align: center;
 	font-family: 'twayair';
 }
@@ -390,4 +390,37 @@ html {
 .div-shop a:hover {
 	text-decoration: none;
 	color: black;
+}
+.div-shop .div-items {
+	margin-top: 25px;
+}
+.div-shop .dropdown .btn {
+	width: 50px;
+	margin: 40px 0 0 50px;
+	border-color: transparent;
+	background-color: transparent;
+	color: var(--deep-green);
+}
+.div-shop .dropdown .btn:hover, .dropdown .btn:focus, .dropdown .btn:active {
+	text-decoration: none;
+	border-color: transparent;
+	background-color: transparent;
+	color: var(--deep-green);
+}
+.div-shop .dropdown .btn:focus .dropdown-menu, .dropdown .btn:active .dropdown-menu {
+	text-decoration: none;
+	border-color: transparent;
+	background-color: transparent;
+	color: var(--deep-green);
+}
+.div-shop .dropdown:hover .dropdown-menu {
+    display: block;
+    margin: 0 0 0 55px;
+    border-color: transparent;
+    background-color: var(--light-beige);
+    
+}
+.div-shop .dropdown-menu a:hover {
+    background-color: var(--light-beige);
+	font-weight: bold;
 }

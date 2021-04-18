@@ -1,9 +1,24 @@
 $(function() {
 	//상단바
-	$('nav a').on('click', function() {
-		$(this).addClass('on');
-		$(this).siblings().removeClass('on');
-	})
+	var $menu = $('#top_menu div a'),
+		$contents = $('#contents > div');
+	$menu.click(function(x) {
+		x.preventDefault();
+		//$(this).addClass('on').siblings().removeClass('on');
+		var idx = $(this).index();
+		var section = $contents.eq(idx);
+		var sectionDistance = section.offset().top;
+		$('html,body').stop().animate({scrollTop:sectionDistance});
+	});
+	$(window).scroll(function() {
+		$contents.each(function() {
+			if(($(this).offset().top - 100) <= $(window).scrollTop()) {
+				var idx = $(this).index();
+				$menu.removeClass('on');
+				$menu.eq(idx).addClass('on');
+			}
+		});
+	});
 	//풀페이지
 	$('#fullpage').fullpage({
 		autoScrolling: true,
