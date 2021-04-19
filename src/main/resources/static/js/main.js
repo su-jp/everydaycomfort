@@ -4,7 +4,6 @@ $(function() {
 		$contents = $('#contents > div');
 	$menu.click(function(x) {
 		x.preventDefault();
-		//$(this).addClass('on').siblings().removeClass('on');
 		var idx = $(this).index();
 		var section = $contents.eq(idx);
 		var sectionDistance = section.offset().top;
@@ -33,7 +32,6 @@ var popcookie = getCookie('ecomfortpop');
 if (popcookie == 'end') {
 	closePop();
 }
-
 function getCookie(name) {
 	var cookieName = name + "=";
 	var x = 0;
@@ -50,24 +48,46 @@ function getCookie(name) {
 	}
 	return "";
 }
-
+//팝업광고
 function closePop() {
 	popup = document.getElementById("pop");
 	popup.style.visibility = 'hidden';
 }
-
 function closePop24h() {
 	setCookie("ecomfortpop", "end", 1);
 	closePop();
 }
-
 function setCookie(cname, value, expire) {
 	var todayValue = new Date();
 	todayValue.setDate(todayValue.getDate() + expire);
 	document.cookie = cname + "=" + encodeURI(value) + "; expires=" + todayValue.toGMTString() + "; path=/;";
 }
-
+//카테고리부르기
 function callList(request) {
 	category = document.getElementById(request.getAttribute('id')).getAttribute('id');
 	location.href = '/shop/' + category;
+}
+
+function join() {
+	let data = {
+		email: $("#email").val(),
+		password: $("#password").val(),
+		name: $("#name").val(),
+		phonenum: $("#phonenum").val(),
+		address: $("#address").val()
+	}
+	$.ajax({
+		type: "POST",
+		url: "/joinProc",
+		data: JSON.stringify(data),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function() {
+			location.href = "/";
+		},
+		error: function(error) {
+			alert(JSON.stringify(error));
+		}
+	});
+	alert("회원가입이 완료되었습니다.");
 }

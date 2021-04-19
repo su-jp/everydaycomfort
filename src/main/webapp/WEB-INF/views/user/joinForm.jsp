@@ -32,7 +32,7 @@
 					<label for="address">주소</label>
 					<input type="text" class="form-control" placeholder="주소" id="address">
 				</div>
-				<button type="button" class="btn">회원가입 완료</button>
+				<button onclick="join()" class="btn">회원가입 완료</button>
 			</form>
 		</div>
 	</div>
