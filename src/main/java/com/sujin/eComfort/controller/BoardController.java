@@ -17,16 +17,6 @@ public class BoardController {
 	@Autowired
 	private ShoppingApiController shoppingApiController;
 	
-	@GetMapping("/login")
-	public String openLoginForm() {
-		return "user/loginForm";
-	}
-	
-	@GetMapping("/join")
-	public String openJoinForm() {
-		return "user/joinForm";
-	}
-	
 	@GetMapping("/brandstory")
 	public String openBrandstory() {
 		return "pages/brandFullPage";
