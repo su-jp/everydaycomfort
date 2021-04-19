@@ -10,9 +10,9 @@
 			<li><a href="#">채용정보</a></li>
 			<li><a href="#">이용약관</a></li>
 			<li><a href="#">개인정보처리방침</a></li>
-			<li><a href="#">공지사항</a></li>
-			<li><a href="#">고객센터</a></li>
-			<li><a href="#">고객의소리</a></li>
+			<li><a href="/notice">공지사항</a></li>
+			<li><a href="/user/inquiry">고객센터</a></li>
+			<li><a href="/user/inquiry">고객의소리</a></li>
 			<li><a href="#">전문가등록</a></li>
 			<li><a href="#">사업자구매회원</a></li>
 			<li><a href="#">제휴/광고문의</a></li>
@@ -29,5 +29,6 @@
 </div>
 <script src="/js/main.js"></script>
 <script src="/js/user.js"></script>
+<script src="/js/board.js"></script>
 </body>
 </html>

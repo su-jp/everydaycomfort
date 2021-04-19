@@ -603,3 +603,25 @@ body {
 	font-size: 14px;
 	color: black;
 }
+.div-write .form-control {
+	margin: 0;
+}
+.div-write h3 {
+	text-align: center;
+	margin: 20px 0 30px 25px;
+	font-family: 'twayair';
+	font-size: 28px;
+}
+.div-board {
+	padding-bottom: 50px;
+}
+.div-board h3 {
+	text-align: center;
+	margin: 20px 0 30px 25px;
+	font-family: 'twayair';
+	font-size: 28px;
+}
+.div-board h4 {
+	margin: 20px 0 30px 25px;
+	font-size: 14px;
+}

@@ -22,4 +22,11 @@ function join() {
 	});
 	alert("회원가입이 완료되었습니다.");
 }
-//
+//로그인요청
+function loginAlert() {
+	if(confirm("로그인이 필요합니다.\n로그인 페이지로 이동하시겠습니까?")) {
+		location.href = "/login";
+	} else {
+		return;
+	}
+}
