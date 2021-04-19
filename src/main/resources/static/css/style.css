@@ -577,3 +577,29 @@ body {
 	border-radius: 4px;
 	outline: 0;
 }
+.div-login .div-form h3 {
+	text-align: center;
+	margin: 100px 0 30px 20px;
+	font-family: 'twayair';
+	font-size: 28px;
+}
+.div-login .div-form .btn {
+	margin: 30px 100px 0 160px;
+	padding: 20px 85px;
+	background-color: var(--light-brown);
+	color: white;
+	border-style: solid;
+	border-color: var(--light-brown);
+	border-radius: 4px;
+	outline: 0;
+}
+.div-login-sub {
+	padding: 20px 0 0 20px;
+	text-align: center;
+}
+.div-login-sub a, .div-login-sub a:hover {
+	margin: 0 5px;
+	text-decoration: none;
+	font-size: 14px;
+	color: black;
+}
