@@ -28,7 +28,6 @@ $(function() {
 	});
 });
 
-
 //쿠키확인
 var popcookie = getCookie('ecomfortpop');
 if (popcookie == 'end') {

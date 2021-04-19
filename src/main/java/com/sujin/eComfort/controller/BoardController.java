@@ -17,6 +17,16 @@ public class BoardController {
 	@Autowired
 	private ShoppingApiController shoppingApiController;
 	
+	@GetMapping("/login")
+	public String openLoginForm() {
+		return "user/loginForm";
+	}
+	
+	@GetMapping("/join")
+	public String openJoinForm() {
+		return "user/joinForm";
+	}
+	
 	@GetMapping("/brandstory")
 	public String openBrandstory() {
 		return "pages/brandFullPage";
@@ -42,5 +52,25 @@ public class BoardController {
 		Product product = shoppingApiController.callItemDetail(title+"");
 		model.addAttribute("product", product);
 		return "shopping/detail";
+	}
+
+	@GetMapping("/counsel")
+	public String openCounselBoard() {
+		return "board/counselList";
+	}
+	
+	@GetMapping("/notice")
+	public String openNoticeBoard() {
+		return "board/noticeList";
+	}
+	
+	@GetMapping("/qna")
+	public String openQnaBoard() {
+		return "board/qnaList";
+	}
+	
+	@GetMapping("/inquiry")
+	public String openInquiryBoard() {
+		return "board/inquiryList";
 	}
 }

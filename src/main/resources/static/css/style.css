@@ -34,6 +34,9 @@
     text-decoration: none;
     list-style: none;
 }
+body {
+	min-width: 1200px;
+}
 .pane {
 	padding: 0;
 	margin: 0;
@@ -63,6 +66,13 @@
 	margin-left: 20px;
     text-align: center;
     color: black;
+}
+.header-div div a:hover{
+	text-decoration: none;
+	margin-left: 20px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
 }
 .sub-header {
 	position: fixed;
@@ -539,4 +549,31 @@
 .div-itemdetail .btn1:focus {
 	outline: none;
 	filter: brightness(97%);
+}
+.div-form {
+	padding-bottom: 50px;
+	margin: 0 300px;
+}
+.div-form h3 {
+	text-align: center;
+	margin: 20px 0 30px 0;
+	font-family: 'twayair';
+	font-size: 28px;
+}
+.div-form hr {
+	margin-left: 30px;
+}
+.div-form label {
+	padding: 20px 0 0 20px;
+	font-weight: bold;
+}
+.div-form .btn {
+	margin: 30px 100px 0 140px;
+	padding: 20px 80px;
+	background-color: var(--light-brown);
+	color: white;
+	border-style: solid;
+	border-color: var(--light-brown);
+	border-radius: 4px;
+	outline: 0;
 }

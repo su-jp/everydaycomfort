@@ -27,7 +27,7 @@ public class User {
 	private int id;
 	
 	@Column(nullable = false, length = 100, unique = true)
-	private String username;
+	private String email;
 	
 	@Column(nullable = false, length = 100)
 	private String password;
@@ -38,6 +38,8 @@ public class User {
 	private String phonenum;
 	
 	private String address;
+	
+//	private int point;
 	
 	private String role;
 	

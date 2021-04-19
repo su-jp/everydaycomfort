@@ -25,15 +25,15 @@
 				<input name="keyword" class="form-control" type="text" placeholder="편안한가 쇼핑 검색">
 				<button class="btn btn-outline-light text-dark" type="submit">검색</button>
 			</form>
-			<a href="#">로그인</a>
-			<a href="#">회원가입</a>
+			<a href="/login">로그인</a>
+			<a href="/join">회원가입</a>
 		</div>
 	</div>
 	<div class="sub-header">
 		<div>
 			<a href="/shop">쇼핑</a>
-			<a href="#">리모델링상담</a>
-			<a href="#">공지사항</a>
-			<a href="#">질문과답변</a>
+			<a href="/counsel">리모델링상담</a>
+			<a href="/notice">공지사항</a>
+			<a href="/qna">질문과답변</a>
 		</div>
 	</div>
