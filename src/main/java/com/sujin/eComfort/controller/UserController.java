@@ -20,4 +20,9 @@ public class UserController {
 	public String openJoinForm() {
 		return "user/joinForm";
 	}
+	
+	@GetMapping("/user/mypage")
+	public String openMypage() {
+		return "user/mypage";
+	}
 }

@@ -31,7 +31,7 @@
 					<a href="/join">회원가입</a>
 				</c:when>
 				<c:otherwise>
-					<a href="/user/logout">로그아웃</a>
+					<a href="/logout">로그아웃</a>
 					<a href="/user/mypage">내정보</a>
 				</c:otherwise>
 			</c:choose>

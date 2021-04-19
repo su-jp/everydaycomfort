@@ -20,7 +20,9 @@
 				<a href="#">비밀번호 재설정</a>
 				<a href="/join">회원가입</a><br/>
 				<br/><hr/><br/>
-				<h6>SNS 계정으로 간편하게 로그인/회원가입하기</h6>
+				<h6>SNS 계정으로 간편하게 로그인/회원가입하기</h6><br/>
+				<a href="/oauth2/authorization/kakao"><img width="180px" src="/images/icons/kakao_login_btn.png"></a>
+				<a href="/oauth2/authorization/google"><img width="180px" src="/images/icons/google_login_btn.png"></a>
 			</div>
 		</div>
 	</div>
