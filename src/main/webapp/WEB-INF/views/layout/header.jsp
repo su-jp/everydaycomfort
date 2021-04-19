@@ -29,3 +29,11 @@
 			<a href="#">회원가입</a>
 		</div>
 	</div>
+	<div class="sub-header">
+		<div>
+			<a href="/shop">쇼핑</a>
+			<a href="#">리모델링상담</a>
+			<a href="#">공지사항</a>
+			<a href="#">질문과답변</a>
+		</div>
+	</div>

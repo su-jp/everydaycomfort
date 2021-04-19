@@ -25,7 +25,8 @@
 								<img class="card-img-top img-product" id="productImage" src="${product.image}" alt="item">
 								<div class="card-body">
 									<h5 id="productTitle" class="card-title">${product.title}</h5>
-									<a href="/shop/detail/${product.title}" class="stretched-link">\ ${product.lprice}</a>
+									<a href="/shop/detail/${product.title}" class="stretched-link">
+									<fmt:formatNumber value="${product.lprice}" type="number"/>원</a>
 								</div>
 							</div>
 						</form>

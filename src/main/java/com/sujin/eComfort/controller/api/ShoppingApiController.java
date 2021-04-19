@@ -43,15 +43,15 @@ public class ShoppingApiController {
 		} else if (category.equals("bedding")) {
 			keyword = "침구";
 		} else if (category.equals("lighting")) {
-			keyword = "조명";
+			keyword = "조명인테리어";
 		} else if (category.equals("homedeco")) {
 			keyword = "인테리어소품";
 		} else if (category.equals("appliance")) {
-			keyword = "생활가전";
+			keyword = "주방가전";
 		} else if (category.equals("kitchen")) {
-			keyword = "주방용품";
+			keyword = "주방소품";
 		} else if (category.equals("bath")) {
-			keyword = "욕실용품";
+			keyword = "욕실소품";
 		}
 		List<Product> requestList = callList(keyword);
 		Page<Product> pagedList = conversion(requestList, pageable);
@@ -70,7 +70,7 @@ public class ShoppingApiController {
 	
 	private String removeTag(String originalString) {
         String cleanString = originalString.replace("<b>", "").replace("</b>", "")
-        		.replace("/", "").replace("[", "").replace("]", "");
+        		.replace("/", "").replace("[", "").replace("]", "").replace("%", "퍼센트");
 		return cleanString;
 	}
 

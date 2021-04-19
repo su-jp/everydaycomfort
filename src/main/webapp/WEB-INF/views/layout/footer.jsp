@@ -5,7 +5,7 @@
 		<h3>1677-0000</h3>
 		<small>평일 09:00 ~ 18:00 (주말 & 공휴일 제외)</small><br />
 		<ul class="footer-link">
-			<li><a href="/board/brandstory">브랜드스토리</a></li>
+			<li><a href="/brandstory">브랜드스토리</a></li>
 			<li><a href="#">회사소개</a></li>
 			<li><a href="#">채용정보</a></li>
 			<li><a href="#">이용약관</a></li>
