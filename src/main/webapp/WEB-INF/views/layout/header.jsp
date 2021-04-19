@@ -18,6 +18,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<style type="text/css">
+</style>
 </head>
 <body>
 	<div class="header-div">
@@ -47,3 +49,18 @@
 			<a href="/qna">질문과답변</a>
 		</div>
 	</div>
+	<c:if test="${!empty principal}">
+	<div id="sidebox" class="sidebox" onclick="location.href='/'">
+		<img alt="sidePopup" src="/images/icons/sidePopup.png">
+		<p>장바구니</p>
+	</div>
+	</c:if>
+	<script type="text/javascript">
+	//사이드팝업
+	var currentPosition = parseInt($("#sidebox").css("top"));
+	console.log(currentPosition);
+	$(window).scroll(function() {
+		var position = $(window).scrollTop();
+		$("#sidebox").stop().animate({ "top": position + currentPosition + "px" }, 500);
+	});
+	</script>

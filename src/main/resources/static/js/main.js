@@ -25,6 +25,7 @@ $(function() {
 		navigation: true,
 		navigationPosition: 'right'
 	});
+	
 });
 
 //쿠키확인
