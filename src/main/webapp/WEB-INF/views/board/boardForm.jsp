@@ -5,9 +5,18 @@
 		<c:if test="${boardCode eq 'qna'}">
 			<h3>질문과 답변</h3>
 		</c:if>
+		<c:if test="${boardCode eq 'inquiry'}">
+			<h3>1:1 문의</h3>
+		</c:if>
+		<c:if test="${boardCode eq 'notice'}">
+			<h3>공지사항</h3>
+		</c:if>
+		<c:if test="${boardCode eq 'counsel'}">
+			<h3>리모델링 상담</h3>
+		</c:if>
 		<form>
 			<input type="hidden" id="userId" value="${principal.user.id}" />
-			<input type="hidden" id="boardCode" value="qna"/>
+			<input type="hidden" id="boardCode" value="${boardCode}"/>
 			<div class="form-group">
 				<input type="text" class="form-control" id="title" placeholder="제목">
 			</div>

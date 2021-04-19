@@ -27,7 +27,7 @@ function boardWrite() {
 		dataType: "json"
 	}).done(function(resp) {
 		alert("작성한 질문이 등록되었습니다.\n답변을 기다려주세요.");
-		location.href = "/qna";
+		location.href = `/${data.board}`;
 	}).fail(function(error) {
 		alert(JSON.stringify(error));
 	});

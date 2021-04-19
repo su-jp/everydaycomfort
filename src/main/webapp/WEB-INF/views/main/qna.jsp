@@ -3,17 +3,13 @@
 	<h3>질문과 답변</h3>
 	<a href="/qna" class="small-link">>> 게시판 바로가기</a>
 	<div class="">
-		<h1>게시판 리스트</h1>
-		<h1>게시판 리스트</h1>
-		<h1>게시판 리스트</h1>
-		<h1>게시판 리스트</h1>
-		<h1>게시판 리스트</h1>
-		<h1>게시판 리스트</h1>
-		<h1>게시판 리스트</h1>
-		<h1>게시판 리스트</h1>
-		<h1>게시판 리스트</h1>
-		<h1>게시판 리스트</h1>
-		<h1>게시판 리스트</h1>
+		<hr />
+		<c:forEach var="board" items="${boards.content}">
+			<div class="div-boardlist">
+				<a href="/board/${board.id}">${board.title}</a>
+				<hr />
+			</div>
+		</c:forEach>
 	</div>
 </div>
 </html>

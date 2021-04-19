@@ -24,6 +24,14 @@ public class BoardController {
 	@Autowired
 	private ShoppingApiController shoppingApiController;
 	
+	@GetMapping({"","/"})
+	public String index(Model model,
+			@PageableDefault(size = 6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+		model.addAttribute("boards", boardService.list("qna", pageable));
+		model.addAttribute("boardCode", "qna");
+		return "index";
+	}
+	
 	@GetMapping("/brandstory")
 	public String openBrandstory() {
 		return "pages/brandFullPage";
@@ -53,7 +61,7 @@ public class BoardController {
 
 	@GetMapping("/counsel")
 	public String openCounselBoard(Model model,
-			@PageableDefault(size = 15, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+			@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 		model.addAttribute("boards", boardService.list("counsel", pageable));
 		model.addAttribute("boardCode", "counsel");
 		return "board/boardList";
@@ -67,7 +75,7 @@ public class BoardController {
 	
 	@GetMapping("/notice")
 	public String openNoticeBoard(Model model,
-			@PageableDefault(size = 15, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+			@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 		model.addAttribute("boards", boardService.list("notice", pageable));
 		model.addAttribute("boardCode", "notice");
 		return "board/boardList";
@@ -81,7 +89,7 @@ public class BoardController {
 	
 	@GetMapping("/qna")
 	public String openQnaBoard(Model model,
-			@PageableDefault(size = 15, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+			@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 		model.addAttribute("boards", boardService.list("qna", pageable));
 		model.addAttribute("boardCode", "qna");
 		return "board/boardList";
@@ -95,7 +103,7 @@ public class BoardController {
 	
 	@GetMapping("/inquiry")
 	public String openInquiryBoard(Model model,
-			@PageableDefault(size = 15, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+			@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 		model.addAttribute("boards", boardService.list("inquiry", pageable));
 		model.addAttribute("boardCode", "inquiry");
 		return "board/boardList";
@@ -105,5 +113,11 @@ public class BoardController {
 	public String writeInquiry(Model model) {
 		model.addAttribute("boardCode", "inquiry");
 		return "board/boardForm";
+	}
+	
+	@GetMapping("/board/{boardId}")
+	public String findById(@PathVariable int boardId, Model model) {
+		model.addAttribute("board", boardService.read(boardId));
+		return "board/boardDetail";
 	}
 }
