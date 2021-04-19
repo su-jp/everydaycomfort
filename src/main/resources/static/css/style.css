@@ -88,8 +88,7 @@ body {
 	text-decoration: none;
 	margin-left: 20px;
     text-align: center;
-    color: black;
-    font-weight: bold;
+    color: var(--light-brown);
 }
 .sub-header {
 	position: fixed;
@@ -114,8 +113,7 @@ body {
 	text-decoration: none;
 	margin-left: 20px;
     text-align: center;
-    color: black;
-    font-weight: bold;
+    color: var(--light-brown);
 }
 .form-control {
 	margin: 0 20px;
@@ -316,8 +314,7 @@ body {
 	color: black;
 }
 .small-link:hover {
-	color: black;
-	font-weight: bold;
+	color: var(--light-brown);
 	text-decoration: none;
 }
 .category-shortcut img {
@@ -335,7 +332,7 @@ body {
 }
 .category-shortcut .shortcut-list-item a:hover {
 	text-decoration: none;
-	font-weight: bold;
+	color: var(--light-brown);
 }
 .interior {
 	padding-top: 50px;
@@ -408,8 +405,7 @@ body {
 }
 .div-boardlist a:hover {
 	text-decoration: none;
-	color: black;
-	font-weight: bold;
+	color: var(--light-brown);
 }
 .div-promo {
 	padding : 20px 0;
@@ -508,11 +504,15 @@ body {
 .div-shop {
 	padding-bottom: 40px;
 }
-.div-shop .page-item {
+.page-item {
 	margin-top: 30px;
 }
-.div-shop .page-item a {
+.page-item a {
 	color: var(--light-brown);
+}
+.page-item a:hover {
+	background-color: var(--light-brown);
+	color: white;
 }
 .div-detail {
 	padding-top: 50px;
@@ -603,7 +603,7 @@ body {
 	margin-left: 30px;
 }
 .div-form label {
-	padding: 20px 0 0 20px;
+	padding: 10px 0 0 20px;
 	font-weight: bold;
 }
 .div-form .btn {
@@ -616,6 +616,9 @@ body {
 	border-radius: 4px;
 	outline: 0;
 }
+.div-login .form-group {
+	margin: 0;
+}
 .div-login .div-form h3 {
 	text-align: center;
 	margin: 100px 0 30px 20px;
@@ -625,12 +628,17 @@ body {
 .div-login .div-form .btn {
 	margin: 30px 100px 0 160px;
 	padding: 20px 85px;
-	background-color: var(--light-brown);
-	color: white;
+	background-color: var(--background-color);
+	color: var(--light-brown);
 	border-style: solid;
 	border-color: var(--light-brown);
 	border-radius: 4px;
 	outline: 0;
+}
+.div-login .div-form .btn:hover {
+	outline: none;
+	background-color: var(--light-brown);
+	color: white;
 }
 .div-login-sub {
 	padding: 20px 0 0 20px;
@@ -650,6 +658,23 @@ body {
 	margin: 20px 0 30px 25px;
 	font-family: 'twayair';
 	font-size: 28px;
+}
+.div-btn .btn {
+	background-color: var(--background-color);
+	border-style: solid;
+	border-color: var(--light-brown);
+	color: var(--light-brown);
+	border-radius: 4px;
+}
+.div-btn .btn:hover {
+	outline: none;
+	background-color: var(--light-brown);
+	color: white;
+}
+.div-btn {
+	display: flex;
+  	justify-content: space-between;
+  	padding: 10px 0 30px 0;
 }
 .div-board {
 	padding-bottom: 50px;

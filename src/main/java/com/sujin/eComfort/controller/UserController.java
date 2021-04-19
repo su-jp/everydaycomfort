@@ -11,6 +11,11 @@ public class UserController {
 		return "user/loginForm";
 	}
 	
+	@GetMapping("/loginFail")
+	public String loginFailure() {
+		return "user/loginFail";
+	}
+	
 	@GetMapping("/join")
 	public String openJoinForm() {
 		return "user/joinForm";

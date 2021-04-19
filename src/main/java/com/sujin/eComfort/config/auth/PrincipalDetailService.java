@@ -22,8 +22,7 @@ public class PrincipalDetailService implements UserDetailsService {
 				.orElseThrow(()->{
 					return new UsernameNotFoundException("아이디를 찾을 수 없습니다.");
 				});
-		System.out.println("로드유저호출"+principal);
 		return new PrincipalDetail(principal);
 	}
-
+	
 }

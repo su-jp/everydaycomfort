@@ -42,8 +42,8 @@
 						</select>
 						<c:choose>
 							<c:when test="${empty principal}">
-								<button type="button" class="btn1" onclick="loginAlert()">장바구니</button>
-								<button type="button" class="btn2" onclick="loginAlert()">바로구매</button>
+								<button type="button" class="btn1" onclick="loginRequired()">장바구니</button>
+								<button type="button" class="btn2" onclick="loginRequired()">바로구매</button>
 							</c:when>
 							<c:otherwise>
 								<button type="button" class="btn1">장바구니</button>

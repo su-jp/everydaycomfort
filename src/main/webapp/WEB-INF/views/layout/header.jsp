@@ -18,6 +18,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <style type="text/css">
 </style>
 </head>
@@ -25,8 +26,8 @@
 	<div class="header-div">
 		<div>
 			<a href="/"><img class="logo" alt="logo" src="/images/logo.png"></a>
-			<form class="form-inline" action="<c:url value='/search' />" method="get">
-				<input name="keyword" class="form-control" type="text" placeholder="편안한가 쇼핑 검색">
+			<form class="form-inline" action="<c:url value='/search' />" method="get" onsubmit="return searchNullCheck()">
+				<input id="keyword" name="keyword" class="form-control" type="text" placeholder="편안한가 쇼핑 검색">
 				<button class="btn btn-outline-light text-dark" type="submit">검색</button>
 			</form>
 			<c:choose>

@@ -25,7 +25,7 @@ $(function() {
 		navigation: true,
 		navigationPosition: 'right'
 	});
-	
+
 });
 
 //쿠키확인
@@ -67,4 +67,17 @@ function setCookie(cname, value, expire) {
 function callList(request) {
 	category = document.getElementById(request.getAttribute('id')).getAttribute('id');
 	location.href = '/shop/' + category;
+}
+//검색 null체크
+function searchNullCheck() {
+	var keyword = $("#keyword").val();
+	if (!keyword) {
+		Swal.fire({
+			icon: 'warning',
+			text: '검색어를 입력해주세요.'
+		});
+		return false;
+	} else {
+		return true;
+	}
 }

@@ -5,14 +5,12 @@
 		<div class="div-form">
 			<h3>로그인</h3>
 			<hr/>
-			<form action="/loginProc" method="post">
+			<form action="/loginProc" method="post" class="was-validated">
 				<div class="form-group">
-					<label for="username">이메일</label>
-					<input type="email" class="form-control" placeholder="이메일" name="username">
+					<label for="username">이메일</label> <input type="text" class="form-control" placeholder="이메일" name="username" id="username" required>
 				</div>
 				<div class="form-group">
-					<label for="password">비밀번호</label>
-					<input type="password" class="form-control" placeholder="비밀번호" name="password">
+					<label for="password">비밀번호</label> <input type="password" class="form-control" placeholder="비밀번호" name="password" id="password" required>
 				</div>
 				<button type="submit" class="btn">로그인</button>
 			</form>

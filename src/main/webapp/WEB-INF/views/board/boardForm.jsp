@@ -24,7 +24,10 @@
 				<textarea class="form-control summernote" rows="5" id="content"></textarea>
 			</div>
 		</form>
-		<button type="button" onclick="nullCheck()" class="btn btn-outline-info">🍈 작성하기</button>
+		<div class="div-btn">
+			<p></p>
+			<button type="button" onclick="boardNullCheck()" class="btn">등록하기</button>
+		</div>
 	</div>
 	<script>
 		$('.summernote').summernote({

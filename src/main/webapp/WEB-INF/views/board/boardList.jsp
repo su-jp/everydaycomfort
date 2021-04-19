@@ -46,12 +46,15 @@
 				</c:otherwise>
 			</c:choose>
 		</ul>
+		<div class="div-btn">
+			<p></p>
 		<c:if test="${boardCode ne 'notice'}">
-			<a class="btn btn-primary" href="/user/write/${boardCode}">질문하기</a>
+			<a class="btn" href="/user/write/${boardCode}">질문하기</a>
 		</c:if>
 		<c:if test="${boardCode eq 'notice' && principal.user.role eq 'ROLE_ADMIN'}">
-			<a class="btn btn-primary" href="/admin/write/notice">공지 작성하기</a>
+			<a class="btn" href="/admin/write/notice">공지 작성하기</a>
 		</c:if>
+		</div>
 	</div>
 </div>
 <%@ include file="../layout/footer.jsp"%>
