@@ -589,6 +589,18 @@ body {
 	outline: none;
 	filter: brightness(97%);
 }
+.div-join .div-btn {
+	display: flex;
+  	justify-content: space-between;
+  	padding: 0;
+}
+.div-join .div-btn .btn {
+	margin: 0;
+	padding: 4px 8px;
+}
+.div-join .div-btn .btn:hover {
+	border-color: var(--light-brown);
+}
 .div-form {
 	padding-bottom: 50px;
 	margin: 0 300px;
@@ -688,4 +700,11 @@ body {
 .div-board h4 {
 	margin: 20px 0 30px 25px;
 	font-size: 14px;
+}
+.div-board .pagination {
+	margin-left: 35px;
+}
+.div-fullsize {
+	min-height: 700px;
+	background-color: var(--background-color);
 }

@@ -21,4 +21,5 @@ public class UserApiController {
 		userService.join(user);
 		return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
 	}
+
 }

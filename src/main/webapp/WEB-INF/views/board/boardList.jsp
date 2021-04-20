@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <div class="main-div">
-	<div class="container div-board">
+	<div class="container div-board div-fullsize">
 		<c:if test="${boardCode eq 'qna'}">
-			<h3>질문과 답변</h3>
-			<h4>
-				편안한가에서 제공하는 인테리어 상담 서비스!<br />지금 바로 방 안에서 인테리어 전문가에게 조언을 받아보세요.
-			</h4>
+			<h3>인테리어 노하우</h3>
 		</c:if>
 		<c:if test="${boardCode eq 'inquiry'}">
 			<h3>1:1 문의</h3>
@@ -16,9 +13,6 @@
 		</c:if>
 		<c:if test="${boardCode eq 'counsel'}">
 			<h3>리모델링 상담</h3>
-			<h4>
-				편안한가에서 제공하는 리모델링 상담 서비스!<br />견적 문의부터 방문 일정 조율까지 원스톱으로 진행해드립니다.
-			</h4>
 		</c:if>
 		<hr />
 		<c:forEach var="board" items="${boards.content}">
