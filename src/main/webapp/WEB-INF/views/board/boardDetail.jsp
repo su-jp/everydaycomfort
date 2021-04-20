@@ -60,7 +60,7 @@
 			</c:choose>
 			<div class="card div-comment-box">
 				<ul id="comment-box" class="list-group list-group-flush">
-					<c:forEach var="comment" items="${board.comments}">
+					<c:forEach var="comment" items="${board.comments}" varStatus="status">
 						<li id="comment-${comment.id}" class="list-group-item">
 							<div class="font-italic">
 								${comment.user.name} &nbsp;
@@ -77,7 +77,7 @@
 									<div>
 										<button id="btn-close" onclick="closeCommentUpdate()" class="btn btn-outline-dark" hidden="true">취소</button>
 										<button id="${comment.id}" onclick="showCommentUpdate(this)" class="btn btn-outline-dark">수정</button>
-										<button onclick="commentDelete()" class="btn btn-outline-dark">삭제</button>
+										<button onclick="commentDelete(${comment.id})" class="btn btn-outline-dark">삭제</button>
 									</div>
 								</div>
 							</c:if>

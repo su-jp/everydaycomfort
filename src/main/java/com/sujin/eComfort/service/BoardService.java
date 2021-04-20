@@ -99,4 +99,9 @@ public class BoardService {
 				});
 		comment.setContent(requestComment.getContent());
 	}
+	
+	@Transactional
+	public void deleteComment(int commentId) {
+		commentRepository.deleteById(commentId);
+	}
 }

@@ -227,3 +227,33 @@ function commentUpdate(commentId) {
 	});
 }
 //댓글 삭제
+function commentDelete(commentId) {
+	Swal.fire({
+		icon: 'warning',
+		title: '삭제한 댓글은 복구할 수 없습니다.',
+		text: '삭제하시겠습니까?',
+		showCancelButton: true,
+		confirmButtonText: '확인',
+		cancelButtonText: '취소'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			var boardId = $("#boardId").val();
+			$.ajax({
+				type: "DELETE",
+				url: "/api/board/comment/" + commentId,
+				dataType: "json"
+			}).done(function() {
+				Swal.fire({
+					icon: 'info',
+					text: '댓글이 삭제되었습니다.'
+				}).then(() => {
+					location.href = "/board/"+boardId;
+				});
+			}).fail(function(error) {
+				alert(JSON.stringify(error));
+			});
+		} else {
+			return;
+		}
+	});
+}
