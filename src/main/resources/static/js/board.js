@@ -175,10 +175,24 @@ function commentWrite() {
 function showCommentUpdate(request) {
 	commentId = document.getElementById(request.getAttribute('id')).getAttribute('id');
 	const area = document.getElementById(`myCommentArea${commentId}`);
+	const btn = document.getElementById("btn-close");
 	if (area.hidden) {
 		area.hidden = false;
+		btn.hidden = false;
 	} else {
 		commentUpdate(commentId);
+	}
+}
+//댓글 수정창 닫기
+function closeCommentUpdate() {
+	const area = document.getElementById(`myCommentArea${commentId}`);
+	const btn = document.getElementById("btn-close");
+	if (area.hidden) {
+		area.hidden = false;
+		btn.hidden = false;
+	} else {
+		area.hidden = true;
+		btn.hidden = true;
 	}
 }
 //댓글 수정

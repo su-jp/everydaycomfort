@@ -128,8 +128,9 @@ function join() {
 		Swal.fire({
 			icon: 'success',
 			text: '회원가입이 완료되었습니다.'
+		}).then(() => {
+			location.href = "/";
 		});
-		location.href = "/";
 	}).fail(function(error) {
 		alert(JSON.stringify(error));
 	});

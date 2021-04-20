@@ -49,6 +49,15 @@ public class BoardService {
 	}
 	
 	@Transactional
+	public void count(int id) {
+		Board board = boardRepository.findById(id)
+				.orElseThrow(()->{
+					return new IllegalArgumentException("글 찾기 실패 : 글 번호를 찾을 수 없습니다.");
+				});
+		board.setCount(board.getCount()+1);
+	}
+	
+	@Transactional
 	public Page<Board> list(String board, Pageable pageable) {
 		return boardRepository.findAllByBoard(board, pageable);
 	}

@@ -17,9 +17,16 @@
 		<hr />
 		<c:forEach var="board" items="${boards.content}">
 			<div class="div-boardlist">
-				<a href="/board/${board.id}">${board.title}</a>
-				<hr />
+				<span>
+					<a href="/board/${board.id}">${board.title}</a>
+				</span>
+				<span class="span-boardlist-right">
+					<font>${board.user.name}</font>&nbsp;&nbsp;&nbsp;
+					<font><fmt:formatDate value="${board.createDate}" pattern="yyyy.MM.dd" /></font>&nbsp;&nbsp;&nbsp;
+					<font>${board.count}</font>&nbsp;&nbsp;&nbsp;
+				</span>
 			</div>
+			<hr />
 		</c:forEach>
 		<ul class="pagination justify-content-center">
 			<c:choose>
@@ -42,12 +49,12 @@
 		</ul>
 		<div class="div-btn">
 			<p></p>
-		<c:if test="${boardCode ne 'notice'}">
-			<a class="btn" href="/user/write/${boardCode}">질문하기</a>
-		</c:if>
-		<c:if test="${boardCode eq 'notice' && principal.user.role eq 'ROLE_ADMIN'}">
-			<a class="btn" href="/admin/write/notice">공지 작성하기</a>
-		</c:if>
+			<c:if test="${boardCode ne 'notice'}">
+				<a class="btn" href="/user/write/${boardCode}">질문하기</a>
+			</c:if>
+			<c:if test="${boardCode eq 'notice' && principal.user.role eq 'ROLE_ADMIN'}">
+				<a class="btn" href="/admin/write/notice">공지 작성하기</a>
+			</c:if>
 		</div>
 	</div>
 </div>

@@ -398,6 +398,10 @@ body {
 	font-size: 20px;
 	font-family: 'twayair';
 }
+.div-boardlist {
+	display: flex;
+  	justify-content: space-between;
+}
 .div-boardlist a {
 	margin-left: 20px;
 	text-decoration: none;
@@ -680,6 +684,7 @@ body {
 }
 .div-btn .btn:hover {
 	outline: none;
+	border-color: var(--light-brown);
 	background-color: var(--light-brown);
 	color: white;
 }
@@ -738,4 +743,26 @@ body {
 }
 .div-article-comment textarea {
 	margin: 0;
+}
+.div-article-btn {
+	padding-right: 30px;
+}
+.div-article-btn .btn {
+	background-color: var(--background-color);
+	border-style: solid;
+	border-color: var(--light-brown);
+	color: var(--light-brown);
+	border-radius: 4px;
+}
+.div-article-btn .btn:hover {
+	outline: none;
+	border-color: var(--light-brown);
+	background-color: var(--light-brown);
+	color: white;
+}
+.div-board-detail {
+	padding-bottom: 20px;
+}
+.div-comment-box {
+	background-color: var(--background-color);
 }

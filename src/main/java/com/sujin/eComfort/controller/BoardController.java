@@ -117,6 +117,7 @@ public class BoardController {
 	
 	@GetMapping("/board/{boardId}")
 	public String findById(@PathVariable int boardId, Model model) {
+		boardService.count(boardId);
 		model.addAttribute("board", boardService.read(boardId));
 		return "board/boardDetail";
 	}
