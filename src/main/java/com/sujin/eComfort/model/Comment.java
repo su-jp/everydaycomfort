@@ -14,14 +14,16 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
+@Getter
+@Setter
 public class Comment {
 	
 	@Id
@@ -39,10 +41,8 @@ public class Comment {
 	@JoinColumn(name="userId")
 	private User user;
 	
-	@ManyToOne
-	@JoinColumn(name="commentId")
-	private Comment comment;
-	
 	@CreationTimestamp
 	private Timestamp createDate;
+	
+	
 }

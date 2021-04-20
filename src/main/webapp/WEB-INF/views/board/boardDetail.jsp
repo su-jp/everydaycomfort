@@ -17,7 +17,7 @@
 			</c:if>
 			<hr />
 			<div class="div-article-info div-article-padding">
-				<span> ${board.user.name}&nbsp; <fmt:formatDate value="${board.createDate}" pattern="yyyy.MM.dd" />&nbsp;작성
+				<span> ${board.user.name}&nbsp; <fmt:formatDate value="${board.createDate}" pattern="yyyy년 MM월 dd일" />&nbsp;작성
 				</span> <span> 조회수 ${board.count}</span>
 			</div>
 			<hr />
@@ -29,6 +29,12 @@
 				<p>${board.content}</p>
 			</div>
 		</div>
+		<c:if test="${board.user.id == principal.user.id}">
+			<div align="right">
+				<a href="/api/board/${board.id}/updateForm" class="btn btn-outline-dark">수정</a>
+				<button id="${board.id}" onclick="boardDelete()" class="btn btn-outline-dark">삭제</button>
+			</div>
+		</c:if>
 		<hr />
 		<div class="div-article-comment">
 			<c:choose>
@@ -45,10 +51,32 @@
 					</form>
 					<div class="div-btn">
 						<p></p>
-						<button type="button" onclick="commentSave()" class="btn btn-outline-dark">등록</button>
+						<button type="button" onclick="commentNullCheck()" class="btn btn-outline-dark">등록</button>
 					</div>
 				</c:otherwise>
 			</c:choose>
+			<div class="card">
+				<ul id="comment-box" class="list-group list-group-flush">
+					<c:forEach var="comment" items="${board.comments}">
+						<li id="comment-${comment.id}" class="list-group-item">
+							<div class="font-italic">
+								${comment.user.name} &nbsp;
+								<fmt:formatDate value="${comment.createDate}" pattern="yyyy.MM.dd HH:mm:ss" />
+							</div> <br />
+							<div>${comment.content}</div>
+							<button type="button" class="btn btn-outline-dark">답댓글</button>
+							<c:if test="${comment.user.id == principal.user.id}">
+								<form id="myCommentForm">
+									<input type="hidden" id="myCommentId" value="${comment.id}" />
+									<textarea rows="3" class="form-control" id="myCommentArea${comment.id}" hidden="true">${comment.content}</textarea>
+								</form>
+								<button id="${comment.id}" onclick="showCommentUpdate(this)" class="btn btn-outline-dark">수정</button>
+								<button onclick="commentDelete()" class="btn btn-outline-dark">삭제</button>
+							</c:if>
+						</li>
+					</c:forEach>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>

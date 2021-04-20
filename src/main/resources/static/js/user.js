@@ -3,9 +3,7 @@ $(function() {
 	$('#password').keyup(function() {
 		$('#chkNotice').html('');
 	});
-
 	$('#passwordChk').keyup(function() {
-
 		if ($('#password').val() != $('#passwordChk').val()) {
 			$('#chkNotice').html('비밀번호가 일치하지 않습니다.');
 			$('#chkNotice').attr('color', '#f82a2aa3');
@@ -17,7 +15,6 @@ $(function() {
 			const target = document.getElementById('joinBtn');
 			target.disabled = false;
 		}
-
 	});
 });
 //회원가입 null체크
@@ -73,7 +70,6 @@ function joinNullCheck() {
 //아이디 중복 검사
 function emailCheck() {
 	var email = $("#email").val();
-
 	$.ajax({
 		type: "GET",
 		url: "/emailCheck?email=" + email,

@@ -120,4 +120,12 @@ public class BoardController {
 		model.addAttribute("board", boardService.read(boardId));
 		return "board/boardDetail";
 	}
+	
+	@GetMapping("/api/board/{boardId}/updateForm")
+	public String updateForm(@PathVariable int boardId, Model model) {
+		System.out.println("id :: "+boardId);
+		model.addAttribute("board", boardService.read(boardId));
+		return "board/updateForm";
+	}
+	
 }

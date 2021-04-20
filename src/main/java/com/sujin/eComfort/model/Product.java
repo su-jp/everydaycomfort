@@ -1,10 +1,12 @@
 package com.sujin.eComfort.model;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Builder
-@Data
 public class Product {
 	private String productId;
 	private String title;
