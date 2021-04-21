@@ -193,25 +193,27 @@ function commentWrite() {
 	});
 }
 //댓글 수정창 열기
-function showCommentUpdate(request) {
-	commentId = document.getElementById(request.getAttribute('id')).getAttribute('id');
-	const area = document.getElementById(`myCommentArea${commentId}`);
+function showCommentUpdate(id) {
+	const area = document.getElementById(`myCommentArea${id}`);
 	const btn = document.getElementById("btn-close");
 	if (area.hidden) {
+		$('#originalComment').html('');
 		area.hidden = false;
 		btn.hidden = false;
 	} else {
-		commentUpdate(commentId);
+		commentUpdate(id);
 	}
 }
 //댓글 수정창 닫기
-function closeCommentUpdate() {
-	const area = document.getElementById(`myCommentArea${commentId}`);
+function closeCommentUpdate(id) {
+	var content = document.getElementById("commentContentText").value;
+	const area = document.getElementById(`myCommentArea${id}`);
 	const btn = document.getElementById("btn-close");
 	if (area.hidden) {
 		area.hidden = false;
 		btn.hidden = false;
 	} else {
+		$('#originalComment').html(content);
 		area.hidden = true;
 		btn.hidden = true;
 	}

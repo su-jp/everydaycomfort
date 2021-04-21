@@ -770,3 +770,79 @@ body {
 .div-comment-box {
 	background-color: var(--background-color);
 }
+.div-cart h3 {
+	text-align: center;
+	margin: 20px 0 30px 25px;
+	font-family: 'twayair';
+	font-size: 28px;
+}
+.div-cart p {
+	font-size: 17px;
+}
+.div-cart .div-btn {
+	padding: 10px 40px 10px 0;
+}
+.div-cart .image-cartItem {
+	width: 300px;
+	margin-left: 30px;
+}
+.div-cart .btn-outline-light {
+	font-weight: bold;
+	font-size: 18px;
+	margin: 0;
+}
+.div-cart .div-item-right {
+	padding-right: 40px;
+}
+.div-cart .div-deleteBtn {
+	text-align: right;
+}
+.div-cart .p-itemPrice {
+	margin-top: 30px;
+	text-align: right;
+	padding: 3px 20px;
+	font-family: 'twayair';
+	font-size: 20px;
+}
+.div-cart .div-amount {
+	padding: 10px 20px 10px 0;
+}
+.div-cart .div-amount h5 {
+	text-align: right;
+	padding: 3px 20px;
+	font-family: 'twayair';
+	font-size: 26px;
+}
+.div-cart .div-amount h6 {
+	text-align: right;
+	padding: 3px 20px;
+	font-family: 'twayair';
+	font-size: 20px;
+}
+.div-cart .btn-large {
+	font-size: 20px;
+	padding: 10px 30px;
+	margin-bottom: 20px;
+}
+.div-cart h4 {
+	text-align: center;
+	padding: 100px 0 0 30px;
+	font-size: 26px;
+}
+.div-cart .div-btn-center {
+	text-align: center;
+	padding: 60px 0 0 30px;
+}
+.div-cart .div-btn-center .btn {
+background-color: var(--background-color);
+	border-style: solid;
+	border-color: var(--light-brown);
+	color: var(--light-brown);
+	border-radius: 4px;
+}
+.div-cart .div-btn-center .btn:hover {
+	outline: none;
+	border-color: var(--light-brown);
+	background-color: var(--light-brown);
+	color: white;
+}

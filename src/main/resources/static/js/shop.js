@@ -40,7 +40,6 @@ function addItem(qty) {
 		}).then((result) => {
 			if (result.isConfirmed) {
 				location.href = "/user/cart";
-				//임시로 메인페이지 이동
 			} else {
 				return;
 			}

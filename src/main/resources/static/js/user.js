@@ -5,12 +5,12 @@ $(function() {
 	});
 	$('#passwordChk').keyup(function() {
 		if ($('#password').val() != $('#passwordChk').val()) {
-			$('#chkNotice').html('비밀번호가 일치하지 않습니다.');
+			$('#chkNotice').html('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;비밀번호가 일치하지 않습니다.');
 			$('#chkNotice').attr('color', '#f82a2aa3');
 			const target = document.getElementById("joinBtn");
 			target.disabled = true;
 		} else {
-			$('#chkNotice').html('비밀번호가 일치합니다.');
+			$('#chkNotice').html('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;비밀번호가 일치합니다.');
 			$('#chkNotice').attr('color', '#199894b3');
 			const target = document.getElementById('joinBtn');
 			target.disabled = false;

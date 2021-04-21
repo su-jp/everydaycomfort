@@ -67,7 +67,7 @@
 									${comment.user.name} &nbsp;
 									<fmt:formatDate value="${comment.createDate}" pattern="yyyy.MM.dd HH:mm:ss" />
 								</div> <br />
-								<div>${comment.content}</div> <c:if test="${comment.user.id == principal.user.id}">
+								<div><font id="originalComment">${comment.content}</font></div> <c:if test="${comment.user.id == principal.user.id}">
 									<form id="myCommentForm">
 										<input type="hidden" id="myCommentId" value="${comment.id}" />
 										<textarea rows="3" class="form-control" id="myCommentArea${comment.id}" hidden="true">${comment.content}</textarea>
@@ -75,8 +75,9 @@
 									<div class="div-btn" align="right">
 										<p></p>
 										<div>
-											<button id="btn-close" onclick="closeCommentUpdate()" class="btn btn-outline-dark" hidden="true">취소</button>
-											<button id="${comment.id}" onclick="showCommentUpdate(this)" class="btn btn-outline-dark">수정</button>
+											<input type="hidden" id="commentContentText" value="${comment.content}"/>
+											<button id="btn-close" onclick="closeCommentUpdate(${comment.id})" class="btn btn-outline-dark" hidden="true">취소</button>
+											<button onclick="showCommentUpdate(${comment.id})" class="btn btn-outline-dark">수정</button>
 											<button onclick="commentDelete(${comment.id})" class="btn btn-outline-dark">삭제</button>
 										</div>
 									</div>
