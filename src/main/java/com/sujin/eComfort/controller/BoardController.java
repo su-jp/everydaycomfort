@@ -9,10 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sujin.eComfort.controller.api.ShoppingApiController;
-import com.sujin.eComfort.model.Product;
 import com.sujin.eComfort.service.BoardService;
 
 @Controller
@@ -20,9 +17,6 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService boardService;
-	
-	@Autowired
-	private ShoppingApiController shoppingApiController;
 	
 	@GetMapping({"","/"})
 	public String index(Model model,
@@ -52,13 +46,6 @@ public class BoardController {
 		return "pages/categoryPage";
 	}
 	
-	@RequestMapping("/shop/detail/{productTitle}")
-	public String openDetail(@PathVariable(name = "productTitle") String title, Model model) {
-		Product product = shoppingApiController.callItemDetail(title+"");
-		model.addAttribute("product", product);
-		return "shopping/detail";
-	}
-
 	@GetMapping("/counsel")
 	public String openCounselBoard(Model model,
 			@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {

@@ -34,7 +34,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.sujin.eComfort.model.Product;
 
 @Controller
-public class ShoppingApiController {
+public class ShopOpenApiController {
+	
 	@GetMapping("/shop/{category}")
 	public String callback(@PathVariable String category, Model model, @PageableDefault(size = 9) Pageable pageable) {
 		String keyword = null;

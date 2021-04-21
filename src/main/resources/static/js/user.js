@@ -1,4 +1,4 @@
-//비밀번호 2차확인
+//회원가입 비밀번호 2차확인
 $(function() {
 	$('#password').keyup(function() {
 		$('#chkNotice').html('');
@@ -157,15 +157,8 @@ function loginAlert() {
 	Swal.fire({
 		icon: 'error',
 		title: '로그인에 실패하였습니다.',
-		text: '로그인 페이지로 돌아가시겠습니까?',
-		showCancelButton: true,
-		confirmButtonText: '확인',
-		cancelButtonText: '취소'
-	}).then((result) => {
-		if (result.isConfirmed) {
-			location.href = "/login";
-		} else {
-			location.href = "/";
-		}
-	})
+		text: '아이디와 비밀번호를 확인해주세요.',
+	}).then(() => {
+		location.href = "/login";
+	});
 }

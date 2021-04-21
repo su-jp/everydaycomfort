@@ -28,29 +28,32 @@
 					<hr />
 					<div class="div-padding">
 						<p>일반택배</p>
-						<span class="badge bg-info text-light">무료배송</span><br />
-						<small>· 조건에 따라 추가비용 발생 가능 (상품 상세 정보 참고)<br /> · 제주도/도서산간 지역 배송 불가</small>
+						<span class="badge bg-info text-light">무료배송</span><br /> <small>· 조건에 따라 추가비용 발생 가능 (상품 상세 정보 참고)<br /> · 제주도/도서산간 지역 배송 불가
+						</small>
 					</div>
 					<hr />
 					<form action="" class="quantity-form">
-						<select name="quantity" class="custom-select">
+						<select id="productQuantity" name="quantity" class="custom-select">
 							<option selected>수량선택</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
 							<option value="4">4</option>
 						</select>
+					</form>
 						<c:choose>
 							<c:when test="${empty principal}">
 								<button type="button" class="btn1" onclick="loginRequired()">장바구니</button>
 								<button type="button" class="btn2" onclick="loginRequired()">바로구매</button>
 							</c:when>
 							<c:otherwise>
-								<button type="button" class="btn1">장바구니</button>
+								<input type="hidden" id="productTitle" value="${product.title}">
+								<input type="hidden" id="productImage" value="${product.image}">
+								<input type="hidden" id="productPrice" value="${product.lprice}">
+								<button type="button" class="btn1" onclick="cartNullCheck()">장바구니</button>
 								<button type="button" class="btn2">바로구매</button>
 							</c:otherwise>
 						</c:choose>
-					</form>
 					<div class=""></div>
 				</div>
 			</div>

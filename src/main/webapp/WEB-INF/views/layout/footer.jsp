@@ -30,5 +30,6 @@
 <script src="/js/main.js"></script>
 <script src="/js/user.js"></script>
 <script src="/js/board.js"></script>
+<script src="/js/shop.js"></script>
 </body>
 </html>

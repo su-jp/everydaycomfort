@@ -100,8 +100,8 @@ function boardUpdate() {
 function boardDelete() {
 	Swal.fire({
 		icon: 'warning',
-		title: '삭제된 글은 복구할 수 없습니다.',
-		text: '삭제하시겠습니까?',
+		title: '삭제하면 복구할 수 없습니다.',
+		text: '글을 삭제하시겠습니까?',
 		showCancelButton: true,
 		confirmButtonText: '확인',
 		cancelButtonText: '취소'
@@ -230,8 +230,8 @@ function commentUpdate(commentId) {
 function commentDelete(commentId) {
 	Swal.fire({
 		icon: 'warning',
-		title: '삭제한 댓글은 복구할 수 없습니다.',
-		text: '삭제하시겠습니까?',
+		title: '삭제하면 복구할 수 없습니다.',
+		text: '댓글을 삭제하시겠습니까?',
 		showCancelButton: true,
 		confirmButtonText: '확인',
 		cancelButtonText: '취소'

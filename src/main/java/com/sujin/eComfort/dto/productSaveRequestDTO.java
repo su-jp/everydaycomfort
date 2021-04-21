@@ -9,9 +9,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommentSaveRequestDTO {
-	private int userId;
-	private int boardId;
-	private String content;
-	private int commentId;
+public class productSaveRequestDTO {
+	private String productTitle;
+	private String productImage;
+	private Integer productLprice;
+	private int productQuantity;
 }

@@ -63,11 +63,6 @@ function setCookie(cname, value, expire) {
 	todayValue.setDate(todayValue.getDate() + expire);
 	document.cookie = cname + "=" + encodeURI(value) + "; expires=" + todayValue.toGMTString() + "; path=/;";
 }
-//카테고리부르기
-function callList(request) {
-	category = document.getElementById(request.getAttribute('id')).getAttribute('id');
-	location.href = '/shop/' + category;
-}
 //검색 null체크
 function searchNullCheck() {
 	var keyword = $("#keyword").val();
