@@ -32,4 +32,10 @@ public class ShopApiController {
 		shopService.delete(cartId);
 		return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
 	}
+	
+	@DeleteMapping("/api/cart/all")
+	public ResponseDTO<Integer> deleteItem(@AuthenticationPrincipal PrincipalDetail principal) {
+		shopService.deleteAll(principal.getUser());
+		return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
+	}
 }

@@ -8,4 +8,5 @@ import com.sujin.eComfort.model.Cart;
 
 public interface CartRepository extends JpaRepository<Cart, Integer> {
 	List<Cart> findAllByUserId(int userId);
+	void deleteAllByUserId(int userId);
 }

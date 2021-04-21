@@ -47,4 +47,9 @@ public class ShopService {
 	public void delete(int id) {
 		cartRepository.deleteById(id);
 	}
+	
+	@Transactional
+	public void deleteAll(User user) {
+		cartRepository.deleteAllByUserId(user.getId());
+	}
 }

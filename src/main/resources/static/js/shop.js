@@ -64,12 +64,43 @@ function deleteSelectedItem(id) {
 					url: "/user/cart",
 					dataType: "text",
 					error: function() {
-						alert('통신실패!!');
+						alert(JSON.stringify(error));
 					},
 					success: function(data) {
-						// Contents 영역 삭제
 						$('#bodyContents').children().remove();
-						// Contents 영역 교체
+						$('#bodyContents').html(data);
+					}
+				});
+			}).fail(function(error) {
+				alert(JSON.stringify(error));
+			});
+		} else {
+			return;
+		}
+	});
+}
+//장바구니 전체 삭제
+function deleteAllItems() {
+	Swal.fire({
+		icon: 'warning',
+		text: '상품을 모두 삭제하시겠습니까?',
+		showCancelButton: true,
+	}).then((result) => {
+		if (result.isConfirmed) {
+			$.ajax({
+				type: "DELETE",
+				url: "/api/cart/all",
+				dataType: "json"
+			}).done(function() {
+				$.ajax({
+					type: "GET",
+					url: "/user/cart",
+					dataType: "text",
+					error: function() {
+						alert(JSON.stringify(error));
+					},
+					success: function(data) {
+						$('#bodyContents').children().remove();
 						$('#bodyContents').html(data);
 					}
 				});

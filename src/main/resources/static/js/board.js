@@ -9,7 +9,7 @@ function boardNullCheck() {
 			icon: 'warning',
 			text: '제목을 작성해주세요.'
 		});
-	} else if (!data.content) {
+	} else if (data.content == "" || !data.content) {
 		Swal.fire({
 			icon: 'warning',
 			text: '내용을 작성해주세요.'
@@ -55,7 +55,7 @@ function boardUpdateNullCheck() {
 			icon: 'warning',
 			text: '제목을 작성해주세요.'
 		});
-	} else if (!data.content) {
+	} else if (data.content == "" || !data.content) {
 		Swal.fire({
 			icon: 'warning',
 			text: '내용을 작성해주세요.'
@@ -108,6 +108,7 @@ function boardDelete() {
 	}).then((result) => {
 		if (result.isConfirmed) {
 			let id = $("#boardId").val();
+			var category = $("#boardCategory").val();
 			$.ajax({
 				type: "DELETE",
 				url: "/api/board/" + id,
@@ -117,7 +118,7 @@ function boardDelete() {
 					icon: 'info',
 					text: '글이 삭제되었습니다.'
 				}).then(() => {
-					location.href = "/";
+					location.href = "/"+category;
 				});
 			}).fail(function(error) {
 				alert(JSON.stringify(error));
@@ -164,7 +165,18 @@ function commentWrite() {
 				icon: 'success',
 				text: '작성한 댓글이 등록되었습니다.'
 			}).then(() => {
-				location.href = `/board/${data.boardId}`;
+				$.ajax({
+					type: "GET",
+					url: `/board/${data.boardId}`,
+					dataType: "text",
+					error: function() {
+						alert(JSON.stringify(error));
+					},
+					success: function(data) {
+						$('#bodyContents').children().remove();
+						$('#bodyContents').html(data);
+					}
+				});
 			});
 		}
 	}).fail(function(error) {
@@ -219,7 +231,18 @@ function commentUpdate(commentId) {
 				icon: 'success',
 				text: '댓글 수정이 완료되었습니다.'
 			}).then(() => {
-				location.href = `/board/${data.boardId}`;
+				$.ajax({
+					type: "GET",
+					url: `/board/${data.boardId}`,
+					dataType: "text",
+					error: function() {
+						alert(JSON.stringify(error));
+					},
+					success: function(data) {
+						$('#bodyContents').children().remove();
+						$('#bodyContents').html(data);
+					}
+				});
 			});
 		}
 	}).fail(function(error) {
@@ -247,7 +270,18 @@ function commentDelete(commentId) {
 					icon: 'info',
 					text: '댓글이 삭제되었습니다.'
 				}).then(() => {
-					location.href = "/board/"+boardId;
+					$.ajax({
+						type: "GET",
+						url: "/board/" + boardId,
+						dataType: "text",
+						error: function() {
+							alert(JSON.stringify(error));
+						},
+						success: function(data) {
+							$('#bodyContents').children().remove();
+							$('#bodyContents').html(data);
+						}
+					});
 				});
 			}).fail(function(error) {
 				alert(JSON.stringify(error));
