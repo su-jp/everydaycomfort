@@ -52,7 +52,7 @@
 		</div>
 	</div>
 	<c:if test="${!empty principal}">
-	<div id="sidebox" class="sidebox" onclick="location.href='/'">
+	<div id="sidebox" class="sidebox" onclick="location.href='/user/cart'">
 		<img alt="sidePopup" src="/images/icons/sidePopup.png">
 		<p>장바구니</p>
 	</div>

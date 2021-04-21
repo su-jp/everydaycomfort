@@ -1,5 +1,7 @@
 package com.sujin.eComfort.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,5 +36,15 @@ public class ShopService {
 				.productQuantity(productSaveRequestDTO.getProductQuantity())
 				.build();
 		cartRepository.save(cart);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Cart> list(User user) {
+		return cartRepository.findAllByUserId(user.getId());
+	}
+	
+	@Transactional
+	public void delete(int id) {
+		cartRepository.deleteById(id);
 	}
 }

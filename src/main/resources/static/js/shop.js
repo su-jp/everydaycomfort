@@ -6,7 +6,7 @@ function callList(request) {
 //수량 null체크
 function cartNullCheck() {
 	let qty = document.getElementById('productQuantity').options[document.getElementById('productQuantity').selectedIndex].text;
-	if(qty == "수량선택") {
+	if (qty == "수량선택") {
 		Swal.fire({
 			icon: 'warning',
 			text: '수량을 선택해주세요.'
@@ -38,11 +38,46 @@ function addItem(qty) {
 			cancelButtonText: '쇼핑 계속하기'
 		}).then((result) => {
 			if (result.isConfirmed) {
-				location.href = "/";
+				location.href = "/user/cart";
 				//임시로 메인페이지 이동
 			} else {
 				return;
 			}
 		});
+	});
+}
+//장바구니 선택 삭제
+function deleteSelectedItem(id) {
+	Swal.fire({
+		icon: 'warning',
+		text: '해당 상품을 삭제하시겠습니까?',
+		showCancelButton: true,
+	}).then((result) => {
+		if (result.isConfirmed) {
+			$.ajax({
+				type: "DELETE",
+				url: "/api/cart/" + id,
+				dataType: "json"
+			}).done(function() {
+				$.ajax({
+					type: "GET",
+					url: "/user/cart",
+					dataType: "text",
+					error: function() {
+						alert('통신실패!!');
+					},
+					success: function(data) {
+						// Contents 영역 삭제
+						$('#bodyContents').children().remove();
+						// Contents 영역 교체
+						$('#bodyContents').html(data);
+					}
+				});
+			}).fail(function(error) {
+				alert(JSON.stringify(error));
+			});
+		} else {
+			return;
+		}
 	});
 }
