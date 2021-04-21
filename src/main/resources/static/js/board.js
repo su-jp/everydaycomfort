@@ -7,12 +7,14 @@ function boardNullCheck() {
 	if (!data.title) {
 		Swal.fire({
 			icon: 'warning',
-			text: '제목을 작성해주세요.'
+			text: '제목을 작성해주세요.',
+			confirmButtonText: '확인'
 		});
 	} else if (data.content == "" || !data.content) {
 		Swal.fire({
 			icon: 'warning',
-			text: '내용을 작성해주세요.'
+			text: '내용을 작성해주세요.',
+			confirmButtonText: '확인'
 		});
 	} else {
 		boardWrite();
@@ -36,7 +38,8 @@ function boardWrite() {
 		Swal.fire({
 			icon: 'success',
 			title: '질문 등록 완료',
-			text: '답변을 기다려주세요.'
+			text: '답변을 기다려주세요.',
+			confirmButtonText: '확인'
 		}).then(() => {
 			location.href = `/${data.board}`;
 		});
@@ -53,12 +56,14 @@ function boardUpdateNullCheck() {
 	if (!data.title) {
 		Swal.fire({
 			icon: 'warning',
-			text: '제목을 작성해주세요.'
+			text: '제목을 작성해주세요.',
+			confirmButtonText: '확인'
 		});
 	} else if (data.content == "" || !data.content) {
 		Swal.fire({
 			icon: 'warning',
-			text: '내용을 작성해주세요.'
+			text: '내용을 작성해주세요.',
+			confirmButtonText: '확인'
 		});
 	} else {
 		boardUpdate();
@@ -87,7 +92,8 @@ function boardUpdate() {
 		} else {
 			Swal.fire({
 				icon: 'success',
-				text: '글 수정이 완료되었습니다.'
+				text: '글 수정이 완료되었습니다.',
+				confirmButtonText: '확인'
 			}).then(() => {
 				location.href = `/board/${data.boardId}`;
 			});
@@ -116,9 +122,10 @@ function boardDelete() {
 			}).done(function() {
 				Swal.fire({
 					icon: 'info',
-					text: '글이 삭제되었습니다.'
+					text: '글이 삭제되었습니다.',
+					confirmButtonText: '확인'
 				}).then(() => {
-					location.href = "/"+category;
+					location.href = "/" + category;
 				});
 			}).fail(function(error) {
 				alert(JSON.stringify(error));
@@ -134,7 +141,8 @@ function commentNullCheck() {
 	if (!content) {
 		Swal.fire({
 			icon: 'warning',
-			text: '내용을 작성해주세요.'
+			text: '내용을 작성해주세요.',
+			confirmButtonText: '확인'
 		});
 	} else {
 		commentWrite();
@@ -163,7 +171,8 @@ function commentWrite() {
 		} else {
 			Swal.fire({
 				icon: 'success',
-				text: '작성한 댓글이 등록되었습니다.'
+				text: '작성한 댓글이 등록되었습니다.',
+				confirmButtonText: '확인'
 			}).then(() => {
 				$.ajax({
 					type: "GET",
@@ -229,7 +238,8 @@ function commentUpdate(commentId) {
 		} else {
 			Swal.fire({
 				icon: 'success',
-				text: '댓글 수정이 완료되었습니다.'
+				text: '댓글 수정이 완료되었습니다.',
+				confirmButtonText: '확인'
 			}).then(() => {
 				$.ajax({
 					type: "GET",
@@ -268,7 +278,8 @@ function commentDelete(commentId) {
 			}).done(function() {
 				Swal.fire({
 					icon: 'info',
-					text: '댓글이 삭제되었습니다.'
+					text: '댓글이 삭제되었습니다.',
+					confirmButtonText: '확인'
 				}).then(() => {
 					$.ajax({
 						type: "GET",

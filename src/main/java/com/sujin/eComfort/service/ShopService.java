@@ -49,6 +49,15 @@ public class ShopService {
 	}
 	
 	@Transactional
+	public void update(int id, int request) {
+		Cart cart = cartRepository.findById(id)
+				.orElseThrow(()->{
+					return new IllegalArgumentException("상품 담기 실패 : 회원 정보를 찾을 수 없습니다.");
+				});
+		cart.setProductQuantity(cart.getProductQuantity()+request);
+	}
+	
+	@Transactional
 	public void deleteAll(User user) {
 		cartRepository.deleteAllByUserId(user.getId());
 	}

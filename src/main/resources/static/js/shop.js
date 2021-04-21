@@ -9,7 +9,8 @@ function cartNullCheck() {
 	if (qty == "수량선택") {
 		Swal.fire({
 			icon: 'warning',
-			text: '수량을 선택해주세요.'
+			text: '수량을 선택해주세요.',
+			confirmButtonText: '확인'
 		});
 	} else {
 		addItem(qty);
@@ -52,6 +53,8 @@ function deleteSelectedItem(id) {
 		icon: 'warning',
 		text: '해당 상품을 삭제하시겠습니까?',
 		showCancelButton: true,
+		confirmButtonText: '확인',
+		cancelButtonText: '취소'
 	}).then((result) => {
 		if (result.isConfirmed) {
 			$.ajax({
@@ -85,6 +88,8 @@ function deleteAllItems() {
 		icon: 'warning',
 		text: '상품을 모두 삭제하시겠습니까?',
 		showCancelButton: true,
+		confirmButtonText: '확인',
+		cancelButtonText: '취소'
 	}).then((result) => {
 		if (result.isConfirmed) {
 			$.ajax({
@@ -111,4 +116,47 @@ function deleteAllItems() {
 			return;
 		}
 	});
+}
+//장바구니 수량 조절
+function itemQuantity(id, request, qty) {
+	if (qty == 1 && request == -1) {
+		Swal.fire({
+			icon: 'warning',
+			text: '최소 수량입니다.',
+			confirmButtonText: '확인'
+		}).then(() => {
+			return;
+		});
+	} else if (qty == 10 && request == 1) {
+		Swal.fire({
+			icon: 'warning',
+			text: '최대 수량입니다.',
+			confirmButtonText: '확인'
+		}).then(() => {
+			return;
+		});
+	} else {
+		$.ajax({
+			type: "PUT",
+			url: "/api/cart/" + id,
+			data: JSON.stringify(request),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json"
+		}).done(function() {
+			$.ajax({
+				type: "GET",
+				url: "/user/cart",
+				dataType: "text",
+				error: function() {
+					alert(JSON.stringify(error));
+				},
+				success: function(data) {
+					$('#bodyContents').children().remove();
+					$('#bodyContents').html(data);
+				}
+			});
+		}).fail(function(error) {
+			alert(JSON.stringify(error));
+		});
+	}
 }

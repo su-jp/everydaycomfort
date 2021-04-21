@@ -17,18 +17,25 @@
 						<c:forEach var="cart" items="${carts}">
 							<hr />
 							<p>${cart.productTitle}</p>
-							<p>상품가격 : ${cart.productPrice}</p>
-							<p>${cart.productQuantity}개</p>
+							<p>상품가격 <fmt:formatNumber value="${cart.productPrice}" type="number" />원 </p>
+							<p>
+								<button onclick="itemQuantity(${cart.id}, -1, ${cart.productQuantity})">＜</button>
+								<font id="${cart.id}">${cart.productQuantity}</font>개
+								<button onclick="itemQuantity(${cart.id}, +1, ${cart.productQuantity})">＞</button>
+							</p>
 							<img alt="itemImage" src="${cart.productImage}" width="300px">
 							<button onclick="deleteSelectedItem(${cart.id})">X</button>
 							<br />
 							<c:set var="eachAmount" value="${cart.productPrice * cart.productQuantity}" />
-							<p>금액 : <c:out value="${eachAmount}" /></p>
+							<p>금액 <fmt:formatNumber value="${eachAmount}" type="number" />원</p>
 							<c:set var="totalAmount" value="${totalAmount + eachAmount}" />
 						</c:forEach>
 						<h3>
-							결제금액 :
-							<c:out value="${totalAmount}" />
+							총 상품금액 <fmt:formatNumber value="${totalAmount}" type="number" />원<br />
+							총 할인금액 <c:set var="discountAmount" value="${totalAmount * 0.1}" />
+							<fmt:formatNumber value="${discountAmount}" type="number" />원<br />
+							결제금액 <c:set var="finalAmount" value="${totalAmount - discountAmount}" />
+							<fmt:formatNumber value="${finalAmount}" type="number" />원
 						</h3>
 					</c:otherwise>
 				</c:choose>

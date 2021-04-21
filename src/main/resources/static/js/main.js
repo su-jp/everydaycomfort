@@ -69,7 +69,8 @@ function searchNullCheck() {
 	if (!keyword) {
 		Swal.fire({
 			icon: 'warning',
-			text: '검색어를 입력해주세요.'
+			text: '검색어를 입력해주세요.',
+			confirmButtonText: '확인'
 		});
 		return false;
 	} else {
