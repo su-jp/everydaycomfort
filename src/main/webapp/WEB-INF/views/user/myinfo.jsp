@@ -15,7 +15,7 @@
 						<label for="name">이름</label><font size="2">&nbsp;&nbsp;&nbsp;이름 변경이 필요한 경우 1:1 문의를 이용해주세요.</font> <input type="text" class="form-control" placeholder="이름" id="name" value="${user.name}" readonly>
 					</div>
 					<div class="form-group">
-						<label for="phonenum">전화번호</label> <input type="text" class="form-control" placeholder="전화번호" id="phonenum" value="${user.phonenum}" required>
+						<label for="phonenum">전화번호</label> <input type="number" class="form-control" placeholder="전화번호" id="phonenum" value="${user.phonenum}" required>
 					</div>
 					<div class="form-group">
 						<label for="address">주소</label> <input type="text" class="form-control" placeholder="주소" id="address" value="${user.address}" required>

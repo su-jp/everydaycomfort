@@ -29,7 +29,7 @@
 						<label for="name">이름</label> <input type="text" class="form-control" placeholder="이름" id="name" required>
 					</div>
 					<div class="form-group">
-						<label for="phonenum">전화번호</label> <input type="text" class="form-control" placeholder="전화번호" id="phonenum" required>
+						<label for="phonenum">전화번호</label> <input type="number" class="form-control" placeholder="전화번호" id="phonenum" required>
 					</div>
 					<div class="form-group">
 						<label for="address">주소</label> <input type="text" class="form-control" placeholder="주소" id="address" required>

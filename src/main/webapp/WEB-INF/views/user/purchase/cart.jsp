@@ -68,7 +68,7 @@
 						</div>
 							<div class="div-btn">
 							<p></p>
-							<button class="btn btn-outline-dark btn-large">구매하기</button>
+							<a href="/user/orderpage" class="btn btn-outline-dark btn-large">구매하기</a>
 							</div>
 					</c:otherwise>
 				</c:choose>
