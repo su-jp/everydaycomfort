@@ -4,7 +4,7 @@
 	<div class="main-div">
 		<div class="container div-myinfo">
 			<div class="div-form">
-				<h3>개인정보수정</h3>
+				<h3>회원정보수정</h3>
 				<hr />
 				<form class="was-validated">
 					<input type="hidden" id="userId" value="${principal.user.id}"/>
