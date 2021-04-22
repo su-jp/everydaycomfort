@@ -6,29 +6,47 @@
 		<c:if test="${boardCode eq 'qna'}">
 			<h3>인테리어 노하우</h3>
 		</c:if>
-		<c:if test="${boardCode eq 'inquiry'}">
-			<h3>1:1 문의</h3>
-		</c:if>
 		<c:if test="${boardCode eq 'notice'}">
 			<h3>공지사항</h3>
 		</c:if>
 		<c:if test="${boardCode eq 'counsel'}">
 			<h3>리모델링 상담</h3>
 		</c:if>
+		<c:if test="${boardCode eq 'inquiry'}">
+			<h3>1:1 문의</h3>
+			<c:if test="${empty principal}">
+				<script type="text/javascript">
+					$(function() {
+						loginRequired();
+					});
+				</script>
+			</c:if>
+		</c:if>
 		<hr />
-		<c:forEach var="board" items="${boards.content}">
-			<div class="div-boardlist">
-				<span>
-					<a href="/board/${board.id}">${board.title}</a>
-				</span>
-				<span class="span-boardlist-right">
-					<font>${board.user.name}</font>&nbsp;&nbsp;&nbsp;
-					<font><fmt:formatDate value="${board.createDate}" pattern="yyyy.MM.dd" /></font>&nbsp;&nbsp;&nbsp;
-					<font>${board.count}</font>&nbsp;&nbsp;&nbsp;
-				</span>
-			</div>
-			<hr />
-		</c:forEach>
+		<c:choose>
+			<c:when test="${boardCode eq 'inquiry'}">
+					<c:forEach var="board" items="${boards.content}">
+						<c:if test="${board.user.email eq principal.user.email}">
+							<div class="div-boardlist">
+								<span> <a href="/board/${board.id}">${board.title}</a>
+								</span> <span> <font>${board.user.name}</font>&nbsp;&nbsp;&nbsp; <font><fmt:formatDate value="${board.createDate}" pattern="yyyy.MM.dd" /></font>&nbsp;&nbsp;&nbsp; <font class="font-count">${board.count}</font>&nbsp;&nbsp;&nbsp;
+								</span>
+							</div>
+							<hr />
+						</c:if>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="board" items="${boards.content}">
+						<div class="div-boardlist">
+							<span> <a href="/board/${board.id}">${board.title}</a>
+							</span> <span> <font>${board.user.name}</font>&nbsp;&nbsp;&nbsp; <font><fmt:formatDate value="${board.createDate}" pattern="yyyy.MM.dd" /></font>&nbsp;&nbsp;&nbsp; <font class="font-count">${board.count}</font>&nbsp;&nbsp;&nbsp;
+							</span>
+						</div>
+						<hr />
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
 		<ul class="pagination justify-content-center">
 			<c:choose>
 				<c:when test="${boards.first}">
@@ -51,10 +69,10 @@
 		<div class="div-btn">
 			<p></p>
 			<c:if test="${boardCode ne 'notice'}">
-				<a class="btn" href="/user/write/${boardCode}">질문하기</a>
+				<a class="btn" href="/user/board/${boardCode}">질문하기</a>
 			</c:if>
 			<c:if test="${boardCode eq 'notice' && principal.user.role eq 'ROLE_ADMIN'}">
-				<a class="btn" href="/admin/write/notice">공지 작성하기</a>
+				<a class="btn" href="/admin/board/notice">공지 작성하기</a>
 			</c:if>
 		</div>
 	</div>

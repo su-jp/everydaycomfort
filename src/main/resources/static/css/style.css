@@ -415,6 +415,9 @@ body {
 	text-decoration: none;
 	color: var(--light-brown);
 }
+.div-boardlist .font-count {
+	padding-left: 10px;
+}
 .div-promo {
 	padding : 20px 0;
 }
@@ -834,13 +837,27 @@ body {
 	padding: 60px 0 0 30px;
 }
 .div-cart .div-btn-center .btn {
-background-color: var(--background-color);
+	background-color: var(--background-color);
 	border-style: solid;
 	border-color: var(--light-brown);
 	color: var(--light-brown);
 	border-radius: 4px;
 }
 .div-cart .div-btn-center .btn:hover {
+	outline: none;
+	border-color: var(--light-brown);
+	background-color: var(--light-brown);
+	color: white;
+}
+.div-myinfo .btn {
+	margin-left: 160px;
+	background-color: var(--background-color);
+	border-style: solid;
+	border-color: var(--light-brown);
+	color: var(--light-brown);
+	border-radius: 4px;
+}
+.div-myinfo .btn:hover {
 	outline: none;
 	border-color: var(--light-brown);
 	background-color: var(--light-brown);

@@ -21,6 +21,11 @@ public class ShopController {
 	
 	@Autowired
 	private ShopService shopService;
+
+	@GetMapping("/shop")
+	public String openCategories() {
+		return "pages/categoryPage";
+	}
 	
 	@RequestMapping("/shop/detail/{productTitle}")
 	public String openDetail(@PathVariable(name = "productTitle") String title, Model model) {

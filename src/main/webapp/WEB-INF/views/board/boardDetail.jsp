@@ -17,7 +17,7 @@
 					<h3>리모델링 상담</h3>
 				</c:if>
 				<div>
-					<a href="/${board.board}" class="btn btn-outline-light text-dark">＜＜ 목록으로</a>
+					<a href="/board/${board.board}" class="btn btn-outline-light text-dark">＜＜ 목록으로</a>
 				</div>
 				<hr />
 				<div class="div-article-info div-article-padding">

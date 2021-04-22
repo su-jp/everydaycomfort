@@ -17,6 +17,12 @@ $(function() {
 		}
 	});
 });
+//중복검사 초기화
+$(function() {
+	$('#email').keyup(function() {
+		$("#validChk").val("1");
+	});
+});
 //회원가입 null체크
 function joinNullCheck() {
 	let data = {
@@ -32,37 +38,31 @@ function joinNullCheck() {
 			icon: 'warning',
 			text: '이메일을 입력해주세요.'
 		});
-		document.getElementById("email").focus;
 	} else if (!data.password) {
 		Swal.fire({
 			icon: 'warning',
 			text: '비밀번호를 입력해주세요.'
 		});
-		document.getElementById("password").focus;
 	} else if (!data.passwordChk) {
 		Swal.fire({
 			icon: 'warning',
 			text: '비밀번호 확인창을 입력해주세요.'
 		});
-		document.getElementById("passwordChk").focus;
 	} else if (!data.name) {
 		Swal.fire({
 			icon: 'warning',
 			text: '이름을 입력해주세요.'
 		});
-		document.getElementById("name").focus;
 	} else if (!data.phonenum) {
 		Swal.fire({
 			icon: 'warning',
 			text: '전화번호를 입력해주세요.'
 		});
-		document.getElementById("phonenum").focus;
 	} else if (!data.address) {
 		Swal.fire({
 			icon: 'warning',
 			text: '주소를 입력해주세요.'
 		});
-		document.getElementById("address").focus;
 	} else {
 		validCheck();
 	}
@@ -89,7 +89,7 @@ function emailCheck() {
 					icon: 'success',
 					text: '사용 가능한 이메일입니다.'
 				});
-				document.getElementById("validChk").value = "0";
+				$("#validChk").val("0");
 			}
 		}, error: function() {
 			alert(JSON.stringify(error));
@@ -124,7 +124,7 @@ function join() {
 		contentType: "application/json; charset=utf-8",
 		dataType: "json"
 	}).done(function() {
-		document.getElementById("validChk").value = "1";
+		$("#validChk").val("1");
 		Swal.fire({
 			icon: 'success',
 			text: '회원가입이 완료되었습니다.'
@@ -146,7 +146,9 @@ function loginRequired() {
 		cancelButtonText: '취소'
 	}).then((result) => {
 		if (result.isConfirmed) {
-			location.href = "/login";
+			location.href = "/loginForm";
+		} else if(window.location.pathname == "/board/inquiry") {
+			location.href = "/";
 		} else {
 			return;
 		}
@@ -159,6 +161,51 @@ function loginAlert() {
 		title: '로그인에 실패하였습니다.',
 		text: '아이디와 비밀번호를 확인해주세요.',
 	}).then(() => {
-		location.href = "/login";
+		location.href = "/loginForm";
 	});
+}
+//회원정보수정
+function profileUpdate() {
+	let data = {
+		id: $("#userId").val(),
+		phonenum: $("#phonenum").val(),
+		address: $("#address").val()
+	};
+	if (!data.phonenum) {
+		Swal.fire({
+			icon: 'warning',
+			text: '전화번호를 입력해주세요.'
+		});
+	} else if (!data.address) {
+		Swal.fire({
+			icon: 'warning',
+			text: '주소를 입력해주세요.'
+		});
+	} else {
+		$.ajax({
+		type: "PUT",
+		url: "/user/myinfo",
+		data: JSON.stringify(data),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json"
+	}).done(function(resp) {
+		if (resp == 500) {
+			Swal.fire({
+				icon: 'error',
+				title: '회원정보 수정 실패',
+				text: '관리자에게 문의하세요.'
+			});
+		} else {
+			Swal.fire({
+				icon: 'success',
+				text: '회원정보 수정이 완료되었습니다.',
+				confirmButtonText: '확인'
+			}).then(() => {
+				location.href = "/user/myinfo";
+			});
+		}
+	}).fail(function(error) {
+		alert(JSON.stringify(error));
+	});
+	}
 }

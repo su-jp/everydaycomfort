@@ -1,4 +1,10 @@
 $(function() {
+	//사이드박스
+	var currentPosition = 120;
+	$(window).scroll(function() {
+		var position = $(window).scrollTop();
+		$("#sidebox").stop().animate({ "top": position + currentPosition + "px" }, 500);
+	});
 	//상단바
 	var $menu = $('#top_menu div a'),
 		$contents = $('#contents > div');

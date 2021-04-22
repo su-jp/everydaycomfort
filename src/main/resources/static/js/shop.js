@@ -69,7 +69,7 @@ function deleteSelectedItem(id) {
 						alert(JSON.stringify(error));
 					},
 					success: function(data) {
-						$('#bodyContents').children().remove();
+						$('#bodyContents').html('');
 						$('#bodyContents').html(data);
 					}
 				});

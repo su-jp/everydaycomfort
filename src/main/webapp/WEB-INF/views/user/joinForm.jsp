@@ -16,7 +16,7 @@
 					<p></p>
 					<button class="btn btn-outline-dark" onclick="emailCheck()">중복확인</button>
 				</div>
-				<form>
+				<form class="was-validated">
 					<div class="form-group">
 						<label for="password">비밀번호 </label> <input type="password" class="form-control" placeholder="비밀번호" id="password" required>
 					</div>

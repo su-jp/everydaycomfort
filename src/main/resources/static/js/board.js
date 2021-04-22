@@ -41,7 +41,7 @@ function boardWrite() {
 			text: '답변을 기다려주세요.',
 			confirmButtonText: '확인'
 		}).then(() => {
-			location.href = `/${data.board}`;
+			location.href = `/board/${data.board}`;
 		});
 	}).fail(function(error) {
 		alert(JSON.stringify(error));
@@ -125,7 +125,7 @@ function boardDelete() {
 					text: '글이 삭제되었습니다.',
 					confirmButtonText: '확인'
 				}).then(() => {
-					location.href = "/" + category;
+					location.href = "/board/" + category;
 				});
 			}).fail(function(error) {
 				alert(JSON.stringify(error));

@@ -39,10 +39,10 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 			oAuth2UserInfo = new KakaoUserInfo(oAuth2User.getAttributes());
 		}
 		
-		String providerId = oAuth2UserInfo.getProviderId();
 		String provider = oAuth2UserInfo.getProvider();
+		String username = oAuth2UserInfo.getEmail();
+		String name = oAuth2UserInfo.getName();
 		String password = bCryptPasswordEncoder.encode("password");
-		String username = provider + "_" + providerId;
 		String role = "ROLE_USER";
 		
 		User userEntity = userService.findUser(username);
@@ -51,6 +51,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 			userEntity = User.builder()
 					.email(username)
 					.password(password)
+					.name(name)
 					.role(role)
 					.oauth(provider)
 					.build();

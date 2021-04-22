@@ -45,7 +45,7 @@
 							<h2>
 								<br/><br/><br/>2,000개 이상의 리뷰가 증명합니다.<br/><br/>
 							</h2>
-							<a href="/counsel">바로 상담 신청하기</a>
+							<a href="/board/counsel">바로 상담 신청하기</a>
 						</div>
 					</div>
 				</section>

@@ -8,10 +8,9 @@
 			<h1>마이페이지</h1>
 			<br />
 			<br />
-			<p>${principal.user.email}</p>
-			<p>${principal.user.name}</p>
-			<p>${principal.user.address}</p>
-			<p>${principal.user.phonenum}</p>
+			<a href="/user/myinfo" class="btn btn-outline-dark">개인정보수정</a>
+			<a href="/user/orderlist" class="btn btn-outline-dark">주문내역조회</a>
+			<a href="/board/inquiry" class="btn btn-outline-dark">1:1 문의</a>
 		</div>
 	</div>
 	<%@ include file="../layout/footer.jsp"%>

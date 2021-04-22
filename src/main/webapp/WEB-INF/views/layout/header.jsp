@@ -10,7 +10,6 @@
 <head>
 <title>편안한가 | 원스톱 인테리어 플랫폼</title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -33,8 +32,8 @@
 			</form>
 			<c:choose>
 				<c:when test="${empty principal}">
-					<a href="/login">로그인</a>
-					<a href="/join">회원가입</a>
+					<a href="/loginForm">로그인</a>
+					<a href="/joinForm">회원가입</a>
 				</c:when>
 				<c:otherwise>
 					<a href="/logout">로그아웃</a>
@@ -46,9 +45,9 @@
 	<div class="sub-header">
 		<div>
 			<a href="/shop">쇼핑</a>
-			<a href="/counsel">리모델링상담</a>
-			<a href="/notice">공지사항</a>
-			<a href="/qna">질문과답변</a>
+			<a href="/board/counsel">리모델링상담</a>
+			<a href="/board/notice">공지사항</a>
+			<a href="/board/qna">질문과답변</a>
 		</div>
 	</div>
 	<c:if test="${!empty principal}">
@@ -57,12 +56,3 @@
 		<p>장바구니</p>
 	</div>
 	</c:if>
-	<script type="text/javascript">
-	//사이드팝업
-	var currentPosition = parseInt($("#sidebox").css("top"));
-	console.log(currentPosition);
-	$(window).scroll(function() {
-		var position = $(window).scrollTop();
-		$("#sidebox").stop().animate({ "top": position + currentPosition + "px" }, 500);
-	});
-	</script>

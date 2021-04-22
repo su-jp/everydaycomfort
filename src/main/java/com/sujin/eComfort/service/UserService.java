@@ -34,4 +34,13 @@ public class UserService {
 		return user;
 	}
 	
+	@Transactional
+	public void update(User user) {
+		User persistance = userRepository.findById(user.getId()).orElseThrow(() -> {
+			return new IllegalArgumentException("회원을 찾을 수 없습니다.");
+		});
+		persistance.setPhonenum(user.getPhonenum());
+		persistance.setAddress(user.getAddress());
+	}
+	
 }

@@ -6,13 +6,13 @@
 		<small>평일 09:00 ~ 18:00 (주말 & 공휴일 제외)</small><br />
 		<ul class="footer-link">
 			<li><a href="/brandstory">브랜드스토리</a></li>
-			<li><a href="#">회사소개</a></li>
+			<li><a href="/brandstory">회사소개</a></li>
 			<li><a href="#">채용정보</a></li>
 			<li><a href="#">이용약관</a></li>
 			<li><a href="#">개인정보처리방침</a></li>
-			<li><a href="/notice">공지사항</a></li>
-			<li><a href="/user/inquiry">고객센터</a></li>
-			<li><a href="/user/inquiry">고객의소리</a></li>
+			<li><a href="/board/notice">공지사항</a></li>
+			<li><a href="/board/inquiry">고객센터</a></li>
+			<li><a href="/board/inquiry">고객의소리</a></li>
 			<li><a href="#">전문가등록</a></li>
 			<li><a href="#">사업자구매회원</a></li>
 			<li><a href="#">제휴/광고문의</a></li>

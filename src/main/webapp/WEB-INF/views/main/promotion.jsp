@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="promotion" class="promotion">
 	<h3>기획전</h3>
-	<a href="/promotion" class="small-link">>> 기획전 모두 보러가기</a>
+	<a href="/board/promotion" class="small-link">>> 기획전 모두 보러가기</a>
 	<div class="inner-div">
 		<div class="container-fluid">
 			<div class="row promo">

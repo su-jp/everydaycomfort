@@ -16,7 +16,7 @@
 					<button type="submit" class="btn">로그인</button>
 				</form>
 				<div class="div-login-sub">
-					<a href="#">비밀번호 재설정</a> <a href="/join">회원가입</a><br /> <br />
+					<a href="#">비밀번호 재설정</a> <a href="/joinForm">회원가입</a><br /> <br />
 					<hr />
 					<br />
 					<h6>SNS 계정으로 간편하게 로그인/회원가입하기</h6>
