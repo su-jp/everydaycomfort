@@ -46,11 +46,6 @@ public class UserController {
 		return "user/myInfo";
 	}
 	
-	@GetMapping("/user/orderlist")
-	public String openOrderList() {
-		return "user/orderList";
-	}
-	
 	@RequestMapping(value = "/emailCheck", method = RequestMethod.GET)
 	@ResponseBody
 	public int emailCheck(@RequestParam("email") String email) {

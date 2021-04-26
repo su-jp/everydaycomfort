@@ -57,4 +57,18 @@ public class ShopController {
 		model.addAttribute("orderNum", shopService.findLatestOrderNum(principal.getUser()));
 		return "user/purchase/orderSuccess";
 	}
+	
+	@GetMapping("/user/orderlist")
+	public String openOrderList(Model model, @AuthenticationPrincipal PrincipalDetail principal) {
+		model.addAttribute("orders", shopService.findOrders(principal.getUser()));
+		return "user/purchase/orderList";
+	}
+	
+	@GetMapping("/user/orderlist/{id}")
+	public String openOrderDetail(@PathVariable int id, Model model) {
+		model.addAttribute("details", shopService.callOrderDetails(id));
+		model.addAttribute("order", shopService.findOrderByOrderId(id));
+		return "user/purchase/orderDetail";
+	}
+	
 }

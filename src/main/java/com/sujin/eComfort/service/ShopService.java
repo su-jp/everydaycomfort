@@ -112,4 +112,23 @@ public class ShopService {
 		List<PurchaseOrder> pos = purchaseOrderRepository.findAllByUserIdOrderByIdDesc(user.getId());
 		return pos.get(0).getOrderNum();
 	}
+	
+	@Transactional
+	public List<PurchaseOrder> findOrders(User user) {
+		return purchaseOrderRepository.findAllByUserIdOrderByIdDesc(user.getId());
+	}
+	
+	@Transactional
+	public PurchaseOrder findOrderByOrderId(int orderId) {
+		PurchaseOrder po = purchaseOrderRepository.findById(orderId)
+				.orElseThrow(()->{
+					return new IllegalArgumentException("주문 조회 실패 : 주문 번호를 찾을 수 없습니다.");
+				});
+		return po;
+	}
+	
+	@Transactional
+	public List<OrderDetail> callOrderDetails(int poId) {
+		return orderDetailRepository.findAllByPurchaseOrderId(poId);
+	}
 }
