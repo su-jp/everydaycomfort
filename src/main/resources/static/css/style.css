@@ -917,3 +917,31 @@ body {
 	background-color: var(--light-brown);
 	color: white;
 }
+.div-orderSuccess {
+	text-align: center;
+	padding: 40px 0 30px 25px;
+}
+.div-orderSuccess h3 {
+	text-align: center;
+	padding-bottom: 40px;
+	font-family: 'twayair';
+	font-size: 36px;
+}
+.div-orderSuccess p {
+	padding: 40px 0;
+	font-size: 20px;
+}
+.div-orderSuccess .btn {
+	padding: 10px 20px;
+	background-color: var(--background-color);
+	border-style: solid;
+	border-color: var(--light-brown);
+	color: var(--light-brown);
+	border-radius: 4px;
+}
+.div-orderSuccess .btn:hover {
+	outline: none;
+	border-color: var(--light-brown);
+	background-color: var(--light-brown);
+	color: white;
+}

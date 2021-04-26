@@ -11,10 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sujin.eComfort.dto.OrderRequestDTO;
 import com.sujin.eComfort.dto.ProductSaveRequestDTO;
 import com.sujin.eComfort.model.Cart;
-import com.sujin.eComfort.model.UserOrder;
+import com.sujin.eComfort.model.OrderDetail;
+import com.sujin.eComfort.model.PurchaseOrder;
 import com.sujin.eComfort.model.User;
 import com.sujin.eComfort.repository.CartRepository;
-import com.sujin.eComfort.repository.UserOrderRepository;
+import com.sujin.eComfort.repository.OrderDetailRepository;
+import com.sujin.eComfort.repository.PurchaseOrderRepository;
 import com.sujin.eComfort.repository.UserRepository;
 
 @Service
@@ -27,7 +29,10 @@ public class ShopService {
 	private UserRepository userRepository;
 	
 	@Autowired
-	private UserOrderRepository userOrderRepository;
+	private PurchaseOrderRepository purchaseOrderRepository;
+	
+	@Autowired
+	private OrderDetailRepository orderDetailRepository;
 	
 	@Transactional
 	public void addItem(ProductSaveRequestDTO productSaveRequestDTO, User requestUser) {
@@ -82,23 +87,29 @@ public class ShopService {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMdd");
 		SimpleDateFormat timeFormat = new SimpleDateFormat("HHmmss");
 		List<Cart> carts = cartRepository.findAllByUserId(requestUser.getId());
+		PurchaseOrder order = PurchaseOrder.builder()
+				.user(requestUser)
+				.totalAmount(orderRequestDTO.getTotalAmount())
+				.payMethod(orderRequestDTO.getPayment())
+				.orderNum(dateFormat.format(now)+"-"+requestUser.getId()+"-"+timeFormat.format(now))
+				//포인트,쿠폰
+				.build();
+		purchaseOrderRepository.save(order);
 		for(Cart cart : carts) {
-			UserOrder order = UserOrder.builder()
-					.user(requestUser)
+			OrderDetail detail = OrderDetail.builder()
+					.purchaseOrder(order)
 					.productTitle(cart.getProductTitle())
 					.productImage(cart.getProductImage())
 					.productPrice(cart.getProductPrice())
 					.productQuantity(cart.getProductQuantity())
-					.totalAmount(orderRequestDTO.getTotalAmount())
-					.payMethod(orderRequestDTO.getPayment())
-					.orderNum(dateFormat.format(now)+"-"+requestUser.getId()+"-"+timeFormat.format(now))
 					.build();
-			userOrderRepository.save(order);
+			orderDetailRepository.save(detail);
 		}
 	}
 	
 	@Transactional
 	public String findLatestOrderNum(User user) {
-		return userOrderRepository.findByUserId(user.getId()).getOrderNum();
+		List<PurchaseOrder> pos = purchaseOrderRepository.findAllByUserIdOrderByIdDesc(user.getId());
+		return pos.get(0).getOrderNum();
 	}
 }
