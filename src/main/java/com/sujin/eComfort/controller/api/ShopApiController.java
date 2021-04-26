@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sujin.eComfort.config.auth.PrincipalDetail;
 import com.sujin.eComfort.dto.ResponseDTO;
-import com.sujin.eComfort.dto.productSaveRequestDTO;
+import com.sujin.eComfort.dto.OrderRequestDTO;
+import com.sujin.eComfort.dto.ProductSaveRequestDTO;
 import com.sujin.eComfort.service.ShopService;
 
 @RestController
@@ -22,7 +23,7 @@ public class ShopApiController {
 	private ShopService shopService;
 	
 	@PostMapping("/api/shop/item")
-	public ResponseDTO<Integer> addItem(@RequestBody productSaveRequestDTO productSaveRequestDTO,
+	public ResponseDTO<Integer> addItem(@RequestBody ProductSaveRequestDTO productSaveRequestDTO,
 			@AuthenticationPrincipal PrincipalDetail principal) {
 		shopService.addItem(productSaveRequestDTO, principal.getUser());
 		return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
@@ -47,9 +48,16 @@ public class ShopApiController {
 	}
 	
 	@PostMapping("/api/shop/item/{productId}")
-	public ResponseDTO<Integer> directPurchase(@RequestBody productSaveRequestDTO productSaveRequestDTO,
+	public ResponseDTO<Integer> directPurchase(@RequestBody ProductSaveRequestDTO productSaveRequestDTO,
 			@AuthenticationPrincipal PrincipalDetail principal) {
 		shopService.addItem(productSaveRequestDTO, principal.getUser());
+		return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
+	}
+	
+	@PostMapping("/api/order")
+	public ResponseDTO<Integer> makeOrder(@RequestBody OrderRequestDTO orderRequestDTO,
+			@AuthenticationPrincipal PrincipalDetail principal) {
+		shopService.order(orderRequestDTO, principal.getUser());
 		return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
 	}
 }

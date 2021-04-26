@@ -51,4 +51,10 @@ public class ShopController {
 		model.addAttribute("carts", shopService.directPurchase(productId));
 		return "user/purchase/order";
 	}
+	
+	@GetMapping("/user/orderpage/success")
+	public String openOrderSuccess(Model model, @AuthenticationPrincipal PrincipalDetail principal) {
+		model.addAttribute("orderNum", shopService.findLatestOrderNum(principal.getUser()));
+		return "user/purchase/orderSuccess";
+	}
 }

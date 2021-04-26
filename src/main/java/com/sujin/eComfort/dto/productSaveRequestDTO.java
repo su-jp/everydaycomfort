@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class productSaveRequestDTO {
+public class ProductSaveRequestDTO {
 	private String productId;
 	private String productTitle;
 	private String productImage;

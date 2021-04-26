@@ -30,12 +30,12 @@ function directPurchase() {
 	}
 	$.ajax({
 		type: "POST",
-		url: "/api/shop/item/"+data.productId,
+		url: "/api/shop/item/" + data.productId,
 		data: JSON.stringify(data),
 		contentType: "application/json; charset=utf-8",
 		dataType: "json"
 	}).done(function() {
-		location.href = "/user/orderpage/"+data.productId;
+		location.href = "/user/orderpage/" + data.productId;
 	}).fail(function(error) {
 		alert(JSON.stringify(error));
 	});
@@ -184,4 +184,53 @@ function itemQuantity(id, request, qty) {
 			alert(JSON.stringify(error));
 		});
 	}
+}
+//결제수단확인
+function paymentChk() {
+	let payment = document.getElementById('payment').options[document.getElementById('payment').selectedIndex].text;
+	//let coupon = document.getElementById('coupon').options[document.getElementById('coupon').selectedIndex].text;
+	//let point = $('#point').val();
+	if (payment == "결제수단선택") {
+		Swal.fire({
+			icon: 'warning',
+			text: '결제수단을 선택해주세요.',
+			confirmButtonText: '확인'
+		}).then(() => {
+			return;
+		});
+	} else if (payment == "무통장입금") {
+		makeOrder(payment);
+	} else if (payment == "카드결제") {
+		alert("준비중입니다.");
+		return;
+	}
+}
+//무통장입금 주문하기
+function makeOrder(payment) {
+	var amount = $('#totalAmount').val();
+	let data = {
+		totalAmount : Math.ceil(amount),
+		payment : payment
+		//coupon : document.getElementById('coupon').options[document.getElementById('coupon').selectedIndex].text,
+		//point : $('#point').val()
+	};
+	$.ajax({
+		type: "POST",
+		url: "/api/order",
+		data: JSON.stringify(data),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json"
+	}).done(function() {
+		//장바구니비우기
+		$.ajax({
+			type: "DELETE",
+			url: "/api/cart/all",
+			dataType: "json"
+		}).done(function() {
+			location.href = "/user/orderpage/success";
+		});
+	}).fail(function(error) {
+		alert(JSON.stringify(error));
+	});
+
 }

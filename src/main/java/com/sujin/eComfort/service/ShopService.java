@@ -1,15 +1,20 @@
 package com.sujin.eComfort.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sujin.eComfort.dto.productSaveRequestDTO;
+import com.sujin.eComfort.dto.OrderRequestDTO;
+import com.sujin.eComfort.dto.ProductSaveRequestDTO;
 import com.sujin.eComfort.model.Cart;
+import com.sujin.eComfort.model.UserOrder;
 import com.sujin.eComfort.model.User;
 import com.sujin.eComfort.repository.CartRepository;
+import com.sujin.eComfort.repository.UserOrderRepository;
 import com.sujin.eComfort.repository.UserRepository;
 
 @Service
@@ -21,9 +26,11 @@ public class ShopService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private UserOrderRepository userOrderRepository;
 	
 	@Transactional
-	public void addItem(productSaveRequestDTO productSaveRequestDTO, User requestUser) {
+	public void addItem(ProductSaveRequestDTO productSaveRequestDTO, User requestUser) {
 		User user = userRepository.findById(requestUser.getId())
 				.orElseThrow(()->{
 					return new IllegalArgumentException("상품 담기 실패 : 회원 정보를 찾을 수 없습니다.");
@@ -67,5 +74,31 @@ public class ShopService {
 	@Transactional(readOnly = true)
 	public List<Cart> directPurchase(String productId) {
 		return cartRepository.findAllByProductId(productId);
+	}
+	
+	@Transactional
+	public void order(OrderRequestDTO orderRequestDTO, User requestUser) {
+		Date now = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMdd");
+		SimpleDateFormat timeFormat = new SimpleDateFormat("HHmmss");
+		List<Cart> carts = cartRepository.findAllByUserId(requestUser.getId());
+		for(Cart cart : carts) {
+			UserOrder order = UserOrder.builder()
+					.user(requestUser)
+					.productTitle(cart.getProductTitle())
+					.productImage(cart.getProductImage())
+					.productPrice(cart.getProductPrice())
+					.productQuantity(cart.getProductQuantity())
+					.totalAmount(orderRequestDTO.getTotalAmount())
+					.payMethod(orderRequestDTO.getPayment())
+					.orderNum(dateFormat.format(now)+"-"+requestUser.getId()+"-"+timeFormat.format(now))
+					.build();
+			userOrderRepository.save(order);
+		}
+	}
+	
+	@Transactional
+	public String findLatestOrderNum(User user) {
+		return userOrderRepository.findByUserId(user.getId()).getOrderNum();
 	}
 }
