@@ -10,6 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class productSaveRequestDTO {
+	private String productId;
 	private String productTitle;
 	private String productImage;
 	private Integer productLprice;

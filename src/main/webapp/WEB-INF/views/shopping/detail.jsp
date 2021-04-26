@@ -54,11 +54,12 @@
 								<button type="button" class="btn2" onclick="loginRequired()">바로구매</button>
 							</c:when>
 							<c:otherwise>
+								<input type="hidden" id="productId" value="${product.productId}">
 								<input type="hidden" id="productTitle" value="${product.title}">
 								<input type="hidden" id="productImage" value="${product.image}">
 								<input type="hidden" id="productPrice" value="${product.lprice}">
-								<button type="button" class="btn1" onclick="cartNullCheck()">장바구니</button>
-								<button type="button" class="btn2">바로구매</button>
+								<button type="button" class="btn1" id="cart" onclick="cartNullCheck(this)">장바구니</button>
+								<button type="button" class="btn2" onclick="directPurchase()">바로구매</button>
 							</c:otherwise>
 						</c:choose>
 						<div class=""></div>

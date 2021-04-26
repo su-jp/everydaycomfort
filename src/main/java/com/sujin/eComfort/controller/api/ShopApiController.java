@@ -45,4 +45,11 @@ public class ShopApiController {
 		shopService.deleteAll(principal.getUser());
 		return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
 	}
+	
+	@PostMapping("/api/shop/item/{productId}")
+	public ResponseDTO<Integer> directPurchase(@RequestBody productSaveRequestDTO productSaveRequestDTO,
+			@AuthenticationPrincipal PrincipalDetail principal) {
+		shopService.addItem(productSaveRequestDTO, principal.getUser());
+		return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
+	}
 }

@@ -4,7 +4,7 @@ function callList(request) {
 	location.href = '/shop/' + category;
 }
 //수량 null체크
-function cartNullCheck() {
+function cartNullCheck(request) {
 	let qty = document.getElementById('productQuantity').options[document.getElementById('productQuantity').selectedIndex].text;
 	if (qty == "수량선택") {
 		Swal.fire({
@@ -12,9 +12,33 @@ function cartNullCheck() {
 			text: '수량을 선택해주세요.',
 			confirmButtonText: '확인'
 		});
-	} else {
+	} else if (request.id == "cart") {
 		addItem(qty);
+	} else {
+		directPurchase(qty);
 	}
+}
+//바로구매
+function directPurchase() {
+	let qty = document.getElementById('productQuantity').options[document.getElementById('productQuantity').selectedIndex].text;
+	let data = {
+		productId: $("#productId").val(),
+		productTitle: $("#productTitle").val(),
+		productImage: $("#productImage").val(),
+		productLprice: $("#productPrice").val(),
+		productQuantity: qty
+	}
+	$.ajax({
+		type: "POST",
+		url: "/api/shop/item/"+data.productId,
+		data: JSON.stringify(data),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json"
+	}).done(function() {
+		location.href = "/user/orderpage/"+data.productId;
+	}).fail(function(error) {
+		alert(JSON.stringify(error));
+	});
 }
 //장바구니 상품추가
 function addItem(qty) {
@@ -44,6 +68,8 @@ function addItem(qty) {
 				return;
 			}
 		});
+	}).fail(function(error) {
+		alert(JSON.stringify(error));
 	});
 }
 //장바구니 선택 삭제

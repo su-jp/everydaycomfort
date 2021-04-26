@@ -21,7 +21,6 @@ import lombok.Setter;
 @Entity
 public class Cart {
 	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -29,6 +28,8 @@ public class Cart {
 	@ManyToOne
 	@JoinColumn(name="userId")
 	private User user;
+	
+	private String productId;
 	
 	private String productTitle;
 	

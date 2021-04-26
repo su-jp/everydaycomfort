@@ -1,6 +1,5 @@
 package com.sujin.eComfort.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -106,7 +105,6 @@ public class BoardController {
 	
 	@GetMapping("/api/board/{boardId}/updateForm")
 	public String updateForm(@PathVariable int boardId, Model model) {
-		System.out.println("id :: "+boardId);
 		model.addAttribute("board", boardService.read(boardId));
 		return "board/updateForm";
 	}

@@ -7,7 +7,9 @@
 				<h3>장바구니</h3>
 				<c:choose>
 					<c:when test="${empty carts}">
-						<h4>장바구니가 비어있어요 😥<br/><br/>인테리어를 즐기러 가볼까요?</h4>
+						<h4>
+							장바구니가 비어있어요 😥<br /> <br />인테리어를 즐기러 가볼까요?
+						</h4>
 						<div class="div-btn-center">
 							<a href="/shop" class="btn btn-outline-dark btn-large">상품 담으러 가기</a>
 						</div>
@@ -28,7 +30,8 @@
 									<div class="col-sm-5">
 										<p>${cart.productTitle}</p>
 										<p>
-											<fmt:formatNumber value="${cart.productPrice}" type="number" />원
+											<fmt:formatNumber value="${cart.productPrice}" type="number" />
+											원
 										</p>
 										<p>
 											<button class="btn btn-outline-light text-dark" onclick="itemQuantity(${cart.id}, -1, ${cart.productQuantity})">＜</button>
@@ -40,36 +43,40 @@
 									</div>
 									<div class="col-sm-3 div-item-right">
 										<div class="div-deleteBtn">
-										<button class="btn btn-outline-light text-dark" onclick="deleteSelectedItem(${cart.id})">X</button>
+											<button class="btn btn-outline-light text-dark" onclick="deleteSelectedItem(${cart.id})">X</button>
 										</div>
 										<div class="p-itemPrice">
-											<fmt:formatNumber value="${eachAmount}" type="number" />원
+											<fmt:formatNumber value="${eachAmount}" type="number" />
+											원
 										</div>
 									</div>
 								</div>
 							</c:forEach>
 						</div>
-						<hr/>
+						<hr />
 						<div class="div-amount">
 							<h6>
 								총 상품금액&nbsp;
-								<fmt:formatNumber value="${totalAmount}" type="number" />원
+								<fmt:formatNumber value="${totalAmount}" type="number" />
+								원
 							</h6>
 							<h6>
 								<c:set var="discountAmount" value="${totalAmount * 0.1}" />
-								총 할인금액&nbsp;  -
-								<fmt:formatNumber value="${discountAmount}" type="number" />원
+								총 할인금액&nbsp; -
+								<fmt:formatNumber value="${discountAmount}" type="number" />
+								원
 							</h6>
 							<h5>
 								결제금액&nbsp;
 								<c:set var="finalAmount" value="${totalAmount - discountAmount}" />
-								<fmt:formatNumber value="${finalAmount}" type="number" />원
+								<fmt:formatNumber value="${finalAmount}" type="number" />
+								원
 							</h5>
 						</div>
-							<div class="div-btn">
+						<div class="div-btn">
 							<p></p>
 							<a href="/user/orderpage" class="btn btn-outline-dark btn-large">구매하기</a>
-							</div>
+						</div>
 					</c:otherwise>
 				</c:choose>
 			</div>

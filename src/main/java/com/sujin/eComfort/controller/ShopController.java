@@ -1,19 +1,14 @@
 package com.sujin.eComfort.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sujin.eComfort.config.auth.PrincipalDetail;
 import com.sujin.eComfort.controller.api.ShopOpenApiController;
-import com.sujin.eComfort.model.Cart;
 import com.sujin.eComfort.model.Product;
 import com.sujin.eComfort.service.ShopService;
 
@@ -31,9 +26,9 @@ public class ShopController {
 		return "pages/categoryPage";
 	}
 	
-	@RequestMapping("/shop/detail/{productTitle}")
-	public String openDetail(@PathVariable(name = "productTitle") String title, Model model) {
-		Product product = shopOpenApiController.callItemDetail(title+"");
+	@GetMapping("/shop/detail/{productTitle}")
+	public String openDetail(@PathVariable String productTitle, Model model) {
+		Product product = shopOpenApiController.callItemDetail(productTitle+"");
 		model.addAttribute("product", product);
 		return "shopping/detail";
 	}
@@ -50,11 +45,10 @@ public class ShopController {
 		return "user/purchase/order";
 	}
 	
-	@GetMapping("/user/orderpage/{cartId}")
-	public String openDirectOrderPage(@PathVariable int cartId, Model model) {
-		List<Cart> carts = new ArrayList<Cart>();
-		carts.add(null); //shopService.get(cartId)
-		model.addAttribute("carts", carts);
+	@GetMapping("/user/orderpage/{productId}")
+	public String openDirectOrderPage(@PathVariable String productId, Model model,
+			@AuthenticationPrincipal PrincipalDetail principal) {
+		model.addAttribute("carts", shopService.directPurchase(productId));
 		return "user/purchase/order";
 	}
 }

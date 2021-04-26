@@ -48,7 +48,7 @@ public class Board {
 	
 	private int count;
 	
-	@ManyToOne(cascade = CascadeType.REMOVE)
+	@ManyToOne
 	@JoinColumn(name="userId")
 	private User user;
 	

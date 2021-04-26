@@ -21,6 +21,7 @@ public class ShopService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	
 	@Transactional
 	public void addItem(productSaveRequestDTO productSaveRequestDTO, User requestUser) {
 		User user = userRepository.findById(requestUser.getId())
@@ -30,6 +31,7 @@ public class ShopService {
 		
 		Cart cart = Cart.builder()
 				.user(user)
+				.productId(productSaveRequestDTO.getProductId())
 				.productTitle(productSaveRequestDTO.getProductTitle())
 				.productImage(productSaveRequestDTO.getProductImage())
 				.productPrice(productSaveRequestDTO.getProductLprice())
@@ -60,5 +62,10 @@ public class ShopService {
 	@Transactional
 	public void deleteAll(User user) {
 		cartRepository.deleteAllByUserId(user.getId());
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Cart> directPurchase(String productId) {
+		return cartRepository.findAllByProductId(productId);
 	}
 }
