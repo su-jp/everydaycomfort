@@ -58,7 +58,8 @@ public class UserController {
 	}
 	
 	@GetMapping("/user/point")
-	public String openPointPage() {
+	public String openPointPage(Model model, @AuthenticationPrincipal PrincipalDetail principal) {
+		model.addAttribute("user", userService.findUser(principal.getUser().getEmail()));
 		return "user/pointPage";
 	}
 }

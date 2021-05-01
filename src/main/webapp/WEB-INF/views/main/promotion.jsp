@@ -6,10 +6,10 @@
 		<div class="container-fluid">
 			<div class="row promo">
 				<div class="col-sm-6">
-					<img alt="promotion" src="/images/promotion1.jpg" class="rounded mx-auto d-block img-promo">
+					<img alt="promotion1" src="/images/promotion1.jpg" class="rounded mx-auto d-block img-promo" onclick="location.href='/promotion/kitchen'">
 				</div>
 				<div class="col-sm-6">
-					<img alt="promotion" src="/images/promotion2.jpg" class="rounded mx-auto d-block img-promo">
+					<img alt="promotion2" src="/images/promotion2.jpg" class="rounded mx-auto d-block img-promo" onclick="location.href='/promotion/doolsam'">
 				</div>
 			</div>
 			<br>

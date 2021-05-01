@@ -62,16 +62,16 @@
 				</ul>
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<img src="/images/promotion1.jpg" alt="promo">
+						<img src="/images/promotion1.jpg" alt="promo1" onclick="location.href='/promotion/kitchen'">
 					</div>
 					<div class="carousel-item">
-						<img src="/images/promotion2.jpg" alt="promo">
+						<img src="/images/promotion2.jpg" alt="promo2" onclick="location.href='/promotion/doolsam'">
 					</div>
 					<div class="carousel-item">
-						<img src="/images/promotion3.jpg" alt="promo">
+						<img src="/images/promotion3.jpg" alt="promo3" onclick="location.href='/promotion/desk'">
 					</div>
 					<div class="carousel-item">
-						<img src="/images/promotion4.jpg" alt="promo">
+						<img src="/images/promotion4.jpg" alt="promo4" onclick="location.href='/promotion/plant'">
 					</div>
 				</div>
 				<a class="carousel-control-prev" href="#demo" data-slide="prev"> <span class="carousel-control-prev-icon"></span>

@@ -52,6 +52,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 					.email(username)
 					.password(password)
 					.name(name)
+					.point(5000)
 					.role(role)
 					.oauth(provider)
 					.build();

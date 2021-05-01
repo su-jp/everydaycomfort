@@ -386,6 +386,9 @@ body {
 .promotion .inner-div {
 	padding-top: 60px;
 }
+.promotion img {
+	cursor: pointer;
+}
 .qna {
 	padding-bottom: 30px;
 }
@@ -461,6 +464,9 @@ body {
 }
 .div-category .carousel-item {
   	text-align: center;
+}
+.div-category .carousel-item img {
+  	cursor: pointer;
 }
 .div-shop .card {
 	margin: 20px;
