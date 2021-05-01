@@ -238,7 +238,7 @@ body {
 	width: 350px;
 }
 .brand-ad img:hover {
-	opacity: 0.9;
+	opacity: 0.8;
 }
 .brand-ad img {
 	margin-top: 50px;
@@ -860,6 +860,10 @@ body {
 	padding-top: 50px;
 	font-weight: bold;
 }
+.div-order font {
+	padding-top: 50px;
+	font-family: 'twayair';
+}
 .div-order label {
 	margin-left: 20px;
 }
@@ -917,6 +921,19 @@ body {
 	border-color: var(--light-brown);
 	background-color: var(--light-brown);
 	color: white;
+}
+.div-link-small {
+	padding: 0;
+	text-align: right;
+}
+.link-small {
+	font-size: 14px;
+	text-decoration: none;
+	color: var(--light-brown);
+}
+.link-small:hover {
+	cursor: pointer;
+	color: var(--light-brown);
 }
 .div-orderSuccess {
 	text-align: center;

@@ -58,6 +58,11 @@ public class User {
 	@OrderBy("id asc")
 	private List<Coupon> coupons;
 	
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties({"user"})
+	@OrderBy("id asc")
+	private List<PurchaseOrder> pos;
+	
 	private int point;
 	
 	private String role;

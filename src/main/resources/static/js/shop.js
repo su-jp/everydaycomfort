@@ -208,17 +208,22 @@ function paymentChk() {
 	} else if (payment == "무통장입금") {
 		makeOrder(payment);
 	} else if (payment == "카드결제") {
-		alert("준비중입니다.");
-		return;
+		Swal.fire({
+			icon: 'info',
+			text: '카드결제 기능은 준비중입니다.',
+			confirmButtonText: '확인'
+		}).then(() => {
+			return;
+		});
 	}
 }
 //무통장입금 주문하기
 function makeOrder(payment) {
-	var amount = $('#totalAmount').val();
+	var amount = $('#totAmount').html();
 	let data = {
 		totalAmount: Math.ceil(amount),
-		payment: payment
-		//point : $('#point').val()
+		payment: payment,
+		point : $('#point').val()
 	};
 	$.ajax({
 		type: "POST",
@@ -297,10 +302,10 @@ $(document).ready(function() {
 	$("#point").on("change", function() {
 	var input = $("#point").val();
 	var totPoint = $("#totPoint").val();
-		if (input > totPoint) {
+		if (input > totPoint || input < 0) {
 			Swal.fire({
 				icon: 'warning',
-				text: '사용 가능 포인트를 초과했습니다.',
+				text: '사용 가능 범위를 벗어났습니다.',
 				confirmButtonText: '확인'
 			}).then(() => {
 				$("#point").val(totPoint);

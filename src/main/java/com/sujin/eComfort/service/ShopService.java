@@ -105,6 +105,13 @@ public class ShopService {
 			order.setOrderStatus("결제대기중");
 			order.setPayInfo("국민 000000-00-000000");
 		}
+		if(order.getUsedPoint() > 0) {
+			User user = userRepository.findById(requestUser.getId())
+					.orElseThrow(()->{
+						return new IllegalArgumentException("포인트 사용 실패 : 회원 정보를 찾을 수 없습니다.");
+					});
+			user.setPoint(requestUser.getPoint() - order.getUsedPoint());
+		}
 		purchaseOrderRepository.save(order);
 		for(Cart cart : carts) {
 			OrderDetail detail = OrderDetail.builder()
@@ -150,6 +157,13 @@ public class ShopService {
 					return new IllegalArgumentException("주문 취소 실패 : 주문 번호를 찾을 수 없습니다.");
 				});
 		po.setOrderStatus("주문취소");
+		if(po.getUsedPoint() > 0) {
+			User user = userRepository.findById(po.getUser().getId())
+					.orElseThrow(()->{
+						return new IllegalArgumentException("사용 포인트 복원 실패 : 회원 정보를 찾을 수 없습니다.");
+					});
+			user.setPoint(user.getPoint() + po.getUsedPoint());
+		}
 	}
 	
 	@Transactional

@@ -44,4 +44,8 @@ public class UserService {
 		persistance.setAddress(user.getAddress());
 	}
 	
+	@Transactional
+	public void delete(User user) {
+		userRepository.deleteById(user.getId());
+	}
 }

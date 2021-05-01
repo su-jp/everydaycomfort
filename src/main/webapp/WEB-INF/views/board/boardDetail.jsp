@@ -5,7 +5,7 @@
 		<div class="container div-board-detail">
 			<div class="div-fullsize">
 				<c:if test="${board.board eq 'qna'}">
-					<h3>인테리어 노하우</h3>
+					<h3>질문과 답변</h3>
 				</c:if>
 				<c:if test="${board.board eq 'inquiry'}">
 					<h3>1:1 문의</h3>

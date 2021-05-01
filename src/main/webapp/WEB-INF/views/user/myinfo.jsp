@@ -5,9 +5,12 @@
 		<div class="container div-myinfo">
 			<div class="div-form">
 				<h3>회원정보수정</h3>
+				<div class="div-link-small">
+					<a class="link-small" onclick="cancelMembership()">회원탈퇴하기</a>
+				</div>
 				<hr />
 				<form class="was-validated">
-					<input type="hidden" id="userId" value="${principal.user.id}"/>
+					<input type="hidden" id="userId" value="${principal.user.id}" />
 					<div class="form-group">
 						<label for="email">이메일 아이디</label> <input type="email" class="form-control" placeholder="이메일" id="email" value="${user.email}" readonly>
 					</div>

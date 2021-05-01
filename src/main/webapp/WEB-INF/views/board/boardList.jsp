@@ -4,7 +4,7 @@
 <div class="main-div">
 	<div class="container div-board div-fullsize">
 		<c:if test="${boardCode eq 'qna'}">
-			<h3>인테리어 노하우</h3>
+			<h3>질문과 답변</h3>
 		</c:if>
 		<c:if test="${boardCode eq 'notice'}">
 			<h3>공지사항</h3>

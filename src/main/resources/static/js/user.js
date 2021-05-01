@@ -184,7 +184,7 @@ function profileUpdate() {
 	} else {
 		$.ajax({
 		type: "PUT",
-		url: "/user/myinfo",
+		url: "/api/user/myinfo",
 		data: JSON.stringify(data),
 		contentType: "application/json; charset=utf-8",
 		dataType: "json"
@@ -208,4 +208,35 @@ function profileUpdate() {
 		alert(JSON.stringify(error));
 	});
 	}
+}
+//회원탈퇴
+function cancelMembership() {
+	Swal.fire({
+		icon: 'warning',
+		title: '탈퇴하면 복구할 수 없습니다.',
+		text: '회원 탈퇴를 진행하시겠습니까?',
+		showCancelButton: true,
+		confirmButtonText: '확인',
+		cancelButtonText: '취소'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			$.ajax({
+				type: "DELETE",
+				url: "/api/user/cancel",
+				dataType: "json"
+			}).done(function() {
+				Swal.fire({
+					icon: 'info',
+					text: '회원 탈퇴가 완료되었습니다.',
+					confirmButtonText: '확인'
+				}).then(() => {
+					location.href = "/logout";
+				});
+			}).fail(function(error) {
+				alert(JSON.stringify(error));
+			});
+		} else {
+			return;
+		}
+	});
 }
