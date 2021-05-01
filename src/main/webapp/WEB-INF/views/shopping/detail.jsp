@@ -59,7 +59,7 @@
 								<input type="hidden" id="productImage" value="${product.image}">
 								<input type="hidden" id="productPrice" value="${product.lprice}">
 								<button type="button" class="btn1" id="cart" onclick="cartNullCheck(this)">장바구니</button>
-								<button type="button" class="btn2" onclick="cartNullCheck(this)">바로구매</button>
+								<button type="button" class="btn2" id="buy" onclick="cartNullCheck(this)">바로구매</button>
 							</c:otherwise>
 						</c:choose>
 						<div class=""></div>

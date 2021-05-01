@@ -42,7 +42,7 @@ public class ShopController {
 	@GetMapping("/user/orderpage")
 	public String openOrderPage(Model model, @AuthenticationPrincipal PrincipalDetail principal) {
 		model.addAttribute("carts", shopService.list(principal.getUser()));
-		model.addAttribute("coupons", shopService.callCoupons(principal.getUser()));
+		//model.addAttribute("coupons", shopService.callCoupons(principal.getUser()));
 		return "user/purchase/order";
 	}
 	
@@ -50,6 +50,7 @@ public class ShopController {
 	public String openDirectOrderPage(@PathVariable String productId, Model model,
 			@AuthenticationPrincipal PrincipalDetail principal) {
 		model.addAttribute("carts", shopService.directPurchase(productId));
+		model.addAttribute("chkDirect", "1");
 		return "user/purchase/order";
 	}
 	

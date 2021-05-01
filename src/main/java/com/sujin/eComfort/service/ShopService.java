@@ -126,6 +126,46 @@ public class ShopService {
 	}
 	
 	@Transactional
+	public void directOrder(int cartId, OrderRequestDTO orderRequestDTO, User requestUser) {
+		Date now = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMdd");
+		SimpleDateFormat timeFormat = new SimpleDateFormat("HHmmss");
+		Cart cart = cartRepository.findById(cartId)
+				.orElseThrow(()->{
+					return new IllegalArgumentException("구매 실패 : 물품 정보를 찾을 수 없습니다.");
+				});
+		PurchaseOrder order = PurchaseOrder.builder()
+				.user(requestUser)
+				.totalAmount(orderRequestDTO.getTotalAmount())
+				.payMethod(orderRequestDTO.getPayment())
+				.payInfo(orderRequestDTO.getPayInfo())
+				.usedCoupon(orderRequestDTO.getCoupon())
+				.usedPoint(orderRequestDTO.getPoint())
+				.orderNum(dateFormat.format(now)+"-"+requestUser.getId()+"-"+timeFormat.format(now))
+				.build();
+		if(order.getPayMethod().equals("무통장입금")) {
+			order.setOrderStatus("결제대기중");
+			order.setPayInfo("국민 000000-00-000000");
+		}
+		if(order.getUsedPoint() > 0) {
+			User user = userRepository.findById(requestUser.getId())
+					.orElseThrow(()->{
+						return new IllegalArgumentException("포인트 사용 실패 : 회원 정보를 찾을 수 없습니다.");
+					});
+			user.setPoint(requestUser.getPoint() - order.getUsedPoint());
+		}
+		purchaseOrderRepository.save(order);
+		OrderDetail detail = OrderDetail.builder()
+				.purchaseOrder(order)
+				.productTitle(cart.getProductTitle())
+				.productImage(cart.getProductImage())
+				.productPrice(cart.getProductPrice())
+				.productQuantity(cart.getProductQuantity())
+				.build();
+		orderDetailRepository.save(detail);
+	}
+	
+	@Transactional
 	public String findLatestOrderNum(User user) {
 		List<PurchaseOrder> pos = purchaseOrderRepository.findAllByUserIdOrderByIdDesc(user.getId());
 		return pos.get(0).getOrderNum();

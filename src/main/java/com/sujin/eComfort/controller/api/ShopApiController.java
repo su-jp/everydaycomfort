@@ -42,11 +42,11 @@ public class ShopApiController {
 	}
 	
 	@DeleteMapping("/api/cart/all")
-	public ResponseDTO<Integer> deleteItem(@AuthenticationPrincipal PrincipalDetail principal) {
+	public ResponseDTO<Integer> deleteAllItems(@AuthenticationPrincipal PrincipalDetail principal) {
 		shopService.deleteAll(principal.getUser());
 		return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
 	}
-	
+
 	@PostMapping("/api/shop/item/{productId}")
 	public ResponseDTO<Integer> directPurchase(@RequestBody ProductSaveRequestDTO productSaveRequestDTO,
 			@AuthenticationPrincipal PrincipalDetail principal) {
@@ -58,6 +58,13 @@ public class ShopApiController {
 	public ResponseDTO<Integer> makeOrder(@RequestBody OrderRequestDTO orderRequestDTO,
 			@AuthenticationPrincipal PrincipalDetail principal) {
 		shopService.order(orderRequestDTO, principal.getUser());
+		return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
+	}
+	
+	@PostMapping("/api/order/{cartId}")
+	public ResponseDTO<Integer> makeDirectOrder(@PathVariable int cartId,
+			@RequestBody OrderRequestDTO orderRequestDTO, @AuthenticationPrincipal PrincipalDetail principal) {
+		shopService.directOrder(cartId, orderRequestDTO, principal.getUser());
 		return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
 	}
 	

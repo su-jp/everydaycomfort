@@ -20,14 +20,6 @@ function cartNullCheck(request) {
 }
 //바로구매
 function directPurchase() {
-	Swal.fire({
-		icon: 'info',
-		text: '준비중입니다.',
-		confirmButtonText: '확인'
-	}).then(() => {
-		return;
-	});
-	/*
 	let qty = document.getElementById('productQuantity').options[document.getElementById('productQuantity').selectedIndex].text;
 	let data = {
 		productId: $("#productId").val(),
@@ -47,7 +39,6 @@ function directPurchase() {
 	}).fail(function(error) {
 		alert(JSON.stringify(error));
 	});
-	*/
 }
 //장바구니 상품추가
 function addItem(qty) {
@@ -219,30 +210,53 @@ function paymentChk() {
 }
 //무통장입금 주문하기
 function makeOrder(payment) {
+	var cartId = $("#cartId").val();
 	var amount = $('#totAmount').html();
 	let data = {
 		totalAmount: Math.ceil(amount),
 		payment: payment,
-		point : $('#point').val()
+		point: $('#point').val()
 	};
-	$.ajax({
-		type: "POST",
-		url: "/api/order",
-		data: JSON.stringify(data),
-		contentType: "application/json; charset=utf-8",
-		dataType: "json"
-	}).done(function() {
-		//장바구니비우기
+	//장바구니 구매
+	if (cartId == "undefined" || cartId == null || cartId == "") {
 		$.ajax({
-			type: "DELETE",
-			url: "/api/cart/all",
+			type: "POST",
+			url: "/api/order",
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=utf-8",
 			dataType: "json"
 		}).done(function() {
-			location.href = "/user/orderpage/success";
+			//장바구니비우기
+			$.ajax({
+				type: "DELETE",
+				url: "/api/cart/all",
+				dataType: "json"
+			}).done(function() {
+				location.href = "/user/orderpage/success";
+			});
+		}).fail(function(error) {
+			alert(JSON.stringify(error));
 		});
-	}).fail(function(error) {
-		alert(JSON.stringify(error));
-	});
+	} else { //바로 구매
+		$.ajax({
+			type: "POST",
+			url: "/api/order/" + cartId,
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json"
+		}).done(function() {
+			//장바구니비우기
+			$.ajax({
+				type: "DELETE",
+				url: "/api/cart/" + cartId,
+				dataType: "json"
+			}).done(function() {
+				location.href = "/user/orderpage/success";
+			});
+		}).fail(function(error) {
+			alert(JSON.stringify(error));
+		});
+	}
 }
 //주문취소
 function cancelOrder(orderId) {
@@ -298,10 +312,10 @@ $(document).ready(function() {
 	var totalAmount = $("#totAmount").html();
 	var pointVal = $("#totPoint").val();
 	$("#totAmount").html(totalAmount - pointVal);
-	
+
 	$("#point").on("change", function() {
-	var input = $("#point").val();
-	var totPoint = $("#totPoint").val();
+		var input = $("#point").val();
+		var totPoint = $("#totPoint").val();
 		if (input > totPoint || input < 0) {
 			Swal.fire({
 				icon: 'warning',
