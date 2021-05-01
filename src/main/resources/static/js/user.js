@@ -147,7 +147,7 @@ function loginRequired() {
 	}).then((result) => {
 		if (result.isConfirmed) {
 			location.href = "/loginForm";
-		} else if(window.location.pathname == "/board/inquiry") {
+		} else if (window.location.pathname == "/board/inquiry") {
 			location.href = "/";
 		} else {
 			return;
@@ -183,30 +183,30 @@ function profileUpdate() {
 		});
 	} else {
 		$.ajax({
-		type: "PUT",
-		url: "/api/user/myinfo",
-		data: JSON.stringify(data),
-		contentType: "application/json; charset=utf-8",
-		dataType: "json"
-	}).done(function(resp) {
-		if (resp == 500) {
-			Swal.fire({
-				icon: 'error',
-				title: '회원정보 수정 실패',
-				text: '관리자에게 문의하세요.'
-			});
-		} else {
-			Swal.fire({
-				icon: 'success',
-				text: '회원정보 수정이 완료되었습니다.',
-				confirmButtonText: '확인'
-			}).then(() => {
-				location.href = "/user/myinfo";
-			});
-		}
-	}).fail(function(error) {
-		alert(JSON.stringify(error));
-	});
+			type: "PUT",
+			url: "/api/user/myinfo",
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json"
+		}).done(function(resp) {
+			if (resp == 500) {
+				Swal.fire({
+					icon: 'error',
+					title: '회원정보 수정 실패',
+					text: '관리자에게 문의하세요.'
+				});
+			} else {
+				Swal.fire({
+					icon: 'success',
+					text: '회원정보 수정이 완료되었습니다.',
+					confirmButtonText: '확인'
+				}).then(() => {
+					location.href = "/user/myinfo";
+				});
+			}
+		}).fail(function(error) {
+			alert(JSON.stringify(error));
+		});
 	}
 }
 //회원탈퇴
@@ -238,5 +238,14 @@ function cancelMembership() {
 		} else {
 			return;
 		}
+	});
+}
+function resetPwd() {
+	Swal.fire({
+		icon: 'info',
+		text: '준비중입니다.',
+		confirmButtonText: '확인'
+	}).then(() => {
+		return;
 	});
 }

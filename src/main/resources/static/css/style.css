@@ -110,6 +110,7 @@ body {
 }
 .sub-header div a{
 	margin-left: 20px;
+	padding-bottom: 5px;
     text-align: center;
     color: black;
 }
@@ -670,6 +671,7 @@ body {
 .div-login-sub a, .div-login-sub a:hover {
 	margin: 0 5px;
 	text-decoration: none;
+	cursor: pointer;
 	font-size: 14px;
 	color: black;
 }

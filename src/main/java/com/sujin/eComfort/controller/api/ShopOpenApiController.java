@@ -69,6 +69,24 @@ public class ShopOpenApiController {
 		return "shopping/search";
 	}
 	
+	@GetMapping("/promotion/{promo}")
+	public String promotion(@PathVariable String promo, Model model, @PageableDefault(size = 40) Pageable pageable) {
+		String keyword = null;
+		if(promo.equals("kitchen")) {
+			keyword = "브랜드식기";
+		} else if(promo.equals("doolsam")) {
+			keyword = "한샘";
+		} else if(promo.equals("desk")) {
+			keyword = "데스크테리어";
+		} else if(promo.equals("plant")) {
+			keyword = "플랜테리어";
+		}
+		List<Product> requestList = callList(keyword);
+		Page<Product> pagedList = conversion(requestList, pageable);
+		model.addAttribute("list", pagedList);
+		return "shopping/search";
+	}
+	
 	private String removeTag(String originalString) {
         String cleanString = originalString.replace("<b>", "").replace("</b>", "")
         		.replace("/", "").replace("[", "").replace("]", "").replace("%", "퍼센트");
