@@ -60,4 +60,10 @@ public class ShopApiController {
 		shopService.order(orderRequestDTO, principal.getUser());
 		return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
 	}
+	
+	@DeleteMapping("/api/order/delete/{orderId}")
+	public ResponseDTO<Integer> deleteOrder(@PathVariable int orderId) {
+		shopService.deleteOrder(orderId);
+		return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
+	}
 }

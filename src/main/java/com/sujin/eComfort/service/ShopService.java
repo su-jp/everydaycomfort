@@ -131,4 +131,9 @@ public class ShopService {
 	public List<OrderDetail> callOrderDetails(int poId) {
 		return orderDetailRepository.findAllByPurchaseOrderId(poId);
 	}
+	
+	@Transactional
+	public void deleteOrder(int orderId) {
+		purchaseOrderRepository.deleteById(orderId);
+	}
 }

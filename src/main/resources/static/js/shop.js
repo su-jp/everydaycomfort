@@ -209,8 +209,8 @@ function paymentChk() {
 function makeOrder(payment) {
 	var amount = $('#totalAmount').val();
 	let data = {
-		totalAmount : Math.ceil(amount),
-		payment : payment
+		totalAmount: Math.ceil(amount),
+		payment: payment
 		//coupon : document.getElementById('coupon').options[document.getElementById('coupon').selectedIndex].text,
 		//point : $('#point').val()
 	};
@@ -232,5 +232,35 @@ function makeOrder(payment) {
 	}).fail(function(error) {
 		alert(JSON.stringify(error));
 	});
-
+}
+//주문취소
+function cancelOrder(orderId) {
+	Swal.fire({
+		icon: 'warning',
+		text: '주문을 취소하시겠습니까?',
+		showCancelButton: true,
+		confirmButtonText: '확인',
+		cancelButtonText: '취소'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			$.ajax({
+				type: "DELETE",
+				url: "/api/order/delete/" + orderId,
+				dataType: "json"
+			}).done(function() {
+				Swal.fire({
+					icon: 'info',
+					text: '주문이 취소되었습니다.',
+					confirmButtonText: '확인'
+				}).then(() => {
+					location.href = "/user/orderlist";
+				});
+			}).fail(function(error) {
+				alert(JSON.stringify(error));
+			});
+		} else {
+			console.log(orderNum);
+			return;
+		}
+	});
 }
