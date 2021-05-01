@@ -61,9 +61,14 @@ public class ShopApiController {
 		return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
 	}
 	
-	@DeleteMapping("/api/order/delete/{orderId}")
-	public ResponseDTO<Integer> deleteOrder(@PathVariable int orderId) {
-		shopService.deleteOrder(orderId);
+	@DeleteMapping("/api/order/cancel/{orderId}")
+	public ResponseDTO<Integer> cancelOrder(@PathVariable int orderId) {
+		shopService.cancelOrder(orderId);
 		return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
+	}
+
+	@PostMapping("/api/order/coupon/{couponId}")
+	public double chkCoupon(@PathVariable int couponId) {
+		return shopService.checkCouponById(couponId);
 	}
 }

@@ -11,10 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sujin.eComfort.dto.OrderRequestDTO;
 import com.sujin.eComfort.dto.ProductSaveRequestDTO;
 import com.sujin.eComfort.model.Cart;
+import com.sujin.eComfort.model.Coupon;
 import com.sujin.eComfort.model.OrderDetail;
 import com.sujin.eComfort.model.PurchaseOrder;
 import com.sujin.eComfort.model.User;
 import com.sujin.eComfort.repository.CartRepository;
+import com.sujin.eComfort.repository.CouponRepository;
 import com.sujin.eComfort.repository.OrderDetailRepository;
 import com.sujin.eComfort.repository.PurchaseOrderRepository;
 import com.sujin.eComfort.repository.UserRepository;
@@ -33,6 +35,9 @@ public class ShopService {
 	
 	@Autowired
 	private OrderDetailRepository orderDetailRepository;
+	
+	@Autowired
+	private CouponRepository couponRepository;
 	
 	@Transactional
 	public void addItem(ProductSaveRequestDTO productSaveRequestDTO, User requestUser) {
@@ -91,9 +96,15 @@ public class ShopService {
 				.user(requestUser)
 				.totalAmount(orderRequestDTO.getTotalAmount())
 				.payMethod(orderRequestDTO.getPayment())
+				.payInfo(orderRequestDTO.getPayInfo())
+				.usedCoupon(orderRequestDTO.getCoupon())
+				.usedPoint(orderRequestDTO.getPoint())
 				.orderNum(dateFormat.format(now)+"-"+requestUser.getId()+"-"+timeFormat.format(now))
-				//포인트,쿠폰
 				.build();
+		if(order.getPayMethod().equals("무통장입금")) {
+			order.setOrderStatus("결제대기중");
+			order.setPayInfo("국민 000000-00-000000");
+		}
 		purchaseOrderRepository.save(order);
 		for(Cart cart : carts) {
 			OrderDetail detail = OrderDetail.builder()
@@ -133,7 +144,25 @@ public class ShopService {
 	}
 	
 	@Transactional
-	public void deleteOrder(int orderId) {
-		purchaseOrderRepository.deleteById(orderId);
+	public void cancelOrder(int orderId) {
+		PurchaseOrder po = purchaseOrderRepository.findById(orderId)
+				.orElseThrow(()->{
+					return new IllegalArgumentException("주문 취소 실패 : 주문 번호를 찾을 수 없습니다.");
+				});
+		po.setOrderStatus("주문취소");
+	}
+	
+	@Transactional
+	public List<Coupon> callCoupons(User user) {
+		return couponRepository.findAllByUserId(user.getId());
+	}
+	
+	@Transactional
+	public double checkCouponById(int id) {
+		Coupon coupon = couponRepository.findById(id)
+				.orElseThrow(()->{
+					return new IllegalArgumentException("쿠폰 적용 실패 : 쿠폰 정보를 찾을 수 없습니다.");
+				});
+		return coupon.getDisAmount();
 	}
 }

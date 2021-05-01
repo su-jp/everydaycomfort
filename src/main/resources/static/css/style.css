@@ -1028,3 +1028,21 @@ body {
 	background-color: var(--light-brown);
 	color: white;
 }
+.div-pointpage h3 {
+	text-align: center;
+	margin: 20px 0 30px 25px;
+	font-family: 'twayair';
+	font-size: 28px;
+}
+.div-pointpage h4 {
+	text-align: center;
+	padding: 100px 0 0 30px;
+	font-size: 26px;
+}
+.div-pointpage font {
+	font-size: 18px;
+}
+.input-orderpage {
+	text-align: right;
+	border: 0;
+}

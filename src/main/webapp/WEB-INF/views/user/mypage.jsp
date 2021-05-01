@@ -30,7 +30,7 @@
 						</a>
 					</div>
 					<div class="col-sm-4">
-						<a href="#" class="btn-mypage">
+						<a href="/user/point" class="btn-mypage">
 							쿠폰/적립금
 							<font><br/><br/>쿠폰 및 적립금의 보유현황과<br/>사용내역을 확인할 수 있습니다.</font>
 						</a>

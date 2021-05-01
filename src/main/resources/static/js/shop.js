@@ -15,11 +15,19 @@ function cartNullCheck(request) {
 	} else if (request.id == "cart") {
 		addItem(qty);
 	} else {
-		directPurchase(qty);
+		directPurchase();
 	}
 }
 //바로구매
 function directPurchase() {
+	Swal.fire({
+		icon: 'info',
+		text: '준비중입니다.',
+		confirmButtonText: '확인'
+	}).then(() => {
+		return;
+	});
+	/*
 	let qty = document.getElementById('productQuantity').options[document.getElementById('productQuantity').selectedIndex].text;
 	let data = {
 		productId: $("#productId").val(),
@@ -39,6 +47,7 @@ function directPurchase() {
 	}).fail(function(error) {
 		alert(JSON.stringify(error));
 	});
+	*/
 }
 //장바구니 상품추가
 function addItem(qty) {
@@ -188,8 +197,6 @@ function itemQuantity(id, request, qty) {
 //결제수단확인
 function paymentChk() {
 	let payment = document.getElementById('payment').options[document.getElementById('payment').selectedIndex].text;
-	//let coupon = document.getElementById('coupon').options[document.getElementById('coupon').selectedIndex].text;
-	//let point = $('#point').val();
 	if (payment == "결제수단선택") {
 		Swal.fire({
 			icon: 'warning',
@@ -211,7 +218,6 @@ function makeOrder(payment) {
 	let data = {
 		totalAmount: Math.ceil(amount),
 		payment: payment
-		//coupon : document.getElementById('coupon').options[document.getElementById('coupon').selectedIndex].text,
 		//point : $('#point').val()
 	};
 	$.ajax({
@@ -245,7 +251,7 @@ function cancelOrder(orderId) {
 		if (result.isConfirmed) {
 			$.ajax({
 				type: "DELETE",
-				url: "/api/order/delete/" + orderId,
+				url: "/api/order/cancel/" + orderId,
 				dataType: "json"
 			}).done(function() {
 				Swal.fire({
@@ -264,3 +270,45 @@ function cancelOrder(orderId) {
 		}
 	});
 }
+//쿠폰선택
+/*
+$(document).ready(function() {
+	$("#coupon").on("change", function() {
+		var idx = document.getElementById('coupon').options[document.getElementById('coupon').selectedIndex].id;
+		$.ajax({
+			type: "POST",
+			url: "/api/order/coupon/" + this.value,
+			error: function() {
+				alert(JSON.stringify(error));
+			},
+			success: function(disAmount) {
+				
+			}
+		});
+	});
+});
+*/
+//적립금사용
+$(document).ready(function() {
+	var totalAmount = $("#totAmount").html();
+	var pointVal = $("#totPoint").val();
+	$("#totAmount").html(totalAmount - pointVal);
+	
+	$("#point").on("change", function() {
+	var input = $("#point").val();
+	var totPoint = $("#totPoint").val();
+		if (input > totPoint) {
+			Swal.fire({
+				icon: 'warning',
+				text: '사용 가능 포인트를 초과했습니다.',
+				confirmButtonText: '확인'
+			}).then(() => {
+				$("#point").val(totPoint);
+				$("#usedPoint").html(totPoint);
+			});
+		} else {
+			$("#usedPoint").html(input);
+			$("#totAmount").html(totalAmount - input);
+		}
+	});
+});

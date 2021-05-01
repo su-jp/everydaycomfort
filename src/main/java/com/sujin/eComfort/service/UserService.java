@@ -23,6 +23,7 @@ public class UserService {
 		String encPassword = encoder.encode(rawPassword);
 		user.setPassword(encPassword);
 		user.setRole("ROLE_USER");
+		user.setPoint(5000);
 		userRepository.save(user);
 	}
 	

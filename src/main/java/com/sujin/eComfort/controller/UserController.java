@@ -56,4 +56,9 @@ public class UserController {
 			return 1;
 		}
 	}
+	
+	@GetMapping("/user/point")
+	public String openPointPage() {
+		return "user/pointPage";
+	}
 }

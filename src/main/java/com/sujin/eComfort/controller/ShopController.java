@@ -42,6 +42,7 @@ public class ShopController {
 	@GetMapping("/user/orderpage")
 	public String openOrderPage(Model model, @AuthenticationPrincipal PrincipalDetail principal) {
 		model.addAttribute("carts", shopService.list(principal.getUser()));
+		model.addAttribute("coupons", shopService.callCoupons(principal.getUser()));
 		return "user/purchase/order";
 	}
 	
@@ -70,5 +71,5 @@ public class ShopController {
 		model.addAttribute("order", shopService.findOrderByOrderId(id));
 		return "user/purchase/orderDetail";
 	}
-	
+
 }
