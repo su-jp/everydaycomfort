@@ -945,3 +945,52 @@ body {
 	background-color: var(--light-brown);
 	color: white;
 }
+.div-orderlist h3 {
+	text-align: center;
+	margin: 20px 0 30px 25px;
+	font-family: 'twayair';
+	font-size: 28px;
+}
+.div-orderlist p {
+	margin: 0;
+	padding: 5px 0;
+}
+.div-orderlist-col-left {
+	margin-left: 40px;
+}
+.div-orderlist-col-center {
+	padding-top: 30px;
+}
+.div-orderlist-col-right {
+	text-align: right;
+}
+.div-orderlist-col-right .btn {
+	padding: 35px 10px;
+}
+.div-orderlist .btn-large {
+	font-size: 20px;
+	padding: 10px 30px;
+	margin-bottom: 20px;
+}
+.div-orderlist h4 {
+	text-align: center;
+	padding: 100px 0 0 30px;
+	font-size: 26px;
+}
+.div-orderlist .div-btn-center {
+	text-align: center;
+	padding: 60px 0 0 30px;
+}
+.div-orderlist .div-btn-center .btn {
+	background-color: var(--background-color);
+	border-style: solid;
+	border-color: var(--light-brown);
+	color: var(--light-brown);
+	border-radius: 4px;
+}
+.div-orderlist .div-btn-center .btn:hover {
+	outline: none;
+	border-color: var(--light-brown);
+	background-color: var(--light-brown);
+	color: white;
+}
