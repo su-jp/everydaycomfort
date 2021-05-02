@@ -97,7 +97,8 @@ public class ShopService {
 				.totalAmount(orderRequestDTO.getTotalAmount())
 				.payMethod(orderRequestDTO.getPayment())
 				.payInfo(orderRequestDTO.getPayInfo())
-				.usedCoupon(orderRequestDTO.getCoupon())
+				.usedCouponId(orderRequestDTO.getCouponId())
+				.usedCouponAmount(orderRequestDTO.getCouponAmount())
 				.usedPoint(orderRequestDTO.getPoint())
 				.orderNum(dateFormat.format(now)+"-"+requestUser.getId()+"-"+timeFormat.format(now))
 				.build();
@@ -111,6 +112,13 @@ public class ShopService {
 						return new IllegalArgumentException("포인트 사용 실패 : 회원 정보를 찾을 수 없습니다.");
 					});
 			user.setPoint(requestUser.getPoint() - order.getUsedPoint());
+		}
+		if(!order.getUsedCouponId().equals("쿠폰선택")) {
+			Coupon coupon = couponRepository.findById(Integer.parseInt(order.getUsedCouponId()))
+					.orElseThrow(()->{
+						return new IllegalArgumentException("쿠폰 사용 실패 : 쿠폰 정보를 찾을 수 없습니다.");
+					});
+			coupon.setValidChk(1);
 		}
 		purchaseOrderRepository.save(order);
 		for(Cart cart : carts) {
@@ -139,7 +147,8 @@ public class ShopService {
 				.totalAmount(orderRequestDTO.getTotalAmount())
 				.payMethod(orderRequestDTO.getPayment())
 				.payInfo(orderRequestDTO.getPayInfo())
-				.usedCoupon(orderRequestDTO.getCoupon())
+				.usedCouponId(orderRequestDTO.getCouponId())
+				.usedCouponAmount(orderRequestDTO.getCouponAmount())
 				.usedPoint(orderRequestDTO.getPoint())
 				.orderNum(dateFormat.format(now)+"-"+requestUser.getId()+"-"+timeFormat.format(now))
 				.build();
@@ -153,6 +162,13 @@ public class ShopService {
 						return new IllegalArgumentException("포인트 사용 실패 : 회원 정보를 찾을 수 없습니다.");
 					});
 			user.setPoint(requestUser.getPoint() - order.getUsedPoint());
+		}
+		if(!order.getUsedCouponId().equals("쿠폰선택")) {
+			Coupon coupon = couponRepository.findById(Integer.parseInt(order.getUsedCouponId()))
+					.orElseThrow(()->{
+						return new IllegalArgumentException("쿠폰 사용 실패 : 쿠폰 정보를 찾을 수 없습니다.");
+					});
+			coupon.setValidChk(1);
 		}
 		purchaseOrderRepository.save(order);
 		OrderDetail detail = OrderDetail.builder()
@@ -204,6 +220,13 @@ public class ShopService {
 					});
 			user.setPoint(user.getPoint() + po.getUsedPoint());
 		}
+		if(!po.getUsedCouponId().equals("쿠폰선택")) {
+			Coupon coupon = couponRepository.findById(Integer.parseInt(po.getUsedCouponId()))
+					.orElseThrow(()->{
+						return new IllegalArgumentException("사용 쿠폰 복원 실패 : 쿠폰 정보를 찾을 수 없습니다.");
+					});
+			coupon.setValidChk(0);
+		}
 	}
 	
 	@Transactional
@@ -230,7 +253,6 @@ public class ShopService {
 					.couponCode(couponCode)
 					.minAmount(50000)
 					.disAmount(0.3)
-					.maxAmount(20000)
 					.validity(7)
 					.validChk(0)
 					.build();

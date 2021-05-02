@@ -1090,7 +1090,7 @@ body {
 }
 .div-pointpage .card {
 	width: 400px;
-	margin-left: 370px;
+	margin: 0 0 20px 370px;
 }
 .input-orderpage {
 	text-align: right;

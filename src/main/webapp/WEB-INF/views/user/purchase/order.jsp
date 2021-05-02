@@ -63,13 +63,15 @@
 				적립금 사용
 				</p>
 				<input id="totPoint" type="hidden" value="${principal.user.point}"/>
-				<input id="point" value="${principal.user.point}" type="number" class="form-control form-point col-sm-1.5" />
+				<input id="point" value="0" type="number" class="form-control form-point col-sm-1.5" />
 				<form class="coupon-form col-sm-2">
+				<input id="originalAmount" type="hidden" value="${totalAmount }" />
+				<input id="originalTot" type="hidden" value="${finalAmount }"/>
 					<select id="coupon" name="coupon" class="custom-select">
 						<option selected>쿠폰선택</option>
-						<c:forEach var="coupon" items="${coupons}" varStatus="idx">
-							<c:if test="${coupon.minAmount <= finalAmount }">
-								<option id="${idx.count - 1}" value="${coupon.id}"> ${coupon.couponName}</option>
+						<c:forEach var="coupon" items="${coupons}">
+							<c:if test="${coupon.minAmount <= finalAmount && coupon.validChk == 0}">
+								<option id="${coupon.disAmount}" value="${coupon.id}"> ${coupon.couponName}</option>
 							</c:if>
 						</c:forEach>
 					</select>
@@ -96,12 +98,19 @@
 						</h6>
 						<h6>
 							적립금 사용 - 
-							<font id="usedPoint">${principal.user.point}</font>
+							<font id="usedPoint">0</font>
+							원
+						</h6>
+						<h6>
+							쿠폰 사용 - 
+							<font id="usedCoupon">0</font>
 							원
 						</h6>
 						<h5>
 							결제금액&nbsp;
-							<font id="totAmount">${finalAmount}</font>
+							<font id="totAmount">
+							<fmt:formatNumber value="${finalAmount}" type="number" />
+							</font>
 							원
 						</h5>
 					</div>

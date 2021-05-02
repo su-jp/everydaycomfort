@@ -212,10 +212,13 @@ function paymentChk() {
 function makeOrder(payment) {
 	var cartId = $("#cartId").val();
 	var amount = $('#totAmount').html();
+	var coupon = $("#usedCoupon").html();
 	let data = {
 		totalAmount: Math.ceil(amount),
 		payment: payment,
-		point: $('#point').val()
+		point: $('#point').val(),
+		couponId : $("#coupon").val(),
+		couponAmount : Math.ceil(coupon)
 	};
 	//장바구니 구매
 	if (cartId == "undefined" || cartId == null || cartId == "") {
@@ -289,31 +292,14 @@ function cancelOrder(orderId) {
 		}
 	});
 }
-//쿠폰선택
-/*
+//적립금 & 쿠폰 실시간반영
 $(document).ready(function() {
-	$("#coupon").on("change", function() {
-		var idx = document.getElementById('coupon').options[document.getElementById('coupon').selectedIndex].id;
-		$.ajax({
-			type: "POST",
-			url: "/api/order/coupon/" + this.value,
-			error: function() {
-				alert(JSON.stringify(error));
-			},
-			success: function(disAmount) {
-				
-			}
-		});
-	});
-});
-*/
-//적립금사용
-$(document).ready(function() {
-	var totalAmount = $("#totAmount").html();
-	var pointVal = $("#totPoint").val();
-	$("#totAmount").html(totalAmount - pointVal);
-
+	//적립금
 	$("#point").on("change", function() {
+		var total = $("#originalTot").val();
+		var originalAmount = $("#originalAmount").val();
+		var dis = document.getElementById('coupon').options[document.getElementById('coupon').selectedIndex].id;
+		var disAmount = originalAmount * dis;
 		var input = $("#point").val();
 		var totPoint = $("#totPoint").val();
 		if (input > totPoint || input < 0) {
@@ -327,7 +313,17 @@ $(document).ready(function() {
 			});
 		} else {
 			$("#usedPoint").html(input);
-			$("#totAmount").html(totalAmount - input);
+			$("#totAmount").html(total - input - disAmount);
 		}
+	});
+	//쿠폰
+	$("#coupon").on("change", function() {
+		var total = $("#originalTot").val();
+		var input = $("#point").val();
+		var originalAmount = $("#originalAmount").val();
+		var dis = document.getElementById('coupon').options[document.getElementById('coupon').selectedIndex].id;
+		var disAmount = originalAmount * dis;
+		$("#usedCoupon").html(disAmount);
+		$("#totAmount").html(total - disAmount - input);
 	});
 });

@@ -23,7 +23,7 @@
 							<div class="card">
 								<div class="card-body">
 									<h5 id="productTitle" class="card-title">${coupon.couponName }</h5>
-									<font><br />${coupon.minAmount }원 이상 구매시 최대 ${coupon.maxAmount }원 할인</font> <font><br />유효기간 : <fmt:formatDate value="${coupon.createDate}" pattern="yyyy년 M월 d일" />로부터
+									<font><br />${coupon.minAmount }원 이상 구매시 사용가능</font> <font><br />유효기간 : <fmt:formatDate value="${coupon.createDate}" pattern="yyyy년 M월 d일" />로부터
 										${coupon.validity }일</font>
 								</div>
 							</div>

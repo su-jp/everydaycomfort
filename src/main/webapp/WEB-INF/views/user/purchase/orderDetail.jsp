@@ -8,6 +8,7 @@
 				<p>주문번호 : ${order.orderNum}</p>
 				<div class="container-fluid">
 				<hr />
+				<c:set var="totalAmount" value="0" />
 					<c:forEach var="detail" items="${details}">
 						<div class="row">
 							<div class="col-sm-2">
@@ -26,12 +27,15 @@
 								</p>
 							</div>
 						</div>
+						<c:set var="totalAmount" value="${totalAmount + detail.productPrice}" />
 					</c:forEach>
 					<hr />
 				</div>
 				<div class="div-right div-padding">
-					<c:if test="${order.usedCoupon != 0}">
-						<p>쿠폰할인 : - <fmt:formatNumber value="${order.usedCoupon}" type="number" />
+					<p>할인 : - <fmt:formatNumber value="${totalAmount / 10}" type="number" />
+						원</p>
+					<c:if test="${order.usedCouponAmount != 0}">
+						<p>쿠폰할인 : - <fmt:formatNumber value="${order.usedCouponAmount}" type="number" />
 						원</p>
 					</c:if>
 					<c:if test="${order.usedPoint != 0}">

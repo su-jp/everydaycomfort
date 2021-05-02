@@ -13,6 +13,7 @@ public class OrderRequestDTO {
 	private int totalAmount;
 	private String payment;
 	private String payInfo;
-	private int coupon;
+	private String couponId;
 	private int point;
+	private int couponAmount;
 }

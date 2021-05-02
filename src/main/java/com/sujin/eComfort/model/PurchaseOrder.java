@@ -49,7 +49,9 @@ public class PurchaseOrder {
 	
 	private int usedPoint;
 	
-	private int usedCoupon;
+	private int usedCouponAmount;
+	
+	private String usedCouponId;
 	
 	private String orderStatus;
 	
