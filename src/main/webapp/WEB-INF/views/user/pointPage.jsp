@@ -12,11 +12,11 @@
 				<hr />
 				<h4>
 					보유 쿠폰 <br />
-				</h4>
 				<c:if test="${empty user.coupons }">
 					<font><br />보유하고 있는 쿠폰이 없습니다.</font>
 					<br />
 				</c:if>
+				</h4>
 				<div class="div-coupon">
 					<c:forEach var="coupon" items="${user.coupons}">
 						<c:if test="${coupon.validChk == 0}">
