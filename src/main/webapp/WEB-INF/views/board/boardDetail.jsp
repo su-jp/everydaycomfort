@@ -4,20 +4,20 @@
 	<div class="main-div">
 		<div class="container div-board-detail">
 			<div class="div-fullsize">
-				<c:if test="${board.board eq 'qna'}">
+				<c:if test="${board.boardcode eq 'qna'}">
 					<h3>질문과 답변</h3>
 				</c:if>
-				<c:if test="${board.board eq 'inquiry'}">
+				<c:if test="${board.boardcode eq 'inquiry'}">
 					<h3>1:1 문의</h3>
 				</c:if>
-				<c:if test="${board.board eq 'notice'}">
+				<c:if test="${board.boardcode eq 'notice'}">
 					<h3>공지사항</h3>
 				</c:if>
-				<c:if test="${board.board eq 'counsel'}">
+				<c:if test="${board.boardcode eq 'counsel'}">
 					<h3>리모델링 상담</h3>
 				</c:if>
 				<div>
-					<a href="/board/${board.board}" class="btn btn-outline-light text-dark">＜＜ 목록으로</a>
+					<a href="/board/${board.boardcode}" class="btn btn-outline-light text-dark">＜＜ 목록으로</a>
 				</div>
 				<hr />
 				<div class="div-article-info div-article-padding">
@@ -35,7 +35,7 @@
 			</div>
 			<c:if test="${board.user.id == principal.user.id}">
 				<div class="div-article-btn" align="right">
-					<input type="hidden" id="boardCategory" value="${board.board}"> <a href="/api/board/${board.id}/updateForm" class="btn btn-outline-dark">수정</a>
+					<input type="hidden" id="boardCategory" value="${board.boardcode}"> <a href="/api/board/${board.id}/updateForm" class="btn btn-outline-dark">수정</a>
 					<button id="${board.id}" onclick="boardDelete()" class="btn btn-outline-dark">삭제</button>
 				</div>
 			</c:if>

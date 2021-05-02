@@ -23,7 +23,7 @@ function boardNullCheck() {
 //글등록
 function boardWrite() {
 	let data = {
-		board: $("#boardCode").val(),
+		boardcode: $("#boardCode").val(),
 		title: $("#title").val(),
 		content: $("#content").val(),
 		userId: $("#userId").val()
@@ -41,7 +41,7 @@ function boardWrite() {
 			text: '답변을 기다려주세요.',
 			confirmButtonText: '확인'
 		}).then(() => {
-			location.href = `/board/${data.board}`;
+			location.href = `/board/${data.boardcode}`;
 		});
 	}).fail(function(error) {
 		alert(JSON.stringify(error));
