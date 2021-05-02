@@ -225,6 +225,9 @@ body {
 	border: none;
 	margin-bottom: auto;
 }
+.td-popup img {
+	cursor: pointer;
+}
 .container .popup input {
 	color: var(--light-brown);
 	background: transparent;

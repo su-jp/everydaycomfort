@@ -68,7 +68,7 @@ public class ShopApiController {
 		return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);
 	}
 	
-	@DeleteMapping("/api/order/cancel/{orderId}")
+	@PutMapping("/api/order/cancel/{orderId}")
 	public ResponseDTO<Integer> cancelOrder(@PathVariable int orderId) {
 		shopService.cancelOrder(orderId);
 		return new ResponseDTO<Integer>(HttpStatus.OK.value(), 1);

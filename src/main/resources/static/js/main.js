@@ -83,3 +83,16 @@ function searchNullCheck() {
 		return true;
 	}
 }
+//쿠폰발급
+function issueCoupon(userId) {
+	var couponCode = $("#couponCode").val();
+	if (userId == "undefined" || userId == "" || userId == null) {
+		Swal.fire({
+			icon: 'warning',
+			text: '로그인이 필요합니다.',
+			confirmButtonText: '확인'
+		});
+	} else {
+		location.href = "/user/coupon/" + couponCode;
+	}
+}

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.sujin.eComfort.config.auth.PrincipalDetail;
 import com.sujin.eComfort.controller.api.ShopOpenApiController;
 import com.sujin.eComfort.model.Product;
+import com.sujin.eComfort.model.User;
 import com.sujin.eComfort.service.ShopService;
 
 @Controller
@@ -72,5 +73,12 @@ public class ShopController {
 		model.addAttribute("order", shopService.findOrderByOrderId(id));
 		return "user/purchase/orderDetail";
 	}
-
+	
+	@GetMapping("/user/coupon/{couponCode}")
+	public String coupon(@PathVariable String couponCode, Model model, @AuthenticationPrincipal PrincipalDetail principal) {
+		// 0=쿠폰발급가능, 1=발급불가능
+		int chk = shopService.chkCoupon(principal.getUser(), couponCode);
+		model.addAttribute("chk", chk);
+		return "user/coupon";
+	}
 }

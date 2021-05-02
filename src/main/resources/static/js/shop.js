@@ -172,7 +172,7 @@ function itemQuantity(id, request, qty) {
 				type: "GET",
 				url: "/user/cart",
 				dataType: "text",
-				error: function() {
+				error: function(error) {
 					alert(JSON.stringify(error));
 				},
 				success: function(data) {
@@ -269,7 +269,7 @@ function cancelOrder(orderId) {
 	}).then((result) => {
 		if (result.isConfirmed) {
 			$.ajax({
-				type: "DELETE",
+				type: "PUT",
 				url: "/api/order/cancel/" + orderId,
 				dataType: "json"
 			}).done(function() {

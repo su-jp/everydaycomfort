@@ -34,6 +34,8 @@ public class Coupon {
 	private User user;
 	
 	private String couponName;
+	// 쿠폰식별코드
+	private String couponCode;
 	// 쿠폰사용 최소금액
 	private int minAmount;
 	// 할인율
@@ -45,4 +47,6 @@ public class Coupon {
 	// 생성날짜
 	@CreationTimestamp
 	private Timestamp createDate;
+	// 0=사용전, 1=사용완료or유효기간만료
+	private int validChk;
 }

@@ -219,4 +219,25 @@ public class ShopService {
 				});
 		return coupon.getDisAmount();
 	}
+	
+	@Transactional
+	public int chkCoupon(User user, String couponCode) {
+		Coupon requestCoupon = couponRepository.findByUserIdAndCouponCode(user.getId(), couponCode);
+		if(requestCoupon == null) {
+			Coupon coupon = Coupon.builder()
+					.user(user)
+					.couponName("봄맞이 이벤트 30% 할인쿠폰")
+					.couponCode(couponCode)
+					.minAmount(50000)
+					.disAmount(0.3)
+					.maxAmount(20000)
+					.validity(7)
+					.validChk(0)
+					.build();
+			couponRepository.save(coupon);
+			return 0;
+		} else {
+			return 1;
+		}
+	}
 }

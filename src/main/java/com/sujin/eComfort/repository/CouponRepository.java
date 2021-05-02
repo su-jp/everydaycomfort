@@ -8,4 +8,5 @@ import com.sujin.eComfort.model.Coupon;
 
 public interface CouponRepository extends JpaRepository<Coupon, Integer> {
 	List<Coupon> findAllByUserId(int userId);
+	Coupon findByUserIdAndCouponCode(int userId, String couponCode);
 }
