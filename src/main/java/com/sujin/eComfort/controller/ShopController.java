@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.sujin.eComfort.config.auth.PrincipalDetail;
 import com.sujin.eComfort.controller.api.ShopOpenApiController;
 import com.sujin.eComfort.model.Product;
-import com.sujin.eComfort.model.User;
 import com.sujin.eComfort.service.ShopService;
 
 @Controller

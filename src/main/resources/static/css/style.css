@@ -1079,11 +1079,18 @@ body {
 }
 .div-pointpage h4 {
 	text-align: center;
-	padding: 100px 0 0 30px;
+	padding: 10px 0 20px 30px;
 	font-size: 26px;
 }
 .div-pointpage font {
 	font-size: 18px;
+}
+.div-pointpage .div-coupon {
+	text-align: center;
+}
+.div-pointpage .card {
+	width: 400px;
+	margin-left: 370px;
 }
 .input-orderpage {
 	text-align: right;
