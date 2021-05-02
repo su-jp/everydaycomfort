@@ -64,7 +64,7 @@
 				</p>
 				<input id="totPoint" type="hidden" value="${principal.user.point}"/>
 				<input id="point" value="${principal.user.point}" type="number" class="form-control form-point col-sm-1.5" />
-				<form action="" class="coupon-form col-sm-2">
+				<form class="coupon-form col-sm-2">
 					<select id="coupon" name="coupon" class="custom-select">
 						<option selected>쿠폰선택</option>
 						<c:forEach var="coupon" items="${coupons}" varStatus="idx">
@@ -74,7 +74,7 @@
 						</c:forEach>
 					</select>
 				</form>
-				<form action="" class="payment-form col-sm-2">
+				<form class="payment-form col-sm-2">
 					<select id="payment" name="payment" class="custom-select">
 						<option selected>결제수단선택</option>
 						<option value="1">카드결제</option>

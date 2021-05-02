@@ -66,16 +66,32 @@
 				</c:otherwise>
 			</c:choose>
 		</ul>
-		<div class="div-btn">
-			<p></p>
-			<c:if test="${boardCode ne 'notice'}">
-				<a class="btn" href="/user/board/${boardCode}">질문하기</a>
-			</c:if>
-			<c:if test="${boardCode eq 'notice' && principal.user.role eq 'ROLE_ADMIN'}">
-				<a class="btn" href="/admin/board/notice">공지 작성하기</a>
-			</c:if>
+			<div class="div-btn">
+				<form action="<c:url value='/board/search/${boardCode}' />" method="get" onsubmit="return boardSearchNullCheck()">
+					<div class="row div-search">
+						<div class="col-sm-5 div-sort">
+							<select id="sort" name="sort" class="custom-select">
+								<option selected>분류</option>
+								<option value="title">제목</option>
+								<option value="content">내용</option>
+							</select>
+						</div>
+						<div class="col-sm-5 div-search-box">
+							<input class="search-box" name="boardKeyword" id="boardKeyword" type="text" />
+						</div>
+						<div class="col-sm-2">
+							<button type="submit" class="btn btn-outline-dark btn-search">검색</button>
+						</div>
+					</div>
+				</form>
+				<c:if test="${boardCode ne 'notice'}">
+					<a class="btn" href="/user/board/${boardCode}">질문하기</a>
+				</c:if>
+				<c:if test="${boardCode eq 'notice' && principal.user.role eq 'ROLE_ADMIN'}">
+					<a class="btn" href="/admin/board/notice">공지 작성하기</a>
+				</c:if>
+			</div>
 		</div>
-	</div>
 </div>
 <%@ include file="../layout/footer.jsp"%>
 </div>

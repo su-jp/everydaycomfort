@@ -304,3 +304,25 @@ function commentDelete(commentId) {
 		}
 	});
 }
+//검색 null체크
+function boardSearchNullCheck() {
+	var keyword = $("#boardKeyword").val();
+	let sort = document.getElementById('sort').options[document.getElementById('sort').selectedIndex].text;
+	if (!keyword) {
+		Swal.fire({
+			icon: 'warning',
+			text: '검색어를 입력해주세요.',
+			confirmButtonText: '확인'
+		});
+		return false;
+	} else if(sort == "분류") {
+		Swal.fire({
+			icon: 'warning',
+			text: '분류를 선택해주세요.',
+			confirmButtonText: '확인'
+		});
+		return false;
+	} else {
+		return true;
+	}
+}

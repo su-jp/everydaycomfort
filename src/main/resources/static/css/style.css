@@ -422,6 +422,21 @@ body {
 .div-boardlist .font-count {
 	padding-left: 10px;
 }
+.div-board .div-search-box {
+	padding: 0;
+}
+.div-board .div-search .div-search-box .search-box {
+	height: 38px;
+	width: 120px;
+}
+.div-board .div-search .col-sm-2 {
+	padding: 0 0 0 15px;
+}
+.div-board .div-search .btn-search {
+	padding: 6px 9px;
+	height: 38px;
+	width: 60px;
+}
 .div-promo {
 	padding : 20px 0;
 }

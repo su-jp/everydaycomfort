@@ -7,5 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.sujin.eComfort.model.Board;
 
 public interface BoardRepository extends JpaRepository<Board, Integer>{
-	Page<Board> findAllByBoard(String board, Pageable pageable);
+	Page<Board> findAllByBoardcode(String boardcode, Pageable pageable);
+	Page<Board> findAllByBoardcodeAndTitleContaining(String boardcode, String title, Pageable pageable);
+	Page<Board> findAllByBoardcodeAndContentContaining(String boardcode, String content, Pageable pageable);
+	
 }

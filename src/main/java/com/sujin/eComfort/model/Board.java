@@ -38,9 +38,10 @@ public class Board {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private String board;
+	@Column(name = "boardcode")
+	private String boardcode;
 	
-	@Column(nullable = false, length = 100)
+	@Column(name = "title", nullable = false, length = 100)
 	private String title;
 	
 	@Lob

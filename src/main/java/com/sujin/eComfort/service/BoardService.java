@@ -59,7 +59,7 @@ public class BoardService {
 	
 	@Transactional
 	public Page<Board> list(String board, Pageable pageable) {
-		return boardRepository.findAllByBoard(board, pageable);
+		return boardRepository.findAllByBoardcode(board, pageable);
 	}
 	
 	@Transactional(readOnly = true)
@@ -103,5 +103,14 @@ public class BoardService {
 	@Transactional
 	public void deleteComment(int commentId) {
 		commentRepository.deleteById(commentId);
+	}
+	
+	@Transactional
+	public Page<Board> search(String sort, String boardCode, String keyword, Pageable pageable) {
+		if(sort.equals("title")) {
+			return boardRepository.findAllByBoardcodeAndTitleContaining(boardCode, keyword, pageable);
+		} else {
+			return boardRepository.findAllByBoardcodeAndContentContaining(boardCode, keyword, pageable);
+		}
 	}
 }
