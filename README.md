@@ -1,5 +1,7 @@
 > ## 🏡 원스톱 인테리어 플랫폼 '편안한가'
 - Onestop Interior Platform 🏡
+
+![GIF 2021-05-01 오후 8-25-57](https://user-images.githubusercontent.com/76279992/119313581-abf19600-bcae-11eb-8494-c8205d452ce4.gif)
 ___
 > ## ✨ 소개
 - RESTful API 기반으로 제작된 쇼핑몰 '편안한가'입니다.
